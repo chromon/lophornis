@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lophornis/constants.dart';
 
 import '../constants.dart' show Constants;
+
+// 下拉菜单选项
+enum ActionItems {
+  GROUP_CHAT, ADD_FRIEND, QR_SCAN, PAYMENT, HELP
+}
 
 // 底部导航栏 View
 class NavigationIconView {
@@ -20,9 +26,12 @@ class NavigationIconView {
     _activeIcon = activeIcon,
 
     item = BottomNavigationBarItem(
-      icon: Icon(icon),
-      activeIcon: Icon(activeIcon),
-      title: new Text(title),
+      icon: Icon(icon, color: Color(AppColor.TabIconNormal)),
+      activeIcon: Icon(activeIcon, color: Color(AppColor.TabIconActive)),
+      title: new Text(title, style: TextStyle(
+        fontSize: 14.0,
+        color: Color(AppColor.TabIconNormal)
+      )),
       backgroundColor: Colors.white
     );
 }
@@ -34,12 +43,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  // 导航栏数据信息
+  // 底部导航栏索引值
+  int _currentIndex = 0;
+
+  // 底部导航栏数据信息
   List<NavigationIconView> _navigationViews;
 
   void initState() {
     super.initState();
+
     _navigationViews = [
+      // 微信首页 tab
       NavigationIconView(
         title: '微信',
         icon: IconData(
@@ -51,6 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
           fontFamily: Constants.IconFontFamily,
         ),
       ),
+
+      // 通讯录 tab
       NavigationIconView(
         title: '通讯录',
         icon: IconData(
@@ -62,6 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
           fontFamily: Constants.IconFontFamily,
         ),
       ),
+
+      // 发现页面 tab
       NavigationIconView(
         title: '发现',
         icon: IconData(
@@ -73,6 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
           fontFamily: Constants.IconFontFamily,
         ),
       ),
+
+      // 个人页面 tab
       NavigationIconView(
         title: '我',
         icon: IconData(
@@ -87,19 +107,43 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
   }
 
+  // 顶部 appbar 下拉菜单自定义带图标控件
+  _bulidPopupMenuItem(int iconName, String title) {
+    return Row(
+      children: <Widget>[
+        // 下拉列表图标
+        Icon(IconData(
+          iconName,
+          fontFamily: Constants.IconFontFamily
+        ), size: 22.0, color: const Color(AppColor.AppBarPopupMenuColor)),
+        
+        Container(width: 12.0,),
+
+        // 下拉列表文字
+        Text(title, style: TextStyle(color: const Color(AppColor.AppBarPopupMenuColor)))
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 
+    // 构建底部导航栏
     final BottomNavigationBar botNavBar = new BottomNavigationBar(
       // 遍历 _navigationViews 通过 map 遍历取出每一个 view 里的 item 对象，合并成数组返回
       items: _navigationViews.map((NavigationIconView view) {
         return view.item;
       }).toList(),
       // 当前选中的索引
-      currentIndex: 0,
+      currentIndex: _currentIndex,
       // 动画效果——宽度固定不变
       type: BottomNavigationBarType.fixed,
       onTap: (int index) {
+        // 重绘控件
+        setState(() {
+          // 修改 tab 索引值
+          _currentIndex = index;
+        });
         print('点击的是第 $index 个Tab');
       },
     );
@@ -108,23 +152,74 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: new AppBar(
         // 标题栏名称
         title: new Text('微信'),
+        // 去掉 appbar 下面的阴影
+        elevation: 0.0,
+
         // 标题栏按钮
         actions: <Widget>[
           // 搜索按钮
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(IconData(
+              0xe65e,
+              fontFamily: Constants.IconFontFamily
+            ), size: 22.0),
             onPressed: () { print('点击了搜索按钮'); },
           ),
-          // 添加下拉按钮
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () { print('点击了下拉列表'); },
-          )
+
+          // 设置组件间空白宽度
+          Container(width: 16.0),
+
+          // 下拉菜单
+          PopupMenuButton(
+            // 构建下拉菜单选项
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuItem<ActionItems>>[
+                PopupMenuItem(
+                  child: _bulidPopupMenuItem(0xe69e, '发起群聊'),
+                  value: ActionItems.GROUP_CHAT,
+                ),
+                PopupMenuItem(
+                  child: _bulidPopupMenuItem(0xe638, '添加好友'),
+                  value: ActionItems.ADD_FRIEND,
+                ),
+                PopupMenuItem(
+                  child: _bulidPopupMenuItem(0xe61b, '扫一扫'),
+                  value: ActionItems.QR_SCAN,
+                ),
+                PopupMenuItem(
+                  child: _bulidPopupMenuItem(0xe62a, '收付款'),
+                  value: ActionItems.PAYMENT,
+                ),
+                PopupMenuItem(
+                  child: _bulidPopupMenuItem(0xe63d, '帮助与反馈'),
+                  value: ActionItems.HELP,
+                ),
+              ];
+            },
+
+            // 下拉菜单显示图标
+            icon: Icon(IconData(
+              0xe60e,
+              fontFamily: Constants.IconFontFamily
+            ), size: 22.0),
+
+            // 下拉菜单列表点击事件
+            onSelected: (ActionItems selected) {
+              print('点击的是$selected');
+            },
+          ),
+
+          // 设置组件间空白宽度
+          Container(width: 10.0),
         ],
       ),
+
+      // 中心内容
       body: new Container(
-        color: Colors.yellow
+        color: Colors.grey
       ),
+
+      // 底部 tab
       bottomNavigationBar: botNavBar,
     );
   }

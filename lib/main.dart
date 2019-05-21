@@ -7,6 +7,7 @@ void main() => runApp(MaterialApp(
   title: '微信',
   theme: ThemeData.light().copyWith(
     primaryColor: Color(AppColor.AppBarColor),
+    cardColor: Color(AppColor.AppBarColor)
   ),
   home: HomeScreen()
 ));
