@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lophornis/constants.dart';
+import 'package:lophornis/home/conversation_page.dart';
 
 import '../constants.dart' show Constants;
 
@@ -43,6 +44,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  // 用于管理滚动视图的状态
+  PageController _pageController;
+  // 页面的集合
+  List<Widget> _pages;
+
   // 底部导航栏索引值
   int _currentIndex = 0;
 
@@ -52,6 +58,17 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
+    // 初始化 pageController
+    _pageController = PageController(initialPage: _currentIndex);
+    // 初始化页面内容
+    _pages = [
+        ConversationPage(),
+        Container(color: Colors.lightGreen,),
+        Container(color: Colors.lime,),
+        Container(color: Colors.red,)
+    ];
+
+    // 初始化底部导航栏
     _navigationViews = [
       // 微信首页 tab
       NavigationIconView(
@@ -143,6 +160,11 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() {
           // 修改 tab 索引值
           _currentIndex = index;
+          // 点击 tab 时页面重绘
+          _pageController.animateToPage(
+            _currentIndex, 
+            duration: Duration(milliseconds: 50), 
+            curve: Curves.ease);
         });
         print('点击的是第 $index 个Tab');
       },
@@ -215,11 +237,24 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       // 中心内容
-      body: new Container(
-        color: Colors.grey
+      body: PageView.builder(
+        // 生成相应页面
+        itemBuilder: (BuildContext context, int index) {
+          return _pages[index];
+        },
+        controller: _pageController,
+        // 总页数
+        itemCount: _pages.length,
+        // 页面触发回调函数
+        onPageChanged: (int index) {
+          setState(() {
+            // 左右滑动时与底部 tab 联动
+            _currentIndex = index;
+          });
+        },
       ),
 
-      // 底部 tab
+      // 页面底部导航栏
       bottomNavigationBar: botNavBar,
     );
   }
