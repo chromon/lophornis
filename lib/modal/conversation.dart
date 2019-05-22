@@ -21,6 +21,7 @@ class Conversation {
   // 是否以圆点形式显示未读消息
   final bool displayDot;
 
+  // 构造方法初始化数据
   const Conversation({
     @required this.avatar,
     @required this.title,
@@ -33,17 +34,26 @@ class Conversation {
   }) : assert(avatar != null),
        assert(title != null),
        assert(updateAt != null);
+
+  // 判断头像图片是否是来自网络
+  bool isAvatarFromNet() {
+    if (this.avatar.indexOf('http') == 0 ||
+      this.avatar.indexOf('https') == 0) {
+        return true;
+    }
+    return false;
+  }
 }
 
 // 会话列表详细信息
 const List<Conversation> mockConversations = [
   const Conversation(
-    avatar: 'https://randomuser.me/api/portraits/lego/7.jpg',
-    title: 'John',
-    desc: '今天一起出去玩吗？',
+    avatar: 'assets/images/ic_tx_news.png',
+    title: '腾讯新闻',
+    desc: '豪车与出租车刮擦 俩车主划拳定责',
     updateAt: '13:38',
-    isMute: true,
-    unreadMsgCount: 0
+    isMute: false,
+    unreadMsgCount: 10
   ),
   const Conversation(
     avatar: 'https://randomuser.me/api/portraits/lego/6.jpg',
@@ -54,19 +64,19 @@ const List<Conversation> mockConversations = [
     unreadMsgCount: 0
   ),
   const Conversation(
-    avatar: 'https://randomuser.me/api/portraits/lego/5.jpg',
-    title: 'John',
+    avatar: 'assets/images/ic_wx_games.png',
+    title: '微信游戏',
     desc: '今天一起出去玩吗？',
     updateAt: '13:38',
-    isMute: true,
-    unreadMsgCount: 0
+    isMute: false,
+    unreadMsgCount: 3
   ),
   const Conversation(
     avatar: 'https://randomuser.me/api/portraits/lego/4.jpg',
     title: 'John',
     desc: '今天一起出去玩吗？',
     updateAt: '13:38',
-    isMute: true,
+    isMute: false,
     unreadMsgCount: 0
   ),
   const Conversation(
@@ -82,15 +92,15 @@ const List<Conversation> mockConversations = [
     title: 'John',
     desc: '今天一起出去玩吗？',
     updateAt: '13:38',
-    isMute: true,
-    unreadMsgCount: 0
+    isMute: false,
+    unreadMsgCount: 30
   ),
   const Conversation(
     avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
     title: 'John',
     desc: '今天一起出去玩吗？',
     updateAt: '13:38',
-    isMute: true,
+    isMute: false,
     unreadMsgCount: 0
   ),
 ];

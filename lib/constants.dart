@@ -22,6 +22,12 @@ class AppColor {
   static const ConversationItemBg = 0xffffffff;
   // 会话分隔线颜色
   static const DividerColor = 0xffd9d9d9;
+  // 通知角标背景颜色
+  static const NotifyDotBg = 0xffff3e3d;
+  // 通知角标文字颜色
+  static const NotifyDotText = 0xffffffff;
+  // 会话勿扰模式图标颜色
+  static const ConversationMuteIcon = 0xffd8d8d8;
 }
 
 // 全局样式
@@ -37,6 +43,12 @@ class AppStyles {
     fontSize: 14.0,
     color: Color(AppColor.ConversationDescColor)
   );
+
+  // 未读消息角标样式
+  static const UnreadMsgCountDotStyle = TextStyle(
+    fontSize: 12.0,
+    color: Color(AppColor.NotifyDotText)
+  );
 }
 
 // 全局常量
@@ -47,4 +59,8 @@ class Constants {
   static const ConversationAvatarSize = 48.0;
   // 会话分隔线宽度
   static const DividerWidth = 1.0;
+  // 未读消息圆点大小
+  static const UnreadMsgNotifyDotSize = 20.0;
+  // 会话勿扰模式图标大小
+  static const ConversationMuteIconSize = 18.0;
 }
