@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
+enum Device {
+  MAC, WIN
+}
+
 // 会话
 class Conversation {
 
@@ -45,62 +49,79 @@ class Conversation {
   }
 }
 
-// 会话列表详细信息
-const List<Conversation> mockConversations = [
-  const Conversation(
-    avatar: 'assets/images/ic_tx_news.png',
-    title: '腾讯新闻',
-    desc: '豪车与出租车刮擦 俩车主划拳定责',
-    updateAt: '13:38',
-    isMute: false,
-    unreadMsgCount: 10
-  ),
-  const Conversation(
-    avatar: 'https://randomuser.me/api/portraits/lego/6.jpg',
-    title: 'John',
-    desc: '今天一起出去玩吗？',
-    updateAt: '13:38',
-    isMute: true,
-    unreadMsgCount: 0
-  ),
-  const Conversation(
-    avatar: 'assets/images/ic_wx_games.png',
-    title: '微信游戏',
-    desc: '今天一起出去玩吗？',
-    updateAt: '13:38',
-    isMute: false,
-    unreadMsgCount: 3
-  ),
-  const Conversation(
-    avatar: 'https://randomuser.me/api/portraits/lego/4.jpg',
-    title: 'John',
-    desc: '今天一起出去玩吗？',
-    updateAt: '13:38',
-    isMute: false,
-    unreadMsgCount: 0
-  ),
-  const Conversation(
-    avatar: 'https://randomuser.me/api/portraits/lego/3.jpg',
-    title: 'John',
-    desc: '今天一起出去玩吗？',
-    updateAt: '13:38',
-    isMute: true,
-    unreadMsgCount: 0
-  ),
-  const Conversation(
-    avatar: 'https://randomuser.me/api/portraits/lego/2.jpg',
-    title: 'John',
-    desc: '今天一起出去玩吗？',
-    updateAt: '13:38',
-    isMute: false,
-    unreadMsgCount: 30
-  ),
-  const Conversation(
-    avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
-    title: 'John',
-    desc: '今天一起出去玩吗？',
-    updateAt: '13:38',
-    isMute: false,
-    unreadMsgCount: 0
-  ),
-];
+class ConversationPageData {
+
+  final Device device;
+  final List<Conversation> conversations;
+
+  const ConversationPageData({
+    this.device,
+    this.conversations,
+  });
+
+  static mock() {
+    return ConversationPageData(
+        device: Device.WIN, conversations: mockConversations);
+  }
+
+  // 会话列表详细信息
+  static List<Conversation> mockConversations = [
+    const Conversation(
+      avatar: 'assets/images/ic_tx_news.png',
+      title: '腾讯新闻',
+      desc: '豪车与出租车刮擦 俩车主划拳定责',
+      updateAt: '13:38',
+      isMute: false,
+      unreadMsgCount: 10
+    ),
+    const Conversation(
+      avatar: 'https://randomuser.me/api/portraits/lego/6.jpg',
+      title: 'John',
+      desc: '今天一起出去玩吗？',
+      updateAt: '13:38',
+      isMute: true,
+      unreadMsgCount: 0
+    ),
+    const Conversation(
+      avatar: 'assets/images/ic_wx_games.png',
+      title: '微信游戏',
+      desc: '今天一起出去玩吗？',
+      updateAt: '13:38',
+      isMute: false,
+      unreadMsgCount: 3
+    ),
+    const Conversation(
+      avatar: 'https://randomuser.me/api/portraits/lego/4.jpg',
+      title: 'John',
+      desc: '今天一起出去玩吗？',
+      updateAt: '13:38',
+      isMute: false,
+      unreadMsgCount: 0
+    ),
+    const Conversation(
+      avatar: 'https://randomuser.me/api/portraits/lego/3.jpg',
+      title: 'John',
+      desc: '今天一起出去玩吗？',
+      updateAt: '13:38',
+      isMute: true,
+      unreadMsgCount: 0
+    ),
+    const Conversation(
+      avatar: 'https://randomuser.me/api/portraits/lego/2.jpg',
+      title: 'John',
+      desc: '今天一起出去玩吗？',
+      updateAt: '13:38',
+      isMute: false,
+      unreadMsgCount: 30
+    ),
+    const Conversation(
+      avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
+      title: 'John',
+      desc: '今天一起出去玩吗？',
+      updateAt: '13:38',
+      isMute: false,
+      unreadMsgCount: 0
+    ),
+  ];
+
+}

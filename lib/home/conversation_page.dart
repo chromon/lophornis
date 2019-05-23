@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lophornis/constants.dart' show AppColor, AppStyles, Constants;
-import '../modal/conversation.dart' show Conversation, mockConversations;
+import '../modal/conversation.dart' show Conversation, Device, ConversationPageData;
 
 // 会话项
 class _ConversationItem extends StatelessWidget {
@@ -155,6 +155,62 @@ class _ConversationItem extends StatelessWidget {
 }
 
 /*
+ *  顶部设备登录状态控件
+ */
+class _DeviceInfoItem extends StatelessWidget {
+
+  // 登录设备的类型
+  final Device device;
+
+  const _DeviceInfoItem({this.device: Device.WIN}) :
+    assert(device != null);
+
+  // 判断登录设备的类型选择不同的图标
+  int get iconName {
+    return device == Device.WIN ? 0xe6b3 : 0xe61c;
+  }
+
+  // 判断登录设备的系统类型
+  String get deviceName {
+    return device == Device.WIN ? 'Windows' : 'Mac';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: 24.0,
+        top: 10.0,
+        right: 24.0,
+        bottom: 10.0,
+      ),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(width: Constants.DividerWidth, color: Color(AppColor.DividerColor)),
+        ),
+        color: Color(AppColor.DeviceInfoItemBg)
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            IconData(
+              this.iconName,
+              fontFamily: Constants.IconFontFamily,
+            ), 
+            size: 24.0,
+            color: Color(AppColor.DeviceInfoItemIcon),
+          ),
+          SizedBox(width: 16.0,),
+          Text('$deviceName 微信已登录，手机通知已关闭。', style: AppStyles.DeviceInfoItemTextStyle,)
+        ],
+      ),
+    );
+  }
+}
+
+/*
  * 会话列表页 
  */
 class ConversationPage extends StatefulWidget {
@@ -162,13 +218,31 @@ class ConversationPage extends StatefulWidget {
 }
 
 class _ConversationPageState extends State<ConversationPage> {
+
+
+  final ConversationPageData data = ConversationPageData.mock();
+
   @override
   Widget build(BuildContext context) {
+
+    var mockConversations = data.conversations;
+
+    // 构建列表
     return ListView.builder(
+      // 索引值为列表项的位置
       itemBuilder: (BuildContext  context, int index) {
-        return _ConversationItem(conversation: mockConversations[index]);
+        if (data.device != null) {
+          // 需要显示其他设备登录
+          if(index == 0 ) {
+            return _DeviceInfoItem(device: data.device,);
+          }
+          return _ConversationItem(conversation: mockConversations[index - 1]);
+        } else {
+          // 没有在其他设备登录
+          return _ConversationItem(conversation: mockConversations[index]);
+        }
       },
-      itemCount: mockConversations.length,
+      itemCount: data.device != null ? mockConversations.length + 1 : mockConversations.length,
     );
   }
 }
