@@ -92,4 +92,6 @@ class Constants {
 
   // 联系人头像大小
   static const ContactAvatarSize = 36.0;
+  //
+  static const IndexBarWidth = 32.0;
 }
