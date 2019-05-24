@@ -49,6 +49,7 @@ class Conversation {
   }
 }
 
+// 会话数据
 class ConversationPageData {
 
   final Device device;
@@ -75,7 +76,7 @@ class ConversationPageData {
       unreadMsgCount: 10
     ),
     const Conversation(
-      avatar: 'https://randomuser.me/api/portraits/lego/6.jpg',
+      avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
@@ -91,7 +92,7 @@ class ConversationPageData {
       unreadMsgCount: 3
     ),
     const Conversation(
-      avatar: 'https://randomuser.me/api/portraits/lego/4.jpg',
+      avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
@@ -99,7 +100,7 @@ class ConversationPageData {
       unreadMsgCount: 0
     ),
     const Conversation(
-      avatar: 'https://randomuser.me/api/portraits/lego/3.jpg',
+      avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
@@ -107,7 +108,7 @@ class ConversationPageData {
       unreadMsgCount: 0
     ),
     const Conversation(
-      avatar: 'https://randomuser.me/api/portraits/lego/2.jpg',
+      avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
@@ -115,7 +116,7 @@ class ConversationPageData {
       unreadMsgCount: 30
     ),
     const Conversation(
-      avatar: 'https://randomuser.me/api/portraits/lego/1.jpg',
+      avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',

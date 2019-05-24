@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lophornis/constants.dart';
+import 'package:lophornis/home/contacts_page.dart';
 import 'package:lophornis/home/conversation_page.dart';
 
 import '../constants.dart' show Constants;
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // 初始化页面内容
     _pages = [
         ConversationPage(),
-        Container(color: Colors.lightGreen,),
+        ContactsPage(),
         Container(color: Colors.lime,),
         Container(color: Colors.red,)
     ];

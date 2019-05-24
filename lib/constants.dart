@@ -34,6 +34,12 @@ class AppColor {
   static const DeviceInfoItemText = 0xff606062;
   // 顶部设备登录信息图标颜色
   static const DeviceInfoItemIcon = 0xff606062;
+
+  // 联系人分组标签背景颜色
+  static const ContactGroupTitleBg = 0xffebebeb;
+  //联系人分组标签文字颜色
+  static const ContactGroupTitleText = 0xff888888;
+
 }
 
 // 全局样式
@@ -61,6 +67,12 @@ class AppStyles {
     fontSize: 13.0,
     color: Color(AppColor.DeviceInfoItemText)
   );
+
+  //联系人分组标签文字样式
+  static const GroupTitleItemTextStyle = TextStyle(
+    fontSize: 14.0,
+    color: Color(AppColor.ContactGroupTitleText)
+  );
 }
 
 // 全局常量
@@ -77,4 +89,7 @@ class Constants {
   static const ConversationMuteIconSize = 18.0;
   // 顶部设备登录信息高度
   static const DeviceInfoItemHeight = 32.0;
+
+  // 联系人头像大小
+  static const ContactAvatarSize = 36.0;
 }

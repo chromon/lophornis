@@ -111,45 +111,50 @@ class _ConversationItem extends StatelessWidget {
     }
 
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      // 分隔线
-      decoration: BoxDecoration(
-        // 会话背景颜色
-        color: Color(AppColor.ConversationItemBg),
-        // 会话边框
-        border: Border(
-          bottom: BorderSide(
-            color: Color(AppColor.DividerColor),
-            width: Constants.DividerWidth
-          ),
-        ),
-      ),
-      child: Row(
-        // 主轴居中
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          // 头像及角标堆栈容器
-          avatarContainer,
-          Container(width: 10.0,),
-          // 标题和简介，自动扩展
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                // 会话标题
-                Text(conversation.title, style: AppStyles.TitleStyle),
-                // 会话简介
-                Text(conversation.desc, style: AppStyles.DescStyle)
-              ],
+      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+      child: Container(
+        padding: const EdgeInsetsDirectional.only(top: 10.0, bottom: 10.0),
+        // 分隔线
+        decoration: BoxDecoration(
+          // 会话背景颜色
+          color: Color(AppColor.ConversationItemBg),
+          // 会话边框
+          border: Border(
+            bottom: BorderSide(
+              color: Color(AppColor.DividerColor),
+              width: Constants.DividerWidth
             ),
           ),
-          Container(width: 10.0,),
-          // 时间及勿扰图标
-          Column(
-            children: _rightArea,
-          )
-        ],
+        ),
+        
+        child: Row(
+          // 主轴居中
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            // 头像及角标堆栈容器
+            avatarContainer,
+            Container(width: 10.0,),
+            // 标题和简介，自动扩展
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  // 会话标题
+                  Text(conversation.title, style: AppStyles.TitleStyle),
+                  // 会话简介
+                  Text(conversation.desc, style: AppStyles.DescStyle)
+                ],
+              ),
+            ),
+            Container(width: 10.0,),
+            // 时间及勿扰图标
+            Column(
+              children: _rightArea,
+            )
+          ],
+        ),
       ),
+
     );
   }
 }
