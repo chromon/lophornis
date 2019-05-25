@@ -122,6 +122,8 @@ class ContactsPage extends StatefulWidget {
 
   // 检索控件默认背景透明
   Color _indexBarBg = Colors.transparent;
+  // 检索盒子显示的字符
+  String _currentLetter = '';
 
   @override
   _ContactsPageState createState() => _ContactsPageState();
@@ -139,7 +141,7 @@ class _ContactsPageState extends State<ContactsPage> {
   // 存储索引项与索引项高度位置对应关系
   final Map _letterPosMap = {INDEX_BAR_WORDS[0] : 0.0};
 
-  // 上部功能列表
+  // 上部功能列表（固定）
   final List<_ContactItem> _functionButtons = [
     _ContactItem(
       avatar: 'assets/images/ic_new_friend.png',
@@ -198,8 +200,32 @@ class _ContactsPageState extends State<ContactsPage> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
+  // 获得索引字符
+  String _getLetter(BuildContext context, int tileHeight, Offset globalPos) {
+    // 将要渲染的控件
+    RenderBox _box = context.findRenderObject();
+    // 将点击位置由整个屏幕的全局坐标转换为 index bar 控件中的坐标
+    var local = _box.globalToLocal(globalPos);
+    // 将在indexbar中的坐标与每一个字符控件相除取整，得出的就是字符坐标
+    // clamp 表示默认范围
+    int index = (local.dy ~/ tileHeight).clamp(0, INDEX_BAR_WORDS.length - 1);
+    return INDEX_BAR_WORDS[index];
+  }
+
+  // 跳转到当前索引号所在的索引列表项中去
+  void _jumpToIndex(String letter) {
+    if (_letterPosMap.isNotEmpty) {
+      final _pos = _letterPosMap[letter];
+      if (_pos != null) {
+        // 列表从当前位置滚动到给定位置
+        _scrollController.animateTo(_pos, 
+          curve: Curves.easeOut, duration: Duration(milliseconds: 200));
+      }
+    }
+  }
+
+  // 创建 index bar
+  Widget _buildIndexBar(BuildContext context, BoxConstraints constraints) {
 
     // 遍历索引字符创建字符控件
     final List<Widget> _letters = INDEX_BAR_WORDS.map((String word) {
@@ -208,10 +234,56 @@ class _ContactsPageState extends State<ContactsPage> {
       );
     }).toList();
 
-    // 联系人列表和检索控件是重叠关系，需要用 Stack
-    return Stack(
-      children: <Widget>[
-        // stack 第一项联系人列表
+    // index bar 最大的高度
+    final double _totalHeight = constraints.biggest.height;
+    // 每个索引字母的高度
+    final int _tileHeight = _totalHeight ~/ _letters.length;
+    
+    // 手势检测
+    return GestureDetector(
+      // 纵向的向下拖拽（点）
+      onVerticalDragDown: (DragDownDetails details) {
+        setState(() {
+          widget._indexBarBg = Colors.black12; 
+          // 找到索引栏当前字符位置，同时联系人列表跳转到对应位置
+          widget._currentLetter = _getLetter(context, _tileHeight, details.globalPosition);
+          _jumpToIndex(widget._currentLetter);
+        });
+      },
+      //向下拖拽结束（松开）
+      onVerticalDragEnd: (DragEndDetails details) {
+        setState(() {
+          widget._indexBarBg = Colors.transparent;
+          // 拖拽结束时将索引字母盒子关闭
+          widget._currentLetter = null;
+        });
+      },
+      // 取消拖拽（直接松开不滑动）
+      onVerticalDragCancel: () {
+        setState(() {
+          widget._indexBarBg = Colors.transparent;
+          // 拖拽结束时将索引字母盒子关闭
+          widget._currentLetter = null;
+        });
+      },
+      onVerticalDragUpdate: (DragUpdateDetails details) {
+        setState(() {
+          widget._indexBarBg = Colors.black12; 
+          widget._currentLetter = _getLetter(context, _tileHeight, details.globalPosition);
+          _jumpToIndex(widget._currentLetter);
+        });
+      },
+      child: Column(
+        children: _letters,
+      )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    final List<Widget> _body = [
+      // stack 第一项联系人列表
         ListView.builder(
           // 控制列表滚动
           controller: _scrollController,
@@ -251,36 +323,35 @@ class _ContactsPageState extends State<ContactsPage> {
           child: Container(
             // 控件背景颜色
             color: widget._indexBarBg,
-            // 手势检测
-            child: GestureDetector(
-              // 纵向的向下拖拽（点）
-              onVerticalDragDown: (DragDownDetails details) {
-                setState(() {
-                  widget._indexBarBg = Colors.black12; 
-                });
-                // 列表从当前位置滚动到给定位置
-                _scrollController.animateTo(_letterPosMap['M'], 
-                  curve: Curves.easeIn, duration: Duration(milliseconds: 200));
-              },
-              //向下拖拽结束（松开）
-              onVerticalDragEnd: (DragEndDetails details) {
-                setState(() {
-                  widget._indexBarBg = Colors.transparent;
-                });
-              },
-              // 取消拖拽（直接松开不滑动）
-              onVerticalDragCancel: () {
-                setState(() {
-                  widget._indexBarBg = Colors.transparent;
-                });
-              },
-              child: Column(
-                children: _letters,
-              )
+            child: LayoutBuilder(
+              builder: _buildIndexBar,
             ),
           ),
-        )
-      ],
+        ),
+    ];
+
+    if (widget._currentLetter != null && widget._currentLetter.isNotEmpty) {
+      _body.add(
+        // stack 第三项检索盒子
+        Center(
+          child: Container(
+            width: Constants.IndexLetterBoxSize,
+            height: Constants.IndexLetterBoxSize,
+            decoration: BoxDecoration(
+              color: AppColor.IndexLetterBoxBg,
+              borderRadius: BorderRadius.all(Radius.circular(Constants.IndexLetterBoxRadius))
+            ),
+            child: Center(
+              child: Text(widget._currentLetter, style: AppStyles.IndexLetterBoxTextStyle),
+            ),
+          ),
+        ),
+      );
+    }
+
+    // 联系人列表和检索控件是重叠关系，需要用 Stack
+    return Stack(
+      children: _body,
     );
   }
 }

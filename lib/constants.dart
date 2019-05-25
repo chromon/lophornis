@@ -39,7 +39,8 @@ class AppColor {
   static const ContactGroupTitleBg = 0xffebebeb;
   //联系人分组标签文字颜色
   static const ContactGroupTitleText = 0xff888888;
-
+  // 索引条字母显示盒子背景颜色
+  static const IndexLetterBoxBg = Colors.black45;
 }
 
 // 全局样式
@@ -68,10 +69,16 @@ class AppStyles {
     color: Color(AppColor.DeviceInfoItemText)
   );
 
-  //联系人分组标签文字样式
+  // 联系人分组标签文字样式
   static const GroupTitleItemTextStyle = TextStyle(
     fontSize: 14.0,
     color: Color(AppColor.ContactGroupTitleText)
+  );
+
+  // 索引盒子文字样式
+  static const IndexLetterBoxTextStyle = TextStyle(
+    fontSize: 64.0,
+    color: Colors.white,
   );
 }
 
@@ -92,6 +99,11 @@ class Constants {
 
   // 联系人头像大小
   static const ContactAvatarSize = 36.0;
-  //
+  // 索引栏宽度
   static const IndexBarWidth = 32.0;
+  // 索引栏字母显示盒子大小
+  static const IndexLetterBoxSize = 114.0;
+  // 索引栏字母盒子圆角
+  static const IndexLetterBoxRadius = 4.0;
+
 }
