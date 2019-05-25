@@ -201,7 +201,7 @@ class _ContactsPageState extends State<ContactsPage> {
   }
 
   // 获得索引字符
-  String _getLetter(BuildContext context, int tileHeight, Offset globalPos) {
+  String _getLetter(BuildContext context, double tileHeight, Offset globalPos) {
     // 将要渲染的控件
     RenderBox _box = context.findRenderObject();
     // 将点击位置由整个屏幕的全局坐标转换为 index bar 控件中的坐标
@@ -237,7 +237,7 @@ class _ContactsPageState extends State<ContactsPage> {
     // index bar 最大的高度
     final double _totalHeight = constraints.biggest.height;
     // 每个索引字母的高度
-    final int _tileHeight = _totalHeight ~/ _letters.length;
+    final double _tileHeight = _totalHeight / _letters.length;
     
     // 手势检测
     return GestureDetector(
