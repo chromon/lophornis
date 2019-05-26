@@ -44,6 +44,14 @@ class AppColor {
   // 索引条字母显示盒子背景颜色
   static const IndexLetterBoxBg = Colors.black45;
 
+  // 个人页面 header 背景颜色
+  static const HeaderCardBg = Colors.white;
+  // header 标题文字颜色
+  static const HeaderCardTitleText = 0xff353535;
+  // header 描述文字颜色
+  static const HeaderCardDescText = 0xffa9a9a9;
+  // 提示信息字体颜色
+  static const ButtonDescText = 0xffa9a9a9;
 }
 
 // 全局样式
@@ -84,9 +92,22 @@ class AppStyles {
     color: Colors.white,
   );
 
-  // 
-  static const FullWidthIconButtonTitleStyle = TextStyle(
+  // header 标题文字样式
+  static const HeaderCardTitleTextStyle = TextStyle(
+    fontSize: 14.0,
+    color: Color(AppColor.HeaderCardTitleText),
+  );
 
+  // header 描述文字样式
+  static const HeaderCardDescTextStyle = TextStyle(
+    fontSize: 12.0,
+    color: Color(AppColor.HeaderCardDescText)
+  );
+
+  // 提示信息样式
+  static const ButtonDescTextStyle = TextStyle(
+    fontSize: 12.0,
+    color: Color(AppColor.ButtonDescText),
   );
 }
 

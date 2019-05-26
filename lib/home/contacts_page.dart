@@ -48,16 +48,22 @@ class _ContactItem extends StatelessWidget {
     // 头像控件，判断来源
     Widget _avatarIcon;
     if (_isAvatarFromNet) {
-      _avatarIcon = Image.network(
-        avatar,
-        width: Constants.ContactAvatarSize,
-        height: Constants.ContactAvatarSize,
+      _avatarIcon = ClipRRect(
+        borderRadius: BorderRadius.circular(6.0),
+        child: Image.network(
+          avatar,
+          width: Constants.ContactAvatarSize,
+          height: Constants.ContactAvatarSize,
+        ),
       );
     } else {
-      _avatarIcon = Image.asset(
-        avatar,
-        width: Constants.ContactAvatarSize,
-        height: Constants.ContactAvatarSize,
+       _avatarIcon = ClipRRect(
+        borderRadius: BorderRadius.circular(6.0),
+        child: Image.asset(
+          avatar,
+          width: Constants.ContactAvatarSize,
+          height: Constants.ContactAvatarSize,
+        ),
       );
     }
 

@@ -18,17 +18,23 @@ class _ConversationItem extends StatelessWidget {
     Widget avatar;
     if (conversation.isAvatarFromNet()) {
       // 来自网络
-      avatar = Image.network(
-        conversation.avatar,
-        width: Constants.ConversationAvatarSize,
-        height: Constants.ConversationAvatarSize,
+      avatar = ClipRRect(
+        borderRadius: BorderRadius.circular(6.0),
+        child: Image.network(
+          conversation.avatar,
+          width: Constants.ConversationAvatarSize,
+          height: Constants.ConversationAvatarSize,
+        ),
       );
     } else {
       // 来自本地
-      avatar = Image.asset(
-        conversation.avatar,
-        width: Constants.ConversationAvatarSize,
-        height: Constants.ConversationAvatarSize,
+      avatar = ClipRRect(
+        borderRadius: BorderRadius.circular(6.0),
+        child: Image.asset(
+          conversation.avatar,
+          width: Constants.ConversationAvatarSize,
+          height: Constants.ConversationAvatarSize,
+        ),
       );
     }
 

@@ -13,12 +13,18 @@ class FullWidthIconButton extends StatelessWidget {
 
   // 是否显示分隔线
   final bool showDivider;
+  // 描述信息
+  final String desc;
+  //
+  final bool showArrow;
 
   const FullWidthIconButton({
     @required this.iconPath,
     @required this.title,
     @required this.onPressed,
     this.showDivider = false,
+    this.desc,
+    this.showArrow = true,
   }) : assert(iconPath != null),
        assert(title != null),
        assert(onPressed != null);
@@ -36,9 +42,25 @@ class FullWidthIconButton extends StatelessWidget {
           height: Constants.FullWidthIconButtonIconSize,
         ),
         SizedBox(width: Constants.HORIZONTAL_PADDING,),
-        Text(title),
+        Expanded(
+          child: Text(title),
+        ),
       ],
     );
+
+    // 处理提示信息
+    if(this.desc != null) {
+      pureButton.children.add(
+        Text(this.desc, style: AppStyles.ButtonDescTextStyle,),
+      );
+    }
+
+    // 处理右侧箭头
+    if (this.showArrow) {
+      pureButton.children.add(
+        arrowRight(),
+      );
+    }
 
     // 带有下划线的按钮
     final borderedButton = Container(
@@ -61,6 +83,21 @@ class FullWidthIconButton extends StatelessWidget {
       ),
       color: Colors.white,
       child: this.showDivider ? borderedButton : pureButton,
+    );
+  }
+
+  // 按钮右边的指示箭头
+  static Widget arrowRight() {
+    return Container(
+      padding: EdgeInsets.only(left: 10.0),
+      child: Icon(
+        IconData(
+          0xe604,
+          fontFamily: Constants.IconFontFamily,
+        ),
+        size: 16.0,
+        color: const Color(AppColor.ButtonDescText)
+      )
     );
   }
 }

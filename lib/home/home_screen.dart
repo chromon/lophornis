@@ -3,6 +3,7 @@ import 'package:lophornis/constants.dart';
 import 'package:lophornis/home/contacts_page.dart';
 import 'package:lophornis/home/conversation_page.dart';
 import 'package:lophornis/home/discover_page.dart';
+import 'package:lophornis/home/functions_page.dart';
 
 import '../constants.dart' show Constants;
 
@@ -67,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ConversationPage(),
         ContactsPage(),
         DiscoverPage(),
-        Container(color: Colors.red,)
+        FunctionsPage()
     ];
 
     // 初始化底部导航栏
