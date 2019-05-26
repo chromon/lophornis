@@ -99,6 +99,7 @@ flutter:
     - assets/images/ic_qrcode_preview_tiny.png
     - assets/images/default_nor_avatar.png
     - assets/images/ad_game_notify.png
+    - assets/images/ic_splash.png
     
   fonts:
     - family: appIconFont
