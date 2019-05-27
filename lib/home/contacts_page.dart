@@ -68,27 +68,32 @@ class _ContactItem extends StatelessWidget {
     }
 
     // 列表项主体部分
-    Widget _button = Container(
-      // 对称
-      margin: const EdgeInsets.symmetric(horizontal: 16.0),
-      // 边距
-      padding: const EdgeInsets.symmetric(vertical: MARGIN_VERTICAL),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(width: Constants.DividerWidth, color: const Color(AppColor.DividerColor))
+    Widget _button = InkWell(
+      onTap: () {
+         print('联系人：$title');
+      },
+      child: Container(
+        // 对称
+        margin: const EdgeInsets.symmetric(horizontal: 16.0),
+        // 边距
+        padding: const EdgeInsets.symmetric(vertical: MARGIN_VERTICAL),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(width: Constants.DividerWidth, color: const Color(AppColor.DividerColor))
+          ),
+        ),
+        child: Row(
+          children: <Widget>[
+            // 联系人头像
+            _avatarIcon,
+            SizedBox(width: 10.0,),
+            // 联系人名字
+            Text(title),
+          ],
         ),
       ),
-      child: Row(
-        children: <Widget>[
-          // 联系人头像
-          _avatarIcon,
-          SizedBox(width: 10.0,),
-          // 联系人名字
-          Text(title),
-        ],
-      ),
     );
-
+    
     // 分组标签 + 列表项主体
     Widget _itemBody;
     if (this.groupTitle != null) {
