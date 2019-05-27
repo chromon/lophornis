@@ -187,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(IconData(
               0xe65e,
               fontFamily: Constants.IconFontFamily
-            ), size: 22.0),
+            ), size: 22.0,),
             onPressed: () { print('点击了搜索按钮'); },
           ),
 
@@ -195,45 +195,49 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(width: 16.0),
 
           // 下拉菜单
-          PopupMenuButton(
-            // 构建下拉菜单选项
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuItem<ActionItems>>[
-                PopupMenuItem(
-                  child: _bulidPopupMenuItem(0xe69e, '发起群聊'),
-                  value: ActionItems.GROUP_CHAT,
-                ),
-                PopupMenuItem(
-                  child: _bulidPopupMenuItem(0xe638, '添加好友'),
-                  value: ActionItems.ADD_FRIEND,
-                ),
-                PopupMenuItem(
-                  child: _bulidPopupMenuItem(0xe61b, '扫一扫'),
-                  value: ActionItems.QR_SCAN,
-                ),
-                PopupMenuItem(
-                  child: _bulidPopupMenuItem(0xe62a, '收付款'),
-                  value: ActionItems.PAYMENT,
-                ),
-                PopupMenuItem(
-                  child: _bulidPopupMenuItem(0xe63d, '帮助与反馈'),
-                  value: ActionItems.HELP,
-                ),
-              ];
-            },
+          Theme(
+            data: ThemeData(
+              cardColor: Color(AppColor.AppBarColor),
+            ),
+            child: PopupMenuButton(
+              // 构建下拉菜单选项
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuItem<ActionItems>>[
+                  PopupMenuItem(
+                    child: _bulidPopupMenuItem(0xe69e, '发起群聊'),
+                    value: ActionItems.GROUP_CHAT,
+                  ),
+                  PopupMenuItem(
+                    child: _bulidPopupMenuItem(0xe638, '添加好友'),
+                    value: ActionItems.ADD_FRIEND,
+                  ),
+                  PopupMenuItem(
+                    child: _bulidPopupMenuItem(0xe61b, '扫一扫'),
+                    value: ActionItems.QR_SCAN,
+                  ),
+                  PopupMenuItem(
+                    child: _bulidPopupMenuItem(0xe62a, '收付款'),
+                    value: ActionItems.PAYMENT,
+                  ),
+                  PopupMenuItem(
+                    child: _bulidPopupMenuItem(0xe63d, '帮助与反馈'),
+                    value: ActionItems.HELP,
+                  ),
+                ];
+              },
 
-            // 下拉菜单显示图标
-            icon: Icon(IconData(
-              0xe60e,
-              fontFamily: Constants.IconFontFamily
-            ), size: 22.0),
+              // 下拉菜单显示图标
+              icon: Icon(IconData(
+                0xe60e,
+                fontFamily: Constants.IconFontFamily
+              ), size: 22.0, color: AppColor.ActionIconColor,),
 
-            // 下拉菜单列表点击事件
-            onSelected: (ActionItems selected) {
-              print('点击的是$selected');
-            },
+              // 下拉菜单列表点击事件
+              onSelected: (ActionItems selected) {
+                print('点击的是$selected');
+              },
+            ),
           ),
-
           // 设置组件间空白宽度
           Container(width: 10.0),
         ],

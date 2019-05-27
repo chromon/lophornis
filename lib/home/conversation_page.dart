@@ -6,10 +6,42 @@ import '../modal/conversation.dart' show Conversation, Device, ConversationPageD
 class _ConversationItem extends StatelessWidget {
 
   final Conversation conversation;
+  // 弹出菜单点击的位置
+  var tapPos;
 
-  const _ConversationItem({Key key, this.conversation})
+  _ConversationItem({Key key, this.conversation})
     : assert(conversation != null),
     super(key: key);
+
+  // 实现会话弹出菜单
+  _showMenu(BuildContext context, Offset tapPos) {
+    // 屏幕大小
+    final RenderBox overlay = Overlay.of(context).context.findRenderObject();
+    final RelativeRect position = RelativeRect.fromLTRB(tapPos.dx, tapPos.dy,
+        overlay.size.width - tapPos.dx, overlay.size.height - tapPos.dy);
+    showMenu<String>(
+        context: context,
+        position: position,
+        items: <PopupMenuItem<String>>[
+          PopupMenuItem(
+            child: Text(Constants.MENU_MARK_AS_UNREAD_VALUE),
+            value: Constants.MENU_MARK_AS_UNREAD,
+          ),
+          PopupMenuItem(
+            child: Text(Constants.MENU_PIN_TO_TOP_VALUE),
+            value: Constants.MENU_PIN_TO_TOP,
+          ),
+          PopupMenuItem(
+            child: Text(Constants.MENU_DELETE_CONVERSATION_VALUE),
+            value: Constants.MENU_DELETE_CONVERSATION,
+          ),
+        ]).then<String>((String selected) {
+      switch (selected) {
+        default:
+          print('当前选中的是：$selected');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,51 +148,63 @@ class _ConversationItem extends StatelessWidget {
       );
     }
 
-    return Container(
-      padding: EdgeInsets.only(left: 16.0, right: 16.0),
-      child: Container(
-        padding: const EdgeInsetsDirectional.only(top: 10.0, bottom: 10.0),
-        // 分隔线
-        decoration: BoxDecoration(
-          // 会话背景颜色
-          color: Color(AppColor.ConversationItemBg),
-          // 会话边框
-          border: Border(
-            bottom: BorderSide(
-              color: Color(AppColor.DividerColor),
-              width: Constants.DividerWidth
+    return Material(
+      // 会话背景颜色
+      color: Color(AppColor.ConversationItemBg),
+      child: InkWell(
+        onTap: () {print('打开，${conversation.title}');},
+        onTapDown: (TapDownDetails details) {
+          // 点击位置
+          tapPos = details.globalPosition;
+        },
+        onLongPress: () {
+          // 显示弹出菜单
+          _showMenu(context, tapPos);
+        },
+        child: Container(
+          padding: EdgeInsets.only(left: 16.0, right: 16.0),
+          child: Container(
+            padding: const EdgeInsetsDirectional.only(top: 10.0, bottom: 10.0),
+            // 分隔线
+            decoration: BoxDecoration(
+              // 会话边框
+              border: Border(
+                bottom: BorderSide(
+                  color: Color(AppColor.DividerColor),
+                  width: Constants.DividerWidth
+                ),
+              ),
+            ),
+            
+            child: Row(
+              // 主轴居中
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                // 头像及角标堆栈容器
+                avatarContainer,
+                Container(width: 10.0,),
+                // 标题和简介，自动扩展
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      // 会话标题
+                      Text(conversation.title, style: AppStyles.TitleStyle),
+                      // 会话简介
+                      Text(conversation.desc, style: AppStyles.DescStyle)
+                    ],
+                  ),
+                ),
+                Container(width: 10.0,),
+                // 时间及勿扰图标
+                Column(
+                  children: _rightArea,
+                )
+              ],
             ),
           ),
         ),
-        
-        child: Row(
-          // 主轴居中
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // 头像及角标堆栈容器
-            avatarContainer,
-            Container(width: 10.0,),
-            // 标题和简介，自动扩展
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  // 会话标题
-                  Text(conversation.title, style: AppStyles.TitleStyle),
-                  // 会话简介
-                  Text(conversation.desc, style: AppStyles.DescStyle)
-                ],
-              ),
-            ),
-            Container(width: 10.0,),
-            // 时间及勿扰图标
-            Column(
-              children: _rightArea,
-            )
-          ],
-        ),
       ),
-
     );
   }
 }

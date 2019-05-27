@@ -10,6 +10,8 @@ class AppColor {
   static const BackgroundColor = 0xffebebeb;
   // 顶部 app bar 颜色
   static const AppBarColor = 0xff303030;
+  // 顶部图标颜色
+  static const ActionIconColor = Colors.white;
   // 底部 tab 高亮状态颜色
   static const TabIconActive = 0xff46c11b;
   // 底部 tab 正常状态颜色
@@ -141,6 +143,18 @@ class Constants {
   static const HORIZONTAL_PADDING = 20.0;
   // 发现页列表项垂直边距
   static const VERTICAL_PADDING = 13.0;
-  //
+  // 图标大小
   static const FullWidthIconButtonIconSize = 24.0;
+
+  // 会话 item 弹出菜单
+  static const String MENU_MARK_AS_UNREAD = 'MENU_MARK_AS_UNREAD';
+  static const String MENU_MARK_AS_UNREAD_VALUE = '标为未读';
+  static const String MENU_PIN_TO_TOP = 'MENU_PIN_TO_TOP';
+  static const String MENU_PIN_TO_TOP_VALUE = '置顶聊天';
+  static const String MENU_DELETE_CONVERSATION = 'MENU_DELETE_CONVERSATION';
+  static const String MENU_DELETE_CONVERSATION_VALUE = '删除该聊天';
+  static const String MENU_PIN_PA_TO_TOP = 'MENU_PIN_PA_TO_TOP';
+  static const String MENU_PIN_PA_TO_TOP_VALUE = '置顶公众号';
+  static const String MENU_UNSUBSCRIBE = 'MENU_UNSUBSCRIBE';
+  static const String MENU_UNSUBSCRIBE_VALUE = '取消关注';
 }
