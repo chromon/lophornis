@@ -5,7 +5,7 @@ import 'package:lophornis/home/conversation_page.dart';
 import 'package:lophornis/home/discover_page.dart';
 import 'package:lophornis/home/functions_page.dart';
 
-import '../constants.dart' show Constants;
+import '../constants.dart' show Constants, AppColor, AppStyles;
 
 // 下拉菜单选项
 enum ActionItems {
@@ -164,10 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // 修改 tab 索引值
           _currentIndex = index;
           // 点击 tab 时页面重绘
-          _pageController.animateToPage(
-            _currentIndex, 
-            duration: Duration(milliseconds: 50), 
-            curve: Curves.ease);
+          _pageController.jumpToPage(_currentIndex);
         });
         print('点击的是第 $index 个Tab');
       },
@@ -176,18 +173,23 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: new AppBar(
         // 标题栏名称
-        title: new Text('微信'),
+        title: new Text('微信', style: AppStyles.TitleStyle,),
         // 去掉 appbar 下面的阴影
         elevation: 0.0,
+        brightness: Brightness.light,
 
         // 标题栏按钮
         actions: <Widget>[
           // 搜索按钮
           IconButton(
-            icon: Icon(IconData(
-              0xe65e,
-              fontFamily: Constants.IconFontFamily
-            ), size: 22.0,),
+            icon: Icon(
+              IconData(
+                0xe65e,
+                fontFamily: Constants.IconFontFamily
+              ), 
+              size: Constants.ActionIconSize,
+              color: const Color(AppColor.ActionIconColor),
+            ),
             onPressed: () { print('点击了搜索按钮'); },
           ),
 
@@ -197,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // 下拉菜单
           Theme(
             data: ThemeData(
-              cardColor: Color(AppColor.AppBarColor),
+              cardColor: Color(AppColor.ActionMenuBgColor),
             ),
             child: PopupMenuButton(
               // 构建下拉菜单选项
@@ -227,10 +229,14 @@ class _HomeScreenState extends State<HomeScreen> {
               },
 
               // 下拉菜单显示图标
-              icon: Icon(IconData(
-                0xe60e,
-                fontFamily: Constants.IconFontFamily
-              ), size: 22.0, color: AppColor.ActionIconColor,),
+              icon: Icon(
+                IconData(
+                  0xe60e,
+                  fontFamily: Constants.IconFontFamily
+                ), 
+                size: Constants.ActionIconSize, 
+                color: Color(AppColor.ActionIconColor),
+              ),
 
               // 下拉菜单列表点击事件
               onSelected: (ActionItems selected) {

@@ -62,7 +62,8 @@ class ConversationPageData {
 
   static mock() {
     return ConversationPageData(
-        device: Device.WIN, conversations: mockConversations);
+        // device: Device.WIN, conversations: mockConversations);
+        device: null, conversations: mockConversations);
   }
 
   // 会话列表详细信息
@@ -89,7 +90,8 @@ class ConversationPageData {
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
       isMute: false,
-      unreadMsgCount: 3
+      unreadMsgCount: 2,
+      displayDot: true,
     ),
     const Conversation(
       avatar: 'assets/images/default_nor_avatar.png',

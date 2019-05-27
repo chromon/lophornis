@@ -9,7 +9,7 @@ class _ConversationItem extends StatelessWidget {
   // 弹出菜单点击的位置
   var tapPos;
 
-  _ConversationItem({Key key, this.conversation})
+  _ConversationItem({Key key, this.conversation, this.tapPos})
     : assert(conversation != null),
     super(key: key);
 
@@ -51,7 +51,7 @@ class _ConversationItem extends StatelessWidget {
     if (conversation.isAvatarFromNet()) {
       // 来自网络
       avatar = ClipRRect(
-        borderRadius: BorderRadius.circular(6.0),
+        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
         child: Image.network(
           conversation.avatar,
           width: Constants.ConversationAvatarSize,
@@ -61,7 +61,7 @@ class _ConversationItem extends StatelessWidget {
     } else {
       // 来自本地
       avatar = ClipRRect(
-        borderRadius: BorderRadius.circular(6.0),
+        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
         child: Image.asset(
           conversation.avatar,
           width: Constants.ConversationAvatarSize,
@@ -76,21 +76,35 @@ class _ConversationItem extends StatelessWidget {
       // 存在未读消息
       
       // 未读消息角标
-      Widget unreadMsgCountText = Container(
-        width: Constants.UnreadMsgNotifyDotSize,
-        height: Constants.UnreadMsgNotifyDotSize,
-        alignment: Alignment.center,
-        // 圆角背景
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Constants.UnreadMsgNotifyDotSize / 2.0),
-          color: Color(AppColor.NotifyDotBg)
-        ),
-        // 未读消息数量
-        child: Text(
-          conversation.unreadMsgCount.toString(), 
-          style: AppStyles.UnreadMsgCountDotStyle
-        ),
-      );
+      Widget unreadMsgCountText;
+      if (conversation.displayDot) {
+        unreadMsgCountText = Container(
+          width: Constants.UnreadMsgDotSize,
+          height: Constants.UnreadMsgDotSize,
+          alignment: Alignment.center,
+          // 圆角背景
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Constants.UnreadMsgDotSize / 2.0),
+            color: Color(AppColor.NotifyDotBg)
+          ),
+        );
+      } else {
+        unreadMsgCountText = Container(
+          width: Constants.UnreadMsgCircleDotSize,
+          height: Constants.UnreadMsgCircleDotSize,
+          alignment: Alignment.center,
+          // 圆角背景
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Constants.UnreadMsgCircleDotSize / 2.0),
+            color: Color(AppColor.NotifyDotBg)
+          ),
+          // 未读消息数量
+          child: Text(
+            conversation.unreadMsgCount.toString(), 
+            style: AppStyles.UnreadMsgCountDotStyle
+          ),
+        );
+      }
 
       // 堆栈布局，里面元素相互叠加，后面添加的元素会在上面
       avatarContainer = Stack(
@@ -100,8 +114,8 @@ class _ConversationItem extends StatelessWidget {
           avatar,
           // 自定义角标位置
           Positioned(
-            right: -6.0,
-            top: -6.0,
+            right: conversation.displayDot ? -4.0 : -6.0,
+            top: conversation.displayDot ? -4.0 : -6.0,
             child: unreadMsgCountText,
           )
         ],
@@ -182,7 +196,7 @@ class _ConversationItem extends StatelessWidget {
               children: <Widget>[
                 // 头像及角标堆栈容器
                 avatarContainer,
-                Container(width: 10.0,),
+                Container(width: 16.0,),
                 // 标题和简介，自动扩展
                 Expanded(
                   child: Column(
@@ -234,13 +248,14 @@ class _DeviceInfoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        left: 24.0,
-        top: 10.0,
-        right: 24.0,
-        bottom: 10.0,
+        left: 28.0,
+        top: 16.0,
+        right: 28.0,
+        bottom: 16.0,
       ),
       decoration: BoxDecoration(
         border: Border(
+          top: BorderSide(width: Constants.DividerWidth, color: Color(AppColor.DividerColor)),
           bottom: BorderSide(width: Constants.DividerWidth, color: Color(AppColor.DividerColor)),
         ),
         color: Color(AppColor.DeviceInfoItemBg)
@@ -283,21 +298,24 @@ class _ConversationPageState extends State<ConversationPage> {
     var mockConversations = data.conversations;
 
     // 构建列表
-    return ListView.builder(
-      // 索引值为列表项的位置
-      itemBuilder: (BuildContext  context, int index) {
-        if (data.device != null) {
-          // 需要显示其他设备登录
-          if(index == 0 ) {
-            return _DeviceInfoItem(device: data.device,);
+    return Container(
+      color: const Color(AppColor.BackgroundColor),
+      child: ListView.builder(
+        // 索引值为列表项的位置
+        itemBuilder: (BuildContext  context, int index) {
+          if (data.device != null) {
+            // 需要显示其他设备登录
+            if(index == 0 ) {
+              return _DeviceInfoItem(device: data.device,);
+            }
+            return _ConversationItem(conversation: mockConversations[index - 1]);
+          } else {
+            // 没有在其他设备登录
+            return _ConversationItem(conversation: mockConversations[index]);
           }
-          return _ConversationItem(conversation: mockConversations[index - 1]);
-        } else {
-          // 没有在其他设备登录
-          return _ConversationItem(conversation: mockConversations[index]);
-        }
-      },
-      itemCount: data.device != null ? mockConversations.length + 1 : mockConversations.length,
+        },
+        itemCount: data.device != null ? mockConversations.length + 1 : mockConversations.length,
+      ),
     );
   }
 }
