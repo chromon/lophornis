@@ -31,8 +31,10 @@ class AppColor {
   static const ConversationTitleColor = 0xff181818;
   // 会话简介默认颜色
   static const ConversationDescColor = 0xff9e9e9e;
-  // 会话默认背景颜色
+  // 会话项默认背景颜色
   static const ConversationItemBg = 0xffffffff;
+  // 会话页背景颜色
+  static const ConversationBg = 0xffffffff;
   // 会话分隔线颜色
   static const DividerColor = 0xffd5d5d5;
   // 通知角标背景颜色
@@ -137,7 +139,7 @@ class Constants {
   // 会话头像大小
   static const ConversationAvatarSize = 48.0;
   // 会话分隔线宽度
-  static const DividerWidth = 1.0;
+  static const DividerWidth = 0.6;
   // 未读消息数字圆大小
   static const UnreadMsgCircleDotSize = 20.0;
   // 未读消息红点大小

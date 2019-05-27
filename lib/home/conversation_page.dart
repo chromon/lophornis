@@ -178,42 +178,52 @@ class _ConversationItem extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.only(left: 16.0, right: 16.0),
           child: Container(
-            padding: const EdgeInsetsDirectional.only(top: 10.0, bottom: 10.0),
-            // 分隔线
-            decoration: BoxDecoration(
-              // 会话边框
-              border: Border(
-                bottom: BorderSide(
-                  color: Color(AppColor.DividerColor),
-                  width: Constants.DividerWidth
-                ),
-              ),
-            ),
+            
             
             child: Row(
-              // 主轴居中
-              mainAxisAlignment: MainAxisAlignment.center,
+              // 交叉轴居中
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 // 头像及角标堆栈容器
                 avatarContainer,
-                Container(width: 16.0,),
+                Container(width: 12.0,),
                 // 标题和简介，自动扩展
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      // 会话标题
-                      Text(conversation.title, style: AppStyles.TitleStyle),
-                      // 会话简介
-                      Text(conversation.desc, style: AppStyles.DescStyle)
-                    ],
+                  child: Container(
+                    padding: const EdgeInsetsDirectional.only(top: 10.0, bottom: 10.0),
+                    // 分隔线
+                    decoration: BoxDecoration(
+                      // 会话边框
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Color(AppColor.DividerColor),
+                          width: Constants.DividerWidth
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              // 会话标题
+                              Text(conversation.title, style: AppStyles.TitleStyle),
+                              SizedBox(height: 2.0,),
+                              // 会话简介
+                              Text(conversation.desc, style: AppStyles.DescStyle, maxLines: 1,)
+                            ],
+                          ),
+                        ),
+                        Container(width: 10.0,),
+                        // 时间及勿扰图标
+                        Column(
+                          children: _rightArea,
+                        )
+                      ],
+                    ),
                   ),
                 ),
-                Container(width: 10.0,),
-                // 时间及勿扰图标
-                Column(
-                  children: _rightArea,
-                )
               ],
             ),
           ),
@@ -248,10 +258,10 @@ class _DeviceInfoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        left: 28.0,
-        top: 16.0,
-        right: 28.0,
-        bottom: 16.0,
+        left: 24.0,
+        top: 14.0,
+        right: 24.0,
+        bottom: 14.0,
       ),
       decoration: BoxDecoration(
         border: Border(
@@ -264,6 +274,7 @@ class _DeviceInfoItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          SizedBox(width: 8.0,),
           Icon(
             IconData(
               this.iconName,
@@ -272,7 +283,7 @@ class _DeviceInfoItem extends StatelessWidget {
             size: 24.0,
             color: Color(AppColor.DeviceInfoItemIcon),
           ),
-          SizedBox(width: 16.0,),
+          SizedBox(width: 24.0,),
           Text('$deviceName 微信已登录，手机通知已关闭。', style: AppStyles.DeviceInfoItemTextStyle,)
         ],
       ),
@@ -299,7 +310,7 @@ class _ConversationPageState extends State<ConversationPage> {
 
     // 构建列表
     return Container(
-      color: const Color(AppColor.BackgroundColor),
+      color: const Color(AppColor.ConversationBg),
       child: ListView.builder(
         // 索引值为列表项的位置
         itemBuilder: (BuildContext  context, int index) {

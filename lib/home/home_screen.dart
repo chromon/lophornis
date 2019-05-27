@@ -5,6 +5,8 @@ import 'package:lophornis/home/conversation_page.dart';
 import 'package:lophornis/home/discover_page.dart';
 import 'package:lophornis/home/functions_page.dart';
 
+import 'package:flutter/services.dart';
+
 import '../constants.dart' show Constants, AppColor, AppStyles;
 
 // 下拉菜单选项
@@ -41,6 +43,9 @@ class NavigationIconView {
 }
 
 class HomeScreen extends StatefulWidget {
+
+  String title = '微信';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -148,8 +153,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
+    // 设置顶部状态栏透明
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.transparent,
+    ));
+
     // 构建底部导航栏
     final BottomNavigationBar botNavBar = new BottomNavigationBar(
+      fixedColor: const Color(AppColor.TabIconActive),
       // 遍历 _navigationViews 通过 map 遍历取出每一个 view 里的 item 对象，合并成数组返回
       items: _navigationViews.map((NavigationIconView view) {
         return view.item;
@@ -173,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: new AppBar(
         // 标题栏名称
-        title: new Text('微信', style: AppStyles.TitleStyle,),
+        title: new Text(widget.title, style: AppStyles.TitleStyle,),
         // 去掉 appbar 下面的阴影
         elevation: 0.0,
         brightness: Brightness.light,
@@ -263,6 +274,21 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             // 左右滑动时与底部 tab 联动
             _currentIndex = index;
+            // 修改顶部标题
+            switch (index) {
+              case 0:
+                widget.title = '微信';
+                break;
+              case 1:
+                widget.title = '通讯录';
+                break;
+              case 2:
+                widget.title = '发现';
+                break;
+              case 3:
+                widget.title = '我';
+                break;
+            }
           });
         },
       ),
