@@ -16,8 +16,10 @@ class _ContactItem extends StatelessWidget {
 
   // 列表项垂直边距
   static const double MARGIN_VERTICAL = 10.0;
+  // 列表项水平边距
+  static const double MARGIN_HORIZENTAL = 16.0;
   // 分组索引高度
-  static const double GROUP_TITLE_HEIGHT = 24.0;
+  static const double GROUP_TITLE_HEIGHT = 34.0;
 
 
   _ContactItem({
@@ -49,7 +51,7 @@ class _ContactItem extends StatelessWidget {
     Widget _avatarIcon;
     if (_isAvatarFromNet) {
       _avatarIcon = ClipRRect(
-        borderRadius: BorderRadius.circular(6.0),
+        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
         child: Image.network(
           avatar,
           width: Constants.ContactAvatarSize,
@@ -58,7 +60,7 @@ class _ContactItem extends StatelessWidget {
       );
     } else {
        _avatarIcon = ClipRRect(
-        borderRadius: BorderRadius.circular(6.0),
+        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
         child: Image.asset(
           avatar,
           width: Constants.ContactAvatarSize,
@@ -73,22 +75,26 @@ class _ContactItem extends StatelessWidget {
          print('联系人：$title');
       },
       child: Container(
-        // 对称
-        margin: const EdgeInsets.symmetric(horizontal: 16.0),
-        // 边距
-        padding: const EdgeInsets.symmetric(vertical: MARGIN_VERTICAL),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: Constants.DividerWidth, color: const Color(AppColor.DividerColor))
-          ),
-        ),
+        margin: const EdgeInsets.only(left: MARGIN_HORIZENTAL),
         child: Row(
           children: <Widget>[
             // 联系人头像
             _avatarIcon,
-            SizedBox(width: 10.0,),
-            // 联系人名字
-            Text(title),
+            SizedBox(width: 16.0,),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(right: MARGIN_HORIZENTAL),
+                height: _ContactItem._height(false),
+                alignment: Alignment.centerLeft,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(width: Constants.DividerWidth, color: const Color(AppColor.DividerColor))
+                  ),
+                ),
+                // 联系人名字
+                child: Text(title, style: AppStyles.TitleStyle, maxLines: 1,),
+              ),
+            ),
           ],
         ),
       ),

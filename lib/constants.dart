@@ -150,7 +150,7 @@ class Constants {
   static const DeviceInfoItemHeight = 32.0;
 
   // 联系人头像大小
-  static const ContactAvatarSize = 36.0;
+  static const ContactAvatarSize = 42.0;
   // 索引栏宽度
   static const IndexBarWidth = 32.0;
   // 索引栏字母显示盒子大小
