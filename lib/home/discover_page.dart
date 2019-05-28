@@ -9,7 +9,7 @@ class DiscoverPage extends StatefulWidget {
 
 class _DiscoverPageState extends State<DiscoverPage> {
   // 分组之间的间距
-  static const SEPARATE_SIZE = 20.0;
+  static const SEPARATE_SIZE = 10.0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: SEPARATE_SIZE,),
             FullWidthIconButton(
               iconPath: 'assets/images/ic_social_circle.png',
               title: '朋友圈',

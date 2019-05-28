@@ -67,7 +67,7 @@ class FunctionsPage extends StatefulWidget {
 
 class _FunctionsPageState extends State<FunctionsPage> {
 
-  static const SEPARATOR_SIZE = 20.0;
+  static const SEPARATOR_SIZE = 10.0;
 
   @override
   Widget build(BuildContext context) {

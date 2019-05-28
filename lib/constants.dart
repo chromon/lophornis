@@ -163,7 +163,7 @@ class Constants {
   // 发现页列表项水平边距
   static const HORIZONTAL_PADDING = 20.0;
   // 发现页列表项垂直边距
-  static const VERTICAL_PADDING = 13.0;
+  static const VERTICAL_PADDING = 16.0;
   // 图标大小
   static const FullWidthIconButtonIconSize = 24.0;
 

@@ -43,7 +43,7 @@ class FullWidthIconButton extends StatelessWidget {
         ),
         SizedBox(width: Constants.HORIZONTAL_PADDING,),
         Expanded(
-          child: Text(title),
+          child: Text(title, style: AppStyles.TitleStyle,),
         ),
       ],
     );
