@@ -64,9 +64,13 @@ class AppColor {
   // header 标题文字颜色
   static const HeaderCardTitleText = 0xff353535;
   // header 描述文字颜色
-  static const HeaderCardDescText = 0xffa9a9a9;
+  static const HeaderCardDescText = 0xff7f7f7f;
   // 提示信息字体颜色
-  static const ButtonDescText = 0xffa9a9a9;
+  static const ButtonDescText = 0xff8c8c8c;
+  // 按钮箭头颜色
+  static const ButtonArrowColor = 0xffadadad;
+  // 看一看 按钮上 new 提示标签
+  static const NewTagBg = 0xfffa5251;
 }
 
 // 全局样式
@@ -109,20 +113,29 @@ class AppStyles {
 
   // header 标题文字样式
   static const HeaderCardTitleTextStyle = TextStyle(
-    fontSize: 14.0,
+    fontSize: 20.0,
     color: Color(AppColor.HeaderCardTitleText),
+    fontWeight: FontWeight.bold,
   );
 
   // header 描述文字样式
   static const HeaderCardDescTextStyle = TextStyle(
-    fontSize: 12.0,
-    color: Color(AppColor.HeaderCardDescText)
+    fontSize: 14.0,
+    color: Color(AppColor.HeaderCardDescText),
+    fontWeight: FontWeight.normal
   );
 
   // 提示信息样式
   static const ButtonDescTextStyle = TextStyle(
     fontSize: 12.0,
     color: Color(AppColor.ButtonDescText),
+  );
+
+  // New 标签提示信息样式
+  static const NewTagTextStyle = TextStyle(
+    fontSize: Constants.DesTextSize,
+    color: Colors.white,
+    fontWeight: FontWeight.bold
   );
 }
 
@@ -165,7 +178,7 @@ class Constants {
   // 发现页列表项垂直边距
   static const VERTICAL_PADDING = 16.0;
   // 图标大小
-  static const FullWidthIconButtonIconSize = 24.0;
+  static const FullWidthIconButtonIconSize = 25.0;
 
   // 会话 item 弹出菜单
   static const String MENU_MARK_AS_UNREAD = 'MENU_MARK_AS_UNREAD';

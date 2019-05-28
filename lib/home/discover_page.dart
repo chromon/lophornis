@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lophornis/constants.dart';
 import "package:lophornis/home/full_width_icon_button.dart";
 import 'package:lophornis/constants.dart' show AppColor;
 
@@ -21,6 +22,17 @@ class _DiscoverPageState extends State<DiscoverPage> {
             FullWidthIconButton(
               iconPath: 'assets/images/ic_social_circle.png',
               title: '朋友圈',
+              customWidget: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  FullWidthIconButton.iconTag(
+                    'assets/images/default_nor_avatar.png',
+                    showDot: true,
+                    isBig: true,
+                  ),
+                  SizedBox(width: 12.0,),
+                ],
+              ),
               onPressed: () {},
             ),
             SizedBox(height: SEPARATE_SIZE),
@@ -42,6 +54,11 @@ class _DiscoverPageState extends State<DiscoverPage> {
               iconPath: 'assets/images/ic_feeds.png',
               title: '看一看',
               showDivider: true,
+              customWidget: Row(
+                children: <Widget>[
+                  FullWidthIconButton.tag("NEW"),
+                ],
+              ),
               onPressed: () {},
             ),
             FullWidthIconButton(
@@ -71,6 +88,15 @@ class _DiscoverPageState extends State<DiscoverPage> {
             FullWidthIconButton(
               iconPath: 'assets/images/ic_game_entry.png',
               title: '游戏',
+              customWidget: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  FullWidthIconButton.descText('注册领时装抢红包'),
+                  SizedBox(width: 6.0,),
+                  FullWidthIconButton.iconTag('assets/images/ad_game_notify.png'),
+                  SizedBox(width: 12.0,)
+                ],
+              ),
               onPressed: () {},
             ),
             SizedBox(height: SEPARATE_SIZE),

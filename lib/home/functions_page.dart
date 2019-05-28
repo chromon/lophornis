@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:lophornis/constants.dart';
 import '../modal/me.dart' show me;
 import '../constants.dart' show AppColor, AppStyles;
 import './full_width_icon_button.dart';
 
 class _Header extends StatelessWidget {
 
-  static const AVATAR_SIZE = 72.0;
+  static const AVATAR_SIZE = 64.0;
   static const SEPARATOR_SIZE = 16.0;
   static const QR_CODE_PREVIEW_SIZE = 20.0;
 
@@ -16,10 +17,10 @@ class _Header extends StatelessWidget {
       onPressed: () {},
       color: AppColor.HeaderCardBg,
       padding: const EdgeInsets.only(
-        left: SEPARATOR_SIZE,
-        right: SEPARATOR_SIZE,
-        top: 10.0,
-        bottom: 10.0
+        left: 32.0,
+        right: Constants.HORIZONTAL_PADDING,
+        top: 0.0,
+        bottom: 42.0
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,26 +34,34 @@ class _Header extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Column(children: <Widget>[
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(
-                  left: SEPARATOR_SIZE,
-                  bottom: 5.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.only(
+                    left: SEPARATOR_SIZE,
+                    bottom: 5.0,
+                  ),
+                  child: Text(me.name, style: AppStyles.HeaderCardTitleTextStyle,),
                 ),
-                child: Text(me.name, style: AppStyles.HeaderCardTitleTextStyle,),
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: SEPARATOR_SIZE),
-                child: Text('微信号：' + me.account, style: AppStyles.HeaderCardDescTextStyle,),
-              )
-            ],)
-          ),
-          Image.asset(
-            'assets/images/ic_qrcode_preview_tiny.png',
-            width: QR_CODE_PREVIEW_SIZE,
-            height: QR_CODE_PREVIEW_SIZE,
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: SEPARATOR_SIZE),
+                        child: Text('微信号：' + me.account, style: AppStyles.HeaderCardDescTextStyle,),
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/images/ic_qrcode_preview_tiny.png',
+                      width: QR_CODE_PREVIEW_SIZE,
+                      height: QR_CODE_PREVIEW_SIZE,
+                    ),
+                    FullWidthIconButton.arrowRight(),
+                  ],
+                ),
+              ],
+            )
           ),
         ],
       ),
@@ -76,7 +85,6 @@ class _FunctionsPageState extends State<FunctionsPage> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: SEPARATOR_SIZE,),
             _Header(),
             SizedBox(height: SEPARATOR_SIZE,),
             FullWidthIconButton(

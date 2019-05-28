@@ -44,13 +44,19 @@ class NavigationIconView {
 
 class HomeScreen extends StatefulWidget {
 
+  // 顶部标题
   String title = '微信';
+  // 顶部 actionbar 颜色
+  Color headerColor;
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  // action bar 颜色
+  static const HeaderColor = const Color(AppColor.PrimaryColor);
 
   // 用于管理滚动视图的状态
   PageController _pageController;
@@ -65,6 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void initState() {
     super.initState();
+
+    // action bar 默认颜色
+    widget.headerColor = HeaderColor;
 
     // 初始化 pageController
     _pageController = PageController(initialPage: _currentIndex);
@@ -188,6 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // 去掉 appbar 下面的阴影
         elevation: 0.0,
         brightness: Brightness.light,
+        backgroundColor: widget.headerColor,
 
         // 标题栏按钮
         actions: <Widget>[
@@ -278,15 +288,19 @@ class _HomeScreenState extends State<HomeScreen> {
             switch (index) {
               case 0:
                 widget.title = '微信';
+                widget.headerColor = HeaderColor;
                 break;
               case 1:
                 widget.title = '通讯录';
+                widget.headerColor = HeaderColor;
                 break;
               case 2:
                 widget.title = '发现';
+                widget.headerColor = HeaderColor;
                 break;
               case 3:
                 widget.title = '我';
+                widget.headerColor = Colors.white;
                 break;
             }
           });
