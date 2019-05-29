@@ -69,11 +69,95 @@ class _HomeScreenState extends State<HomeScreen> {
   // 底部导航栏数据信息
   List<NavigationIconView> _navigationViews;
 
+  // 前三个界面的状态栏
+  List<Widget> _mainActions;
+  // “我” 界面的状态栏
+  List<Widget> _functionActions;
+
   void initState() {
     super.initState();
 
     // action bar 默认颜色
     widget.headerColor = HeaderColor;
+
+    // 初始化前三个界面的操作按钮
+    _mainActions = [
+      IconButton(
+        icon: Icon(
+          IconData(
+            0xe65e,
+            fontFamily: Constants.IconFontFamily,
+          ),
+          size: Constants.ActionIconSize,
+          color: const Color(AppColor.ActionIconColor),
+        ),
+        onPressed: () { print('点击了搜索按钮'); },
+      ),
+      SizedBox(width: 16.0,),
+      // 下拉菜单
+      Theme(
+        data: ThemeData(
+          cardColor: Color(AppColor.ActionMenuBgColor),
+        ),
+        child: PopupMenuButton(
+          // 构建下拉菜单选项
+          itemBuilder: (BuildContext context) {
+            return <PopupMenuItem<ActionItems>>[
+              PopupMenuItem(
+                child: _bulidPopupMenuItem(0xe69e, '发起群聊'),
+                value: ActionItems.GROUP_CHAT,
+              ),
+              PopupMenuItem(
+                child: _bulidPopupMenuItem(0xe638, '添加好友'),
+                value: ActionItems.ADD_FRIEND,
+              ),
+              PopupMenuItem(
+                child: _bulidPopupMenuItem(0xe61b, '扫一扫'),
+                value: ActionItems.QR_SCAN,
+              ),
+              PopupMenuItem(
+                child: _bulidPopupMenuItem(0xe62a, '收付款'),
+                value: ActionItems.PAYMENT,
+              ),
+              PopupMenuItem(
+                child: _bulidPopupMenuItem(0xe63d, '帮助与反馈'),
+                value: ActionItems.HELP,
+              ),
+            ];
+          },
+
+          // 下拉菜单显示图标
+          icon: Icon(
+            IconData(
+              0xe60e,
+              fontFamily: Constants.IconFontFamily
+            ), 
+            size: Constants.ActionIconSize, 
+            color: Color(AppColor.ActionIconColor),
+          ),
+
+          // 下拉菜单列表点击事件
+          onSelected: (ActionItems selected) {
+            print('点击的是$selected');
+          },
+        ),
+      ),
+      SizedBox(width: 16.0,),
+    ];
+
+    _functionActions = [
+      IconButton(
+        icon: Icon(
+          IconData(
+            0xe60a,
+            fontFamily: Constants.IconFontFamily,
+          ),
+          size: Constants.ActionIconSize + 4.0,
+          color: const Color(AppColor.ActionIconColor),
+        ),
+        onPressed: () { print('打开相机拍短视频');},
+      ),
+    ];
 
     // 初始化 pageController
     _pageController = PageController(initialPage: _currentIndex);
@@ -200,74 +284,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: widget.headerColor,
 
         // 标题栏按钮
-        actions: <Widget>[
-          // 搜索按钮
-          IconButton(
-            icon: Icon(
-              IconData(
-                0xe65e,
-                fontFamily: Constants.IconFontFamily
-              ), 
-              size: Constants.ActionIconSize,
-              color: const Color(AppColor.ActionIconColor),
-            ),
-            onPressed: () { print('点击了搜索按钮'); },
-          ),
-
-          // 设置组件间空白宽度
-          Container(width: 16.0),
-
-          // 下拉菜单
-          Theme(
-            data: ThemeData(
-              cardColor: Color(AppColor.ActionMenuBgColor),
-            ),
-            child: PopupMenuButton(
-              // 构建下拉菜单选项
-              itemBuilder: (BuildContext context) {
-                return <PopupMenuItem<ActionItems>>[
-                  PopupMenuItem(
-                    child: _bulidPopupMenuItem(0xe69e, '发起群聊'),
-                    value: ActionItems.GROUP_CHAT,
-                  ),
-                  PopupMenuItem(
-                    child: _bulidPopupMenuItem(0xe638, '添加好友'),
-                    value: ActionItems.ADD_FRIEND,
-                  ),
-                  PopupMenuItem(
-                    child: _bulidPopupMenuItem(0xe61b, '扫一扫'),
-                    value: ActionItems.QR_SCAN,
-                  ),
-                  PopupMenuItem(
-                    child: _bulidPopupMenuItem(0xe62a, '收付款'),
-                    value: ActionItems.PAYMENT,
-                  ),
-                  PopupMenuItem(
-                    child: _bulidPopupMenuItem(0xe63d, '帮助与反馈'),
-                    value: ActionItems.HELP,
-                  ),
-                ];
-              },
-
-              // 下拉菜单显示图标
-              icon: Icon(
-                IconData(
-                  0xe60e,
-                  fontFamily: Constants.IconFontFamily
-                ), 
-                size: Constants.ActionIconSize, 
-                color: Color(AppColor.ActionIconColor),
-              ),
-
-              // 下拉菜单列表点击事件
-              onSelected: (ActionItems selected) {
-                print('点击的是$selected');
-              },
-            ),
-          ),
-          // 设置组件间空白宽度
-          Container(width: 10.0),
-        ],
+        actions: _currentIndex == 3 ? _functionActions : _mainActions,
       ),
 
       // 中心内容
