@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:lophornis/constants.dart';
+
+import 'package:lophornis/constants.dart' show Constants, AppColor, AppStyles;
 import 'package:lophornis/home/contacts_page.dart';
 import 'package:lophornis/home/conversation_page.dart';
 import 'package:lophornis/home/discover_page.dart';
 import 'package:lophornis/home/functions_page.dart';
-import 'package:lophornis/widget/HomePopupMenu.dart';
-import 'package:lophornis/widget/HomeNavigationItem.dart';
+import 'package:lophornis/widget/home_navigation_widget.dart';
+import 'package:lophornis/widget/home_popupmenu_widget.dart';
 
 import 'package:flutter/services.dart';
-
-import '../constants.dart' show Constants, AppColor, AppStyles;
 
 class HomePage extends StatefulWidget {
 
   // 顶部 Action bar 标题
-  String title = '微信';
+  String actionBarTitle = '微信';
   // 顶部 Action bar 颜色
-  Color headerColor;
+  Color actionBarColor;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -25,12 +24,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   // Action bar 默认颜色
-  static const HeaderColor = const Color(AppColor.PrimaryColor);
+  static const ActionBarColor = const Color(AppColor.PrimaryColor);
 
   // 前三个界面的状态栏（会话页、联系人页、发现页）
-  List<Widget> _mainActions;
+  List<Widget> _mainActionsBar;
   // “我” 界面的状态栏
-  List<Widget> _functionActions;
+  List<Widget> _functionActionsBar;
 
   // 用于管理滚动视图的状态
   PageController _pageController;
@@ -40,16 +39,16 @@ class _HomePageState extends State<HomePage> {
   // 底部导航栏索引值
   int _currentIndex = 0;
   // 底部导航栏数据信息
-  List<HomeNavigationItem> _navigationViews;
+  List<HomeNavigationItem> _navigationItemList;
 
   void initState() {
     super.initState();
 
     // Action bar 默认颜色
-    widget.headerColor = HeaderColor;
+    widget.actionBarColor = ActionBarColor;
 
     // 初始化前三个界面的 Action bar 操作按钮
-    _mainActions = [
+    _mainActionsBar = [
       // 搜索按钮
       IconButton(
         icon: Icon(
@@ -75,7 +74,7 @@ class _HomePageState extends State<HomePage> {
     ];
 
     // “我”界面 Action bar 短视频相机按钮
-    _functionActions = [
+    _functionActionsBar = [
       IconButton(
         icon: Icon(
           IconData(
@@ -104,7 +103,7 @@ class _HomePageState extends State<HomePage> {
     ];
 
     // 初始化底部导航栏
-    _navigationViews = HomeNavigation().navigations();
+    _navigationItemList = HomeNavigation().navigations();
   }
 
   @override
@@ -118,8 +117,8 @@ class _HomePageState extends State<HomePage> {
     // 构建底部导航栏
     final BottomNavigationBar botNavBar = new BottomNavigationBar(
       fixedColor: const Color(AppColor.TabIconActive),
-      // 遍历 _navigationViews 通过 map 遍历取出每一个 HomeNavigationItem 里的 item 对象，合并成数组返回
-      items: _navigationViews.map((HomeNavigationItem navigationItem) {
+      // 遍历 _navigationItemList 通过 map 遍历取出每一个 HomeNavigationItem 里的 item 对象，合并成数组返回
+      items: _navigationItemList.map((HomeNavigationItem navigationItem) {
         return navigationItem.item;
       }).toList(),
       // 当前选中的索引
@@ -141,17 +140,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: new AppBar(
         // 标题栏名称
-        title: new Text(widget.title, style: AppStyles.TitleStyle,),
+        title: new Text(widget.actionBarTitle, style: AppStyles.TitleStyle,),
         // 去掉 appbar 下面的阴影
         elevation: 0.0,
         brightness: Brightness.light,
-        backgroundColor: widget.headerColor,
+        backgroundColor: widget.actionBarColor,
 
         // 标题栏按钮
-        actions: _currentIndex == 3 ? _functionActions : _mainActions,
+        actions: _currentIndex == 3 ? _functionActionsBar : _mainActionsBar,
       ),
 
-      // 中心内容
+      // 中心页面内容
       body: PageView.builder(
         // 生成相应页面
         itemBuilder: (BuildContext context, int index) {
@@ -168,20 +167,20 @@ class _HomePageState extends State<HomePage> {
             // 修改顶部标题
             switch (index) {
               case 0:
-                widget.title = '微信';
-                widget.headerColor = HeaderColor;
+                widget.actionBarTitle = '微信';
+                widget.actionBarColor = ActionBarColor;
                 break;
               case 1:
-                widget.title = '通讯录';
-                widget.headerColor = HeaderColor;
+                widget.actionBarTitle = '通讯录';
+                widget.actionBarColor = ActionBarColor;
                 break;
               case 2:
-                widget.title = '发现';
-                widget.headerColor = HeaderColor;
+                widget.actionBarTitle = '发现';
+                widget.actionBarColor = ActionBarColor;
                 break;
               case 3:
-                widget.title = '我';
-                widget.headerColor = Colors.white;
+                widget.actionBarTitle = '我';
+                widget.actionBarColor = Colors.white;
                 break;
             }
           });
