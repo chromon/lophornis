@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './home/home_screen.dart';
+import './home/home_page.dart';
 import './constants.dart' show AppColor;
 
 void main() => runApp(MaterialApp(
@@ -10,5 +10,5 @@ void main() => runApp(MaterialApp(
     cardColor: Color(AppColor.CardBgColor),
     backgroundColor: Color(AppColor.BackgroundColor)
   ),
-  home: HomeScreen(),
+  home: HomePage(),
 ));
