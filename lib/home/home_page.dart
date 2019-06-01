@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants.dart' show Constants, AppColor, AppStyles;
 import 'package:lophornis/home/contacts_page.dart';
 import 'package:lophornis/home/conversation_page.dart';
-import 'package:lophornis/home/discover_page.dart';
+import 'package:lophornis/home/discovery_page.dart';
 import 'package:lophornis/home/functions_page.dart';
 import 'package:lophornis/widget/home_navigation_widget.dart';
 import 'package:lophornis/widget/home_popupmenu_widget.dart';
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
         // 联系人页
         ContactsPage(),
         // 发现页
-        DiscoverPage(),
+        DiscoveryPage(),
         // “我”页面
         FunctionsPage()
     ];

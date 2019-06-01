@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:lophornis/constants.dart';
 import '../modal/me.dart' show me;
 import '../constants.dart' show AppColor, AppStyles;
-import './full_width_icon_button.dart';
+import 'package:lophornis/widget/function_item_widget.dart';
 
 class _Header extends StatelessWidget {
 
@@ -57,7 +58,7 @@ class _Header extends StatelessWidget {
                       width: QR_CODE_PREVIEW_SIZE,
                       height: QR_CODE_PREVIEW_SIZE,
                     ),
-                    FullWidthIconButton.arrowRight(),
+                    FunctionItemWidget.arrowRight(),
                   ],
                 ),
               ],
@@ -87,7 +88,7 @@ class _FunctionsPageState extends State<FunctionsPage> {
           children: <Widget>[
             _Header(),
             SizedBox(height: SEPARATOR_SIZE,),
-            FullWidthIconButton(
+            FunctionItemWidget(
               iconPath: 'assets/images/ic_wallet.png',
               title: '支付',
               onPressed: () {
@@ -95,7 +96,7 @@ class _FunctionsPageState extends State<FunctionsPage> {
               },
             ),
             SizedBox(height: SEPARATOR_SIZE),
-            FullWidthIconButton(
+            FunctionItemWidget(
               iconPath: 'assets/images/ic_collections.png',
               title: '收藏',
               showDivider: true,
@@ -103,7 +104,7 @@ class _FunctionsPageState extends State<FunctionsPage> {
                 print('点击的是收藏按钮。');
               },
             ),
-            FullWidthIconButton(
+            FunctionItemWidget(
               iconPath: 'assets/images/ic_album.png',
               title: '相册',
               showDivider: true,
@@ -111,7 +112,7 @@ class _FunctionsPageState extends State<FunctionsPage> {
                 print('点击的是相册按钮。');
               },
             ),
-            FullWidthIconButton(
+            FunctionItemWidget(
               iconPath: 'assets/images/ic_emotions.png',
               title: '表情',
               onPressed: () {
@@ -119,7 +120,7 @@ class _FunctionsPageState extends State<FunctionsPage> {
               },
             ),
             SizedBox(height: SEPARATOR_SIZE),
-            FullWidthIconButton(
+            FunctionItemWidget(
               iconPath: 'assets/images/ic_settings.png',
               title: '设置',
               desc: '账号未保护',

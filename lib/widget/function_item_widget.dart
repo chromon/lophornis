@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:lophornis/constants.dart' show Constants, AppColor, AppStyles;
 
-class FullWidthIconButton extends StatelessWidget {
+class FunctionItemWidget extends StatelessWidget {
 
   // 列表项图标路径
   final String iconPath;
@@ -20,6 +21,7 @@ class FullWidthIconButton extends StatelessWidget {
   // 自定义控件
   final Widget customWidget;
 
+  // 列表项高度
   static const HEIGHT = Constants.FullWidthIconButtonIconSize + Constants.VERTICAL_PADDING * 2;
   // tag 图片大小
   static const TAG_IMG_SIZE = 28.0;
@@ -28,7 +30,7 @@ class FullWidthIconButton extends StatelessWidget {
   // 圆点
   static const DOT_RADIUS = 5.0;
 
-  const FullWidthIconButton({
+  const FunctionItemWidget({
     @required this.iconPath,
     @required this.title,
     @required this.onPressed,
@@ -43,6 +45,7 @@ class FullWidthIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // 分隔线
     final Border _border = showDivider ? Border(
       bottom: BorderSide(
         color: const Color(AppColor.DividerColor),
