@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:lophornis/constants.dart';
+import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_styles.dart';
 
 // 联系人项
 class ContactItem extends StatelessWidget {
@@ -37,7 +39,7 @@ class ContactItem extends StatelessWidget {
   // 计算列表项高度
   static double itemHeight(bool _hasIndexItemTitle) {
     // 列表项的高度 = 上下边距 + 图片高度
-    final _height = MARGIN_VERTICAL * 2 + Constants.ContactAvatarSize + Constants.DividerWidth;
+    final _height = MARGIN_VERTICAL * 2 + AppConstants.ContactAvatarSize + AppConstants.DividerWidth;
     // 如果存在索引项，则高度 = 列表项的高度 + 索引项高度
     if (_hasIndexItemTitle) {
       return _height + INDEX_ITEM_HEIGHT;
@@ -52,20 +54,20 @@ class ContactItem extends StatelessWidget {
     Widget _avatarIcon;
     if (_isAvatarFromNet) {
       _avatarIcon = ClipRRect(
-        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
+        borderRadius: BorderRadius.circular(AppConstants.AvatarRadius),
         child: Image.network(
           avatar,
-          width: Constants.ContactAvatarSize,
-          height: Constants.ContactAvatarSize,
+          width: AppConstants.ContactAvatarSize,
+          height: AppConstants.ContactAvatarSize,
         ),
       );
     } else {
        _avatarIcon = ClipRRect(
-        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
+        borderRadius: BorderRadius.circular(AppConstants.AvatarRadius),
         child: Image.asset(
           avatar,
-          width: Constants.ContactAvatarSize,
-          height: Constants.ContactAvatarSize,
+          width: AppConstants.ContactAvatarSize,
+          height: AppConstants.ContactAvatarSize,
         ),
       );
     }
@@ -89,7 +91,7 @@ class ContactItem extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 decoration: BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(width: Constants.DividerWidth, color: const Color(AppColor.DividerColor))
+                    bottom: BorderSide(width: AppConstants.DividerWidth, color: const Color(AppColors.DividerColor))
                   ),
                 ),
                 // 联系人名字
@@ -111,7 +113,7 @@ class ContactItem extends StatelessWidget {
           Container(
             height: INDEX_ITEM_HEIGHT,
             padding: EdgeInsets.only(left: 16.0, right: 16.0),
-            color: Color(AppColor.ContactGroupTitleBg),
+            color: Color(AppColors.ContactGroupTitleBg),
             alignment: Alignment.centerLeft,
             child: Text(this.indexItemTitle, style: AppStyles.GroupTitleItemTextStyle,)
           ),

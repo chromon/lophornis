@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:lophornis/constants.dart';
-import '../modal/me.dart' show me;
-import '../constants.dart' show AppColor, AppStyles;
+import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_styles.dart';
+import 'package:lophornis/modal/me.dart' show me;
 import 'package:lophornis/widget/function_item_widget.dart';
 
 class _Header extends StatelessWidget {
@@ -16,10 +17,10 @@ class _Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {},
-      color: AppColor.HeaderCardBg,
+      color: AppColors.HeaderCardBg,
       padding: const EdgeInsets.only(
         left: 32.0,
-        right: Constants.HORIZONTAL_PADDING,
+        right: AppConstants.HORIZONTAL_PADDING,
         top: 0.0,
         bottom: 42.0
       ),
@@ -82,7 +83,7 @@ class _FunctionsPageState extends State<FunctionsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(AppColor.BackgroundColor),
+      color: Color(AppColors.BackgroundColor),
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[

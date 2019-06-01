@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart' show AppColor, Constants, AppStyles;
-import '../modal/contacts.dart' show Contact, ContactsPageData;
+import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_styles.dart';
+import 'package:lophornis/modal/contacts.dart' show Contact, ContactsPageData;
 import 'package:lophornis/widget/contact_item_widget.dart';
 
 // 索引字符
@@ -213,7 +215,7 @@ class _ContactsPageState extends State<ContactsPage> {
       ),
       // stack 第二项检索控件
       Positioned(
-        width: Constants.IndexBarWidth,
+        width: AppConstants.IndexBarWidth,
         right: 0.0,
         top: 0.0,
         bottom: 0.0,
@@ -232,11 +234,11 @@ class _ContactsPageState extends State<ContactsPage> {
         // stack 第三项检索盒子
         Center(
           child: Container(
-            width: Constants.IndexLetterBoxSize,
-            height: Constants.IndexLetterBoxSize,
+            width: AppConstants.IndexLetterBoxSize,
+            height: AppConstants.IndexLetterBoxSize,
             decoration: BoxDecoration(
-              color: AppColor.IndexLetterBoxBg,
-              borderRadius: BorderRadius.all(Radius.circular(Constants.IndexLetterBoxRadius))
+              color: AppColors.IndexLetterBoxBg,
+              borderRadius: BorderRadius.all(Radius.circular(AppConstants.IndexLetterBoxRadius))
             ),
             child: Center(
               child: Text(widget._currentLetter, style: AppStyles.IndexLetterBoxTextStyle),

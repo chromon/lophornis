@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lophornis/constants.dart' show AppColor, AppStyles, Constants;
+
+import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_styles.dart';
 import '../modal/conversation.dart' show Conversation, Device, ConversationPageData;
 
 // 会话项
@@ -24,16 +27,16 @@ class _ConversationItem extends StatelessWidget {
         position: position,
         items: <PopupMenuItem<String>>[
           PopupMenuItem(
-            child: Text(Constants.MENU_MARK_AS_UNREAD_VALUE),
-            value: Constants.MENU_MARK_AS_UNREAD,
+            child: Text(AppConstants.MENU_MARK_AS_UNREAD_VALUE),
+            value: AppConstants.MENU_MARK_AS_UNREAD,
           ),
           PopupMenuItem(
-            child: Text(Constants.MENU_PIN_TO_TOP_VALUE),
-            value: Constants.MENU_PIN_TO_TOP,
+            child: Text(AppConstants.MENU_PIN_TO_TOP_VALUE),
+            value: AppConstants.MENU_PIN_TO_TOP,
           ),
           PopupMenuItem(
-            child: Text(Constants.MENU_DELETE_CONVERSATION_VALUE),
-            value: Constants.MENU_DELETE_CONVERSATION,
+            child: Text(AppConstants.MENU_DELETE_CONVERSATION_VALUE),
+            value: AppConstants.MENU_DELETE_CONVERSATION,
           ),
         ]).then<String>((String selected) {
       switch (selected) {
@@ -51,21 +54,21 @@ class _ConversationItem extends StatelessWidget {
     if (conversation.isAvatarFromNet()) {
       // 来自网络
       avatar = ClipRRect(
-        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
+        borderRadius: BorderRadius.circular(AppConstants.AvatarRadius),
         child: Image.network(
           conversation.avatar,
-          width: Constants.ConversationAvatarSize,
-          height: Constants.ConversationAvatarSize,
+          width: AppConstants.ConversationAvatarSize,
+          height: AppConstants.ConversationAvatarSize,
         ),
       );
     } else {
       // 来自本地
       avatar = ClipRRect(
-        borderRadius: BorderRadius.circular(Constants.AvatarRadius),
+        borderRadius: BorderRadius.circular(AppConstants.AvatarRadius),
         child: Image.asset(
           conversation.avatar,
-          width: Constants.ConversationAvatarSize,
-          height: Constants.ConversationAvatarSize,
+          width: AppConstants.ConversationAvatarSize,
+          height: AppConstants.ConversationAvatarSize,
         ),
       );
     }
@@ -79,24 +82,24 @@ class _ConversationItem extends StatelessWidget {
       Widget unreadMsgCountText;
       if (conversation.displayDot) {
         unreadMsgCountText = Container(
-          width: Constants.UnreadMsgDotSize,
-          height: Constants.UnreadMsgDotSize,
+          width: AppConstants.UnreadMsgDotSize,
+          height: AppConstants.UnreadMsgDotSize,
           alignment: Alignment.center,
           // 圆角背景
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Constants.UnreadMsgDotSize / 2.0),
-            color: Color(AppColor.NotifyDotBg)
+            borderRadius: BorderRadius.circular(AppConstants.UnreadMsgDotSize / 2.0),
+            color: Color(AppColors.NotifyDotBg)
           ),
         );
       } else {
         unreadMsgCountText = Container(
-          width: Constants.UnreadMsgCircleDotSize,
-          height: Constants.UnreadMsgCircleDotSize,
+          width: AppConstants.UnreadMsgCircleDotSize,
+          height: AppConstants.UnreadMsgCircleDotSize,
           alignment: Alignment.center,
           // 圆角背景
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Constants.UnreadMsgCircleDotSize / 2.0),
-            color: Color(AppColor.NotifyDotBg)
+            borderRadius: BorderRadius.circular(AppConstants.UnreadMsgCircleDotSize / 2.0),
+            color: Color(AppColors.NotifyDotBg)
           ),
           // 未读消息数量
           child: Text(
@@ -142,10 +145,10 @@ class _ConversationItem extends StatelessWidget {
         Icon(
           IconData(
             0xe755,
-            fontFamily: Constants.IconFontFamily,
+            fontFamily: AppConstants.IconFontFamily,
           ),
-          color: Color(AppColor.ConversationMuteIcon),
-          size: Constants.ConversationMuteIconSize,
+          color: Color(AppColors.ConversationMuteIcon),
+          size: AppConstants.ConversationMuteIconSize,
         )
       );
     } else {
@@ -154,17 +157,17 @@ class _ConversationItem extends StatelessWidget {
         Icon(
           IconData(
             0xe755,
-            fontFamily: Constants.IconFontFamily,
+            fontFamily: AppConstants.IconFontFamily,
           ),
           color: Colors.transparent,
-          size: Constants.ConversationMuteIconSize,
+          size: AppConstants.ConversationMuteIconSize,
         )
       );
     }
 
     return Material(
       // 会话背景颜色
-      color: Color(AppColor.ConversationItemBg),
+      color: Color(AppColors.ConversationItemBg),
       child: InkWell(
         onTap: () {print('打开，${conversation.title}');},
         onTapDown: (TapDownDetails details) {
@@ -196,8 +199,8 @@ class _ConversationItem extends StatelessWidget {
                       // 会话边框
                       border: Border(
                         bottom: BorderSide(
-                          color: Color(AppColor.DividerColor),
-                          width: Constants.DividerWidth
+                          color: Color(AppColors.DividerColor),
+                          width: AppConstants.DividerWidth
                         ),
                       ),
                     ),
@@ -265,10 +268,10 @@ class _DeviceInfoItem extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(width: Constants.DividerWidth, color: Color(AppColor.DividerColor)),
-          bottom: BorderSide(width: Constants.DividerWidth, color: Color(AppColor.DividerColor)),
+          top: BorderSide(width: AppConstants.DividerWidth, color: Color(AppColors.DividerColor)),
+          bottom: BorderSide(width: AppConstants.DividerWidth, color: Color(AppColors.DividerColor)),
         ),
-        color: Color(AppColor.DeviceInfoItemBg)
+        color: Color(AppColors.DeviceInfoItemBg)
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -278,10 +281,10 @@ class _DeviceInfoItem extends StatelessWidget {
           Icon(
             IconData(
               this.iconName,
-              fontFamily: Constants.IconFontFamily,
+              fontFamily: AppConstants.IconFontFamily,
             ), 
             size: 24.0,
-            color: Color(AppColor.DeviceInfoItemIcon),
+            color: Color(AppColors.DeviceInfoItemIcon),
           ),
           SizedBox(width: 24.0,),
           Text('$deviceName 微信已登录，手机通知已关闭。', style: AppStyles.DeviceInfoItemTextStyle,)
@@ -310,7 +313,7 @@ class _ConversationPageState extends State<ConversationPage> {
 
     // 构建列表
     return Container(
-      color: const Color(AppColor.ConversationBg),
+      color: const Color(AppColors.ConversationBg),
       child: ListView.builder(
         // 索引值为列表项的位置
         itemBuilder: (BuildContext  context, int index) {

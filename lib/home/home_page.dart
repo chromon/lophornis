@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'package:lophornis/constants.dart' show Constants, AppColor, AppStyles;
+import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/home/contacts_page.dart';
 import 'package:lophornis/home/conversation_page.dart';
 import 'package:lophornis/home/discovery_page.dart';
 import 'package:lophornis/home/functions_page.dart';
 import 'package:lophornis/widget/home_navigation_widget.dart';
 import 'package:lophornis/widget/home_popupmenu_widget.dart';
-
-import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -24,7 +25,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   // Action bar 默认颜色
-  static const ActionBarColor = const Color(AppColor.PrimaryColor);
+  static const ActionBarColor = const Color(AppColors.PrimaryColor);
 
   // 前三个界面的状态栏（会话页、联系人页、发现页）
   List<Widget> _mainActionsBar;
@@ -54,10 +55,10 @@ class _HomePageState extends State<HomePage> {
         icon: Icon(
           IconData(
             0xe65e,
-            fontFamily: Constants.IconFontFamily,
+            fontFamily: AppConstants.IconFontFamily,
           ),
-          size: Constants.ActionIconSize,
-          color: const Color(AppColor.ActionIconColor),
+          size: AppConstants.ActionIconSize,
+          color: const Color(AppColors.ActionIconColor),
         ),
         onPressed: () { print('点击了搜索按钮'); },
       ),
@@ -66,7 +67,7 @@ class _HomePageState extends State<HomePage> {
       // 下拉菜单
       Theme(
         data: ThemeData(
-          cardColor: Color(AppColor.ActionMenuBgColor),
+          cardColor: Color(AppColors.ActionMenuBgColor),
         ),
         child: HomePopupMenu(),
       ),
@@ -79,10 +80,10 @@ class _HomePageState extends State<HomePage> {
         icon: Icon(
           IconData(
             0xe60a,
-            fontFamily: Constants.IconFontFamily,
+            fontFamily: AppConstants.IconFontFamily,
           ),
-          size: Constants.ActionIconSize + 4.0,
-          color: const Color(AppColor.ActionIconColor),
+          size: AppConstants.ActionIconSize + 4.0,
+          color: const Color(AppColors.ActionIconColor),
         ),
         onPressed: () { print('打开相机拍短视频');},
       ),
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
 
     // 构建底部导航栏
     final BottomNavigationBar botNavBar = new BottomNavigationBar(
-      fixedColor: const Color(AppColor.TabIconActive),
+      fixedColor: const Color(AppColors.TabIconActive),
       // 遍历 _navigationItemList 通过 map 遍历取出每一个 HomeNavigationItem 里的 item 对象，合并成数组返回
       items: _navigationItemList.map((HomeNavigationItem navigationItem) {
         return navigationItem.item;

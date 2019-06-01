@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:lophornis/constants.dart' show Constants, AppColor, AppStyles;
+import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_styles.dart';
 
 class FunctionItemWidget extends StatelessWidget {
 
@@ -22,7 +24,7 @@ class FunctionItemWidget extends StatelessWidget {
   final Widget customWidget;
 
   // 列表项高度
-  static const HEIGHT = Constants.FullWidthIconButtonIconSize + Constants.VERTICAL_PADDING * 2;
+  static const HEIGHT = AppConstants.FullWidthIconButtonIconSize + AppConstants.VERTICAL_PADDING * 2;
   // tag 图片大小
   static const TAG_IMG_SIZE = 28.0;
   // tag 图片大号
@@ -48,8 +50,8 @@ class FunctionItemWidget extends StatelessWidget {
     // 分隔线
     final Border _border = showDivider ? Border(
       bottom: BorderSide(
-        color: const Color(AppColor.DividerColor),
-        width: Constants.DividerWidth
+        color: const Color(AppColors.DividerColor),
+        width: AppConstants.DividerWidth
       ),
     ) : null;
 
@@ -84,7 +86,7 @@ class FunctionItemWidget extends StatelessWidget {
       _rightAreaElements.add(arrowRight());
     }
     // 右侧添加边距
-    _rightAreaElements.add(SizedBox(width: Constants.HORIZONTAL_PADDING),);
+    _rightAreaElements.add(SizedBox(width: AppConstants.HORIZONTAL_PADDING),);
 
     // 按钮
     final _button = Row(
@@ -92,10 +94,10 @@ class FunctionItemWidget extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           iconPath,
-          width: Constants.FullWidthIconButtonIconSize,
-          height: Constants.FullWidthIconButtonIconSize,
+          width: AppConstants.FullWidthIconButtonIconSize,
+          height: AppConstants.FullWidthIconButtonIconSize,
         ),
-        SizedBox(width: Constants.HORIZONTAL_PADDING,),
+        SizedBox(width: AppConstants.HORIZONTAL_PADDING,),
         Expanded(
           child: Container(
             height: HEIGHT,
@@ -112,7 +114,7 @@ class FunctionItemWidget extends StatelessWidget {
     return FlatButton(
       onPressed: onPressed,
       padding: EdgeInsets.only(
-        left: Constants.HORIZONTAL_PADDING,
+        left: AppConstants.HORIZONTAL_PADDING,
       ),
       color: Colors.white,
       child: _button,
@@ -133,7 +135,7 @@ class FunctionItemWidget extends StatelessWidget {
       margin: const EdgeInsets.only(left: 6.0),
       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       decoration: BoxDecoration(
-        color: const Color(AppColor.NewTagBg),
+        color: const Color(AppColors.NewTagBg),
         borderRadius: BorderRadius.circular(10.0)
       ),
       child: Text(content, style: AppStyles.NewTagTextStyle),
@@ -153,7 +155,7 @@ class FunctionItemWidget extends StatelessWidget {
 
     // 圆角图片
     final _icon = ClipRRect(
-      borderRadius: BorderRadius.circular(Constants.AvatarRadius),
+      borderRadius: BorderRadius.circular(AppConstants.AvatarRadius),
       child: network ?
         Image.network(
           path,
@@ -183,7 +185,7 @@ class FunctionItemWidget extends StatelessWidget {
               height: DOT_RADIUS * 2,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(DOT_RADIUS),
-                color: const Color(AppColor.NotifyDotBg),
+                color: const Color(AppColors.NotifyDotBg),
               ),
             ),
           ),
@@ -202,10 +204,10 @@ class FunctionItemWidget extends StatelessWidget {
       child: Icon(
         IconData(
           0xe604,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
         size: 16.0,
-        color: const Color(AppColor.ButtonDescText)
+        color: const Color(AppColors.ButtonDescText)
       )
     );
   }

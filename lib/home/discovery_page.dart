@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lophornis/constants.dart';
+
+import 'package:lophornis/constants/app_colors.dart';
 import "package:lophornis/widget/function_item_widget.dart";
-import 'package:lophornis/constants.dart' show AppColor;
 
 class DiscoveryPage extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(AppColor.BackgroundColor),
+      color: Color(AppColors.BackgroundColor),
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[

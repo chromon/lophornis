@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:lophornis/constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_constants.dart';
 
 // 底部导航栏 View
 class HomeNavigationItem {
@@ -16,13 +17,13 @@ class HomeNavigationItem {
 
     item = BottomNavigationBarItem(
       // 导航栏图标
-      icon: Icon(icon, color: Color(AppColor.TabIconNormal)),
+      icon: Icon(icon, color: Color(AppColors.TabIconNormal)),
       // 导航栏激活状态图标
-      activeIcon: Icon(activeIcon, color: Color(AppColor.TabIconActive)),
+      activeIcon: Icon(activeIcon, color: Color(AppColors.TabIconActive)),
       // 导航栏标题
       title: new Text(title, style: TextStyle(
         fontSize: 14.0,
-        color: Color(AppColor.TabIconNormal)
+        color: Color(AppColors.TabIconNormal)
       )),
       backgroundColor: Colors.white
     );
@@ -36,11 +37,11 @@ class HomeNavigation {
         title: '微信',
         icon: IconData(
           0xe608,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
         activeIcon: IconData(
           0xe603,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
       ),
 
@@ -49,11 +50,11 @@ class HomeNavigation {
         title: '通讯录',
         icon: IconData(
           0xe601,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
         activeIcon: IconData(
           0xe656,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
       ),
 
@@ -62,11 +63,11 @@ class HomeNavigation {
         title: '发现',
         icon: IconData(
           0xe600,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
         activeIcon: IconData(
           0xe671,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
       ),
 
@@ -75,11 +76,11 @@ class HomeNavigation {
         title: '我',
         icon: IconData(
           0xe6c0,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
         activeIcon: IconData(
           0xe626,
-          fontFamily: Constants.IconFontFamily,
+          fontFamily: AppConstants.IconFontFamily,
         ),
       )
     ];

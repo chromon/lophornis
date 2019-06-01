@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+
+import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
 
 // 下拉菜单选项
 enum ActionItems {
@@ -31,13 +33,13 @@ class _HomePopupMenuItem extends StatelessWidget {
         // 下拉列表图标
         Icon(IconData(
           this.iconName,
-          fontFamily: Constants.IconFontFamily
-        ), size: 22.0, color: const Color(AppColor.AppBarPopupMenuColor)),
+          fontFamily: AppConstants.IconFontFamily
+        ), size: 22.0, color: const Color(AppColors.AppBarPopupMenuColor)),
         
         SizedBox(width: 12.0,),
         
         // 下拉列表文字
-        Text(this.title, style: TextStyle(color: const Color(AppColor.AppBarPopupMenuColor)))
+        Text(this.title, style: TextStyle(color: const Color(AppColors.AppBarPopupMenuColor)))
       ],
     );
   }
@@ -80,10 +82,10 @@ class HomePopupMenu extends StatelessWidget {
       icon: Icon(
         IconData(
           0xe60e,
-          fontFamily: Constants.IconFontFamily
+          fontFamily: AppConstants.IconFontFamily
         ), 
-        size: Constants.ActionIconSize, 
-        color: Color(AppColor.ActionIconColor),
+        size: AppConstants.ActionIconSize, 
+        color: Color(AppColors.ActionIconColor),
       ),
 
       // 下拉菜单列表点击事件

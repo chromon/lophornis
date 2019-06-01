@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:lophornis/constants/app_colors.dart';
 
 enum Device {
   MAC, WIN
@@ -29,7 +29,7 @@ class Conversation {
   const Conversation({
     @required this.avatar,
     @required this.title,
-    this.titleColor: AppColor.ConversationTitleColor,
+    this.titleColor: AppColors.ConversationTitleColor,
     this.desc,
     @required this.updateAt,
     this.isMute: false,
