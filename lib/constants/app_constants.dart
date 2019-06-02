@@ -40,6 +40,11 @@ class AppConstants {
   // 图标大小
   static const FullWidthIconButtonIconSize = 25.0;
 
+  // 聊天页底栏高度
+  static const ChatBoxHeight = 64.0;
+  // 聊天页底栏图标大小
+  static const ActionIconSizeLarge = 32.0;
+
   // 会话 item 弹出菜单
   static const String MENU_MARK_AS_UNREAD = 'MENU_MARK_AS_UNREAD';
   static const String MENU_MARK_AS_UNREAD_VALUE = '标为未读';

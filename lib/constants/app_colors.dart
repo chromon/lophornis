@@ -67,4 +67,8 @@ class AppColors {
   static const ButtonArrowColor = 0xffadadad;
   // 看一看 按钮上 new 提示标签
   static const NewTagBg = 0xfffa5251;
+
+  //  ---------------------- 聊天页 ----------------------
+  // 聊天界面底部背景颜色
+  static const ChatBoxBg = 0xfff7f7f7;
 }

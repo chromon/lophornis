@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import '../modal/conversation.dart' show Conversation, Device, ConversationPageData;
+import 'package:lophornis/constants/app.routes.dart';
+import 'package:lophornis/modal/conversation.dart' show Conversation, Device, ConversationPageData;
 
 // 会话项
 class _ConversationItem extends StatelessWidget {
@@ -169,7 +170,11 @@ class _ConversationItem extends StatelessWidget {
       // 会话背景颜色
       color: Color(AppColors.ConversationItemBg),
       child: InkWell(
-        onTap: () {print('打开，${conversation.title}');},
+        onTap: () {
+          // 跳转到聊天页面
+          print('打开，${conversation.title}');
+          Navigator.pushNamed(context, Routes.Chat);
+        },
         onTapDown: (TapDownDetails details) {
           // 点击位置
           tapPos = details.globalPosition;

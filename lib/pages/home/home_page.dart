@@ -4,10 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import 'package:lophornis/home/contacts_page.dart';
-import 'package:lophornis/home/conversation_page.dart';
-import 'package:lophornis/home/discovery_page.dart';
-import 'package:lophornis/home/functions_page.dart';
+import 'package:lophornis/pages/home/contacts_page.dart';
+import 'package:lophornis/pages/home/conversation_page.dart';
+import 'package:lophornis/pages/home/discovery_page.dart';
+import 'package:lophornis/pages/home/functions_page.dart';
 import 'package:lophornis/widget/home_navigation_widget.dart';
 import 'package:lophornis/widget/home_popupmenu_widget.dart';
 

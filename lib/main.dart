@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lophornis/pages/conversation/chat_page.dart';
 
-import 'package:lophornis/home/home_page.dart';
+import 'package:lophornis/pages/home/home_page.dart';
 import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app.routes.dart';
 
 void main() => runApp(MaterialApp(
   title: '微信',
@@ -10,5 +12,9 @@ void main() => runApp(MaterialApp(
     cardColor: Color(AppColors.CardBgColor),
     backgroundColor: Color(AppColors.BackgroundColor)
   ),
-  home: HomePage(),
+  initialRoute: Routes.Home,
+  routes: {
+    Routes.Home: (context) => HomePage(),
+    Routes.Chat: (context) => ChatPage()
+  },
 ));
