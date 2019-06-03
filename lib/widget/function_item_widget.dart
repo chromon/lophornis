@@ -14,6 +14,8 @@ class FunctionItemWidget extends StatelessWidget {
   // 列表项回调
   final VoidCallback onPressed;
 
+  // 是否显示头像
+  final bool showAvatar;
   // 是否显示分隔线
   final bool showDivider;
   // 描述信息
@@ -39,7 +41,8 @@ class FunctionItemWidget extends StatelessWidget {
     this.showDivider = false,
     this.desc,
     this.showArrow = true,
-    this.customWidget
+    this.customWidget,
+    this.showAvatar = true,
   }) : assert(iconPath != null),
        assert(title != null),
        assert(onPressed != null);
@@ -48,12 +51,26 @@ class FunctionItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // 分隔线
-    final Border _border = showDivider ? Border(
+    final Border _border = this.showDivider ? Border(
       bottom: BorderSide(
         color: const Color(AppColors.DividerColor),
         width: AppConstants.DividerWidth
       ),
     ) : null;
+
+    // 头像
+    final Widget _avatar = this.showAvatar ? Container(
+      child: Row(
+        children: <Widget>[
+          Image.asset(
+            iconPath,
+            width: AppConstants.FullWidthIconButtonIconSize,
+            height: AppConstants.FullWidthIconButtonIconSize,
+          ),
+          SizedBox(width: AppConstants.HORIZONTAL_PADDING,)
+        ],
+      ),
+    ) : Container();
 
     // 按钮右侧部分，判断是否需要添加标签（new tag），描述信息
     final _rightAreaElements = <Widget>[];
@@ -92,12 +109,7 @@ class FunctionItemWidget extends StatelessWidget {
     final _button = Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Image.asset(
-          iconPath,
-          width: AppConstants.FullWidthIconButtonIconSize,
-          height: AppConstants.FullWidthIconButtonIconSize,
-        ),
-        SizedBox(width: AppConstants.HORIZONTAL_PADDING,),
+        _avatar,
         Expanded(
           child: Container(
             height: HEIGHT,

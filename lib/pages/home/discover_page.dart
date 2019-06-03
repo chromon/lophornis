@@ -9,6 +9,7 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
+  
   // 分组之间的间距
   static const SEPARATE_SIZE = 10.0;
 
