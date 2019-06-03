@@ -32,7 +32,7 @@ class AppColors {
   // 会话页背景颜色
   static const ConversationBg = 0xffffffff;
   // 会话分隔线颜色
-  static const DividerColor = 0xffd5d5d5;
+  static const DividerColor = 0xffededed;
   // 通知角标背景颜色
   static const NotifyDotBg = 0xffff3e3d;
   // 通知角标文字颜色

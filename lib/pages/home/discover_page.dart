@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import "package:lophornis/widget/function_item_widget.dart";
 
-class DiscoveryPage extends StatefulWidget {
+class DiscoverPage extends StatefulWidget {
   @override
-  _DiscoveryPageState createState() => _DiscoveryPageState();
+  _DiscoverPageState createState() => _DiscoverPageState();
 }
 
-class _DiscoveryPageState extends State<DiscoveryPage> {
+class _DiscoverPageState extends State<DiscoverPage> {
   // 分组之间的间距
   static const SEPARATE_SIZE = 10.0;
 

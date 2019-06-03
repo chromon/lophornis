@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lophornis/pages/conversation/chat_page.dart';
 
+import 'package:lophornis/pages/conversation/chat_page.dart';
+import 'package:lophornis/pages/me/profile.dart';
 import 'package:lophornis/pages/home/home_page.dart';
+
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app.routes.dart';
 
@@ -15,6 +17,7 @@ void main() => runApp(MaterialApp(
   initialRoute: Routes.Home,
   routes: {
     Routes.Home: (context) => HomePage(),
-    Routes.Chat: (context) => ChatPage()
+    Routes.Chat: (context) => ChatPage(),
+    Routes.Profile: (context) => ProfilePage()
   },
 ));

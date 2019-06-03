@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/modal/conversation.dart';
 import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app.routes.dart';
-import 'package:lophornis/modal/conversation.dart' show Conversation, Device, ConversationPageData;
 
 // 会话项
-class _ConversationItem extends StatelessWidget {
+class ConversationItem extends StatelessWidget {
 
   final Conversation conversation;
   // 弹出菜单点击的位置
   var tapPos;
 
-  _ConversationItem({Key key, this.conversation, this.tapPos})
+  ConversationItem({Key key, this.conversation, this.tapPos})
     : assert(conversation != null),
     super(key: key);
 
@@ -186,8 +186,7 @@ class _ConversationItem extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.only(left: 16.0, right: 16.0),
           child: Container(
-            
-            
+ 
             child: Row(
               // 交叉轴居中
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -198,7 +197,7 @@ class _ConversationItem extends StatelessWidget {
                 // 标题和简介，自动扩展
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsetsDirectional.only(top: 10.0, bottom: 10.0),
+                    padding: const EdgeInsetsDirectional.only(top: 14.0, bottom: 14.0),
                     // 分隔线
                     decoration: BoxDecoration(
                       // 会话边框
@@ -236,104 +235,6 @@ class _ConversationItem extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-/*
- *  顶部设备登录状态控件
- */
-class _DeviceInfoItem extends StatelessWidget {
-
-  // 登录设备的类型
-  final Device device;
-
-  const _DeviceInfoItem({this.device: Device.WIN}) :
-    assert(device != null);
-
-  // 判断登录设备的类型选择不同的图标
-  int get iconName {
-    return device == Device.WIN ? 0xe6b3 : 0xe61c;
-  }
-
-  // 判断登录设备的系统类型
-  String get deviceName {
-    return device == Device.WIN ? 'Windows' : 'Mac';
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-        left: 24.0,
-        top: 14.0,
-        right: 24.0,
-        bottom: 14.0,
-      ),
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(width: AppConstants.DividerWidth, color: Color(AppColors.DividerColor)),
-          bottom: BorderSide(width: AppConstants.DividerWidth, color: Color(AppColors.DividerColor)),
-        ),
-        color: Color(AppColors.DeviceInfoItemBg)
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(width: 8.0,),
-          Icon(
-            IconData(
-              this.iconName,
-              fontFamily: AppConstants.IconFontFamily,
-            ), 
-            size: 24.0,
-            color: Color(AppColors.DeviceInfoItemIcon),
-          ),
-          SizedBox(width: 24.0,),
-          Text('$deviceName 微信已登录，手机通知已关闭。', style: AppStyles.DeviceInfoItemTextStyle,)
-        ],
-      ),
-    );
-  }
-}
-
-/*
- * 会话列表页 
- */
-class ConversationPage extends StatefulWidget {
-  _ConversationPageState createState() => _ConversationPageState();
-}
-
-class _ConversationPageState extends State<ConversationPage> {
-
-
-  final ConversationPageData data = ConversationPageData.mock();
-
-  @override
-  Widget build(BuildContext context) {
-
-    var mockConversations = data.conversations;
-
-    // 构建列表
-    return Container(
-      color: const Color(AppColors.ConversationBg),
-      child: ListView.builder(
-        // 索引值为列表项的位置
-        itemBuilder: (BuildContext  context, int index) {
-          if (data.device != null) {
-            // 需要显示其他设备登录
-            if(index == 0 ) {
-              return _DeviceInfoItem(device: data.device,);
-            }
-            return _ConversationItem(conversation: mockConversations[index - 1]);
-          } else {
-            // 没有在其他设备登录
-            return _ConversationItem(conversation: mockConversations[index]);
-          }
-        },
-        itemCount: data.device != null ? mockConversations.length + 1 : mockConversations.length,
       ),
     );
   }

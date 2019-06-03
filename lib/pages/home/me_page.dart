@@ -4,10 +4,11 @@ import 'package:flutter/widgets.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import 'package:lophornis/modal/me.dart' show me;
+import 'package:lophornis/constants/app.routes.dart';
+import 'package:lophornis/modal/me.dart';
 import 'package:lophornis/widget/function_item_widget.dart';
 
-class _Header extends StatelessWidget {
+class _MePageHeader extends StatelessWidget {
 
   static const AVATAR_SIZE = 64.0;
   static const SEPARATOR_SIZE = 16.0;
@@ -16,7 +17,10 @@ class _Header extends StatelessWidget {
   @override 
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: () {},
+      onPressed: () {
+         print('打开，个人信息.');
+          Navigator.pushNamed(context, Routes.Profile);
+      },
       color: AppColors.HeaderCardBg,
       padding: const EdgeInsets.only(
         left: 32.0,
@@ -71,12 +75,12 @@ class _Header extends StatelessWidget {
   }
 }
 
-class FunctionsPage extends StatefulWidget {
+class MePage extends StatefulWidget {
   @override
-  _FunctionsPageState createState() => _FunctionsPageState();
+  _MePageState createState() => _MePageState();
 }
 
-class _FunctionsPageState extends State<FunctionsPage> {
+class _MePageState extends State<MePage> {
 
   static const SEPARATOR_SIZE = 10.0;
 
@@ -87,7 +91,7 @@ class _FunctionsPageState extends State<FunctionsPage> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            _Header(),
+            _MePageHeader(),
             SizedBox(height: SEPARATOR_SIZE,),
             FunctionItemWidget(
               iconPath: 'assets/images/ic_wallet.png',
