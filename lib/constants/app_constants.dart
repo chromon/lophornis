@@ -18,7 +18,7 @@ class AppConstants {
   // 未读消息红点大小
   static const UnreadMsgDotSize = 12.0;
   // 会话勿扰模式图标大小
-  static const ConversationMuteIconSize = 18.0;
+  static const ChatsMuteIconSize = 18.0;
   // 顶部设备登录信息高度
   static const DeviceInfoItemHeight = 32.0;
 

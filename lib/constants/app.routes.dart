@@ -8,4 +8,6 @@ class Routes {
   static const Profile = '/profile';
   // 设置页
   static const Settings = '/settings';
+  // 新的朋友页
+  static const NewFriends = '/new_friends';
 }

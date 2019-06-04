@@ -8,13 +8,13 @@ class AppStyles {
   // 会话标题样式
   static const TitleStyle = TextStyle(
     fontSize: 16.0,
-    color: Color(AppColors.ConversationTitleColor)
+    color: Color(AppColors.ChatsTitleColor)
   );
 
   // 会话描述样式
   static const DescStyle = TextStyle(
     fontSize: AppConstants.DesTextSize,
-    color: Color(AppColors.ConversationDescColor)
+    color: Color(AppColors.ChatsDescColor)
   );
 
   // 未读消息角标样式

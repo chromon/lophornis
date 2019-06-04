@@ -5,7 +5,7 @@ import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/pages/home/contacts_page.dart';
-import 'package:lophornis/pages/home/conversations_page.dart';
+import 'package:lophornis/pages/home/chats_page.dart';
 import 'package:lophornis/pages/home/discover_page.dart';
 import 'package:lophornis/pages/home/me_page.dart';
 import 'package:lophornis/widget/home_navigation_widget.dart';
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
     // 初始化导航页面内容
     _pages = [
         // 会话页
-        ConversationsPage(),
+        ChatsPage(),
         // 联系人页
         ContactsPage(),
         // 发现页

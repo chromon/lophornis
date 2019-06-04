@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:lophornis/modal/conversation.dart';
+import 'package:lophornis/modal/chats.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app.routes.dart';
 
 // 会话项
-class ConversationItem extends StatelessWidget {
+class ChatItem extends StatelessWidget {
 
-  final Conversation conversation;
+  final Chat chat;
   // 弹出菜单点击的位置
   var tapPos;
 
-  ConversationItem({Key key, this.conversation, this.tapPos})
-    : assert(conversation != null),
+  ChatItem({Key key, this.chat, this.tapPos})
+    : assert(chat != null),
     super(key: key);
 
   // 实现会话弹出菜单
@@ -52,12 +52,12 @@ class ConversationItem extends StatelessWidget {
 
     // 会话头像初始化
     Widget avatar;
-    if (conversation.isAvatarFromNet()) {
+    if (chat.isAvatarFromNet()) {
       // 来自网络
       avatar = ClipRRect(
         borderRadius: BorderRadius.circular(AppConstants.AvatarRadius),
         child: Image.network(
-          conversation.avatar,
+          chat.avatar,
           width: AppConstants.ConversationAvatarSize,
           height: AppConstants.ConversationAvatarSize,
         ),
@@ -67,7 +67,7 @@ class ConversationItem extends StatelessWidget {
       avatar = ClipRRect(
         borderRadius: BorderRadius.circular(AppConstants.AvatarRadius),
         child: Image.asset(
-          conversation.avatar,
+          chat.avatar,
           width: AppConstants.ConversationAvatarSize,
           height: AppConstants.ConversationAvatarSize,
         ),
@@ -76,12 +76,12 @@ class ConversationItem extends StatelessWidget {
 
     // 头像及角标容器
     Widget avatarContainer;
-    if (conversation.unreadMsgCount > 0) {
+    if (chat.unreadMsgCount > 0) {
       // 存在未读消息
       
       // 未读消息角标
       Widget unreadMsgCountText;
-      if (conversation.displayDot) {
+      if (chat.displayDot) {
         unreadMsgCountText = Container(
           width: AppConstants.UnreadMsgDotSize,
           height: AppConstants.UnreadMsgDotSize,
@@ -104,7 +104,7 @@ class ConversationItem extends StatelessWidget {
           ),
           // 未读消息数量
           child: Text(
-            conversation.unreadMsgCount.toString(), 
+            chat.unreadMsgCount.toString(), 
             style: AppStyles.UnreadMsgCountDotStyle
           ),
         );
@@ -118,8 +118,8 @@ class ConversationItem extends StatelessWidget {
           avatar,
           // 自定义角标位置
           Positioned(
-            right: conversation.displayDot ? -4.0 : -6.0,
-            top: conversation.displayDot ? -4.0 : -6.0,
+            right: chat.displayDot ? -4.0 : -6.0,
+            top: chat.displayDot ? -4.0 : -6.0,
             child: unreadMsgCountText,
           )
         ],
@@ -133,14 +133,14 @@ class ConversationItem extends StatelessWidget {
     // 会话 item 右边部分，包括时间和勿扰图标
     var _rightArea = <Widget>[
       // 会话时间
-      Text(conversation.updateAt, style: AppStyles.DescStyle),
+      Text(chat.updateAt, style: AppStyles.DescStyle),
       Container(height: 10.0),
       // 定义一个空白盒子用于站位，功能同上
       // SizedBox(height: 10.0)
     ];
 
     // 判断是否是勿扰模式
-    if (conversation.isMute) {
+    if (chat.isMute) {
       _rightArea.add(
         // 添加勿扰模式图标 —— 正常
         Icon(
@@ -148,8 +148,8 @@ class ConversationItem extends StatelessWidget {
             0xe755,
             fontFamily: AppConstants.IconFontFamily,
           ),
-          color: Color(AppColors.ConversationMuteIcon),
-          size: AppConstants.ConversationMuteIconSize,
+          color: Color(AppColors.ChatsMuteIcon),
+          size: AppConstants.ChatsMuteIconSize,
         )
       );
     } else {
@@ -161,18 +161,18 @@ class ConversationItem extends StatelessWidget {
             fontFamily: AppConstants.IconFontFamily,
           ),
           color: Colors.transparent,
-          size: AppConstants.ConversationMuteIconSize,
+          size: AppConstants.ChatsMuteIconSize,
         )
       );
     }
 
     return Material(
       // 会话背景颜色
-      color: Color(AppColors.ConversationItemBg),
+      color: Color(AppColors.ChatsItemBg),
       child: InkWell(
         onTap: () {
           // 跳转到聊天页面
-          print('打开，${conversation.title}');
+          print('打开，${chat.title}');
           Navigator.pushNamed(context, Routes.Chat);
         },
         onTapDown: (TapDownDetails details) {
@@ -215,10 +215,10 @@ class ConversationItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               // 会话标题
-                              Text(conversation.title, style: AppStyles.TitleStyle),
+                              Text(chat.title, style: AppStyles.TitleStyle),
                               SizedBox(height: 2.0,),
                               // 会话简介
-                              Text(conversation.desc, style: AppStyles.DescStyle, maxLines: 1,)
+                              Text(chat.desc, style: AppStyles.DescStyle, maxLines: 1,)
                             ],
                           ),
                         ),

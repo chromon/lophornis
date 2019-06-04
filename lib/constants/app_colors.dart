@@ -24,13 +24,13 @@ class AppColors {
 
   // ---------------------- 会话页 ----------------------
   // 会话标题默认颜色
-  static const ConversationTitleColor = 0xff181818;
+  static const ChatsTitleColor = 0xff181818;
   // 会话简介默认颜色
-  static const ConversationDescColor = 0xff9e9e9e;
+  static const ChatsDescColor = 0xff9e9e9e;
   // 会话项默认背景颜色
-  static const ConversationItemBg = 0xffffffff;
+  static const ChatsItemBg = 0xffffffff;
   // 会话页背景颜色
-  static const ConversationBg = 0xffffffff;
+  static const ChatsBg = 0xffffffff;
   // 会话分隔线颜色
   static const DividerColor = 0xffededed;
   // 通知角标背景颜色
@@ -38,7 +38,7 @@ class AppColors {
   // 通知角标文字颜色
   static const NotifyDotText = 0xffffffff;
   // 会话勿扰模式图标颜色
-  static const ConversationMuteIcon = 0xffd8d8d8;
+  static const ChatsMuteIcon = 0xffd8d8d8;
   // 顶部设备登录信息背景颜色
   static const DeviceInfoItemBg = 0xffededed;
   // 顶部设备登录信息字体颜色

@@ -39,12 +39,18 @@ class _ContactsPageState extends State<ContactsPage> {
   // 存储索引项与索引项高度位置对应关系
   final Map _letterPosMap = {INDEX_BAR_WORDS[0] : 0.0};
 
+  void onpress() {
+    
+  }
+
   // 上部功能列表（固定）
   final List<ContactItem> _functionItems = [
     ContactItem(
       avatar: 'assets/images/ic_new_friend.png',
       title: '新的朋友',
-      onPressed: () { print('新朋友'); },
+      onPressed: () { 
+        print('新朋友'); 
+      },
     ),
     ContactItem(
       avatar: 'assets/images/ic_group_chat.png',

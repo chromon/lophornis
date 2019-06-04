@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:lophornis/modal/conversation.dart';
+import 'package:lophornis/modal/chats.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_styles.dart';

@@ -31,6 +31,8 @@ class ContactItem extends StatelessWidget {
     this.onPressed
   });
 
+
+
   // 判断头像是否是从网络获取
   bool get _isAvatarFromNet {
     return this.avatar.startsWith('http') || this.avatar.startsWith('https');

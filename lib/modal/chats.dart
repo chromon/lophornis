@@ -6,7 +6,7 @@ enum Device {
 }
 
 // 会话
-class Conversation {
+class Chat {
 
   // 会话头像
   final String avatar;
@@ -26,10 +26,10 @@ class Conversation {
   final bool displayDot;
 
   // 构造方法初始化数据
-  const Conversation({
+  const Chat({
     @required this.avatar,
     @required this.title,
-    this.titleColor: AppColors.ConversationTitleColor,
+    this.titleColor: AppColors.ChatsTitleColor,
     this.desc,
     @required this.updateAt,
     this.isMute: false,
@@ -50,25 +50,25 @@ class Conversation {
 }
 
 // 会话数据
-class ConversationPageData {
+class ChatPageData {
 
   final Device device;
-  final List<Conversation> conversations;
+  final List<Chat> chats;
 
-  const ConversationPageData({
+  const ChatPageData({
     this.device,
-    this.conversations,
+    this.chats,
   });
 
   static mock() {
-    return ConversationPageData(
+    return ChatPageData(
         // device: Device.WIN, conversations: mockConversations);
-        device: null, conversations: mockConversations);
+        device: null, chats: mockChats);
   }
 
   // 会话列表详细信息
-  static List<Conversation> mockConversations = [
-    const Conversation(
+  static List<Chat> mockChats = [
+    const Chat(
       avatar: 'assets/images/ic_tx_news.png',
       title: '腾讯新闻',
       desc: '豪车与出租车刮擦 俩车主划拳定责',
@@ -76,7 +76,7 @@ class ConversationPageData {
       isMute: false,
       unreadMsgCount: 10
     ),
-    const Conversation(
+    const Chat(
       avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
@@ -84,7 +84,7 @@ class ConversationPageData {
       isMute: true,
       unreadMsgCount: 0
     ),
-    const Conversation(
+    const Chat(
       avatar: 'assets/images/ic_wx_games.png',
       title: '微信游戏',
       desc: '今天一起出去玩吗？',
@@ -93,7 +93,7 @@ class ConversationPageData {
       unreadMsgCount: 2,
       displayDot: true,
     ),
-    const Conversation(
+    const Chat(
       avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
@@ -101,7 +101,7 @@ class ConversationPageData {
       isMute: false,
       unreadMsgCount: 0
     ),
-    const Conversation(
+    const Chat(
       avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
@@ -109,7 +109,7 @@ class ConversationPageData {
       isMute: true,
       unreadMsgCount: 0
     ),
-    const Conversation(
+    const Chat(
       avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
@@ -117,7 +117,7 @@ class ConversationPageData {
       isMute: false,
       unreadMsgCount: 30
     ),
-    const Conversation(
+    const Chat(
       avatar: 'assets/images/default_nor_avatar.png',
       title: 'John',
       desc: '今天一起出去玩吗？',
