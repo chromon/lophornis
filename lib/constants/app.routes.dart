@@ -6,4 +6,6 @@ class Routes {
   static const Chat = '/chat';
   // 个人信息页
   static const Profile = '/profile';
+  // 设置页
+  static const Settings = '/settings';
 }

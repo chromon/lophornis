@@ -60,7 +60,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(width: 6.0,),
                   ],
                 ),
-                onPressed: () {},
+                onPressed: () {print('点击了头像');},
               ),
               SizedBox(height: SEPARATE_SIZE),
               FunctionItemWidget(
@@ -76,13 +76,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
                 onPressed: () {
-                  print('点击了扫一扫');
+                  print('点击了昵称');
                 },
               ),
               FunctionItemWidget(
                 iconPath: '',
                 showAvatar: false,
                 title: '微信号',
+                showDivider: true,
                 customWidget: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
@@ -90,7 +91,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(width: 6.0,),
                   ],
                 ),
-                onPressed: () {},
+                onPressed: () {print('点击了微信号');},
               ),
               FunctionItemWidget(
                 iconPath: '',
@@ -108,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(width: 6.0,)
                   ],
                 ),
-                onPressed: () {},
+                onPressed: () {print('点击了二维码名片');},
               ),
               FunctionItemWidget(
                 iconPath: '',
@@ -122,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 showAvatar: false,
                 title: '我的地址',
                 showDivider: true,
-                onPressed: () {},
+                onPressed: () {print('点击了我的地址');},
               ),
             ],
           ),

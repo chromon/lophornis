@@ -18,8 +18,8 @@ class _MePageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {
-         print('打开，个人信息.');
-          Navigator.pushNamed(context, Routes.Profile);
+        print('打开，个人信息.');
+        Navigator.pushNamed(context, Routes.Profile);
       },
       color: AppColors.HeaderCardBg,
       padding: const EdgeInsets.only(
@@ -131,6 +131,7 @@ class _MePageState extends State<MePage> {
               desc: '账号未保护',
               onPressed: () {
                 print('打开设置');
+                Navigator.pushNamed(context, Routes.Settings);
               },
             ),
           ],

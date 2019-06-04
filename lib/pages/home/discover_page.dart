@@ -9,7 +9,7 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
-  
+
   // 分组之间的间距
   static const SEPARATE_SIZE = 10.0;
 
@@ -34,7 +34,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   SizedBox(width: 12.0,),
                 ],
               ),
-              onPressed: () {},
+              onPressed: () {print('点击了朋友圈');},
             ),
             SizedBox(height: SEPARATE_SIZE),
             FunctionItemWidget(
@@ -48,7 +48,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
             FunctionItemWidget(
               iconPath: 'assets/images/ic_shake_phone.png',
               title: '摇一摇',
-              onPressed: () {},
+              onPressed: () {print('点击了摇一摇');},
             ),
             SizedBox(height: SEPARATE_SIZE),
             FunctionItemWidget(
@@ -60,19 +60,19 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   FunctionItemWidget.tag("NEW"),
                 ],
               ),
-              onPressed: () {},
+              onPressed: () {print('点击了看一看');},
             ),
             FunctionItemWidget(
               iconPath: 'assets/images/ic_quick_search.png',
               title: '搜一搜',
-              onPressed: () {},
+              onPressed: () {print('点击了搜一搜');},
             ),
             SizedBox(height: SEPARATE_SIZE),
             FunctionItemWidget(
               iconPath: 'assets/images/ic_people_nearby.png',
               title: '附近的人',
               showDivider: true,
-              onPressed: () {},
+              onPressed: () {print('点击了附近的人');},
             ),
             FunctionItemWidget(
               iconPath: 'assets/images/ic_bottle_msg.png',
@@ -84,7 +84,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               iconPath: 'assets/images/ic_shopping.png',
               title: '购物',
               showDivider: true,
-              onPressed: () {},
+              onPressed: () {print('点击了购物');},
             ),
             FunctionItemWidget(
               iconPath: 'assets/images/ic_game_entry.png',
@@ -98,7 +98,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   SizedBox(width: 12.0,)
                 ],
               ),
-              onPressed: () {},
+              onPressed: () {print('点击了游戏');},
             ),
             SizedBox(height: SEPARATE_SIZE),
             FunctionItemWidget(
