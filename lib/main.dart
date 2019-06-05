@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lophornis/pages/chats/chat_page.dart';
+import 'package:lophornis/pages/contact/new_friends.dart';
 import 'package:lophornis/pages/me/profile.dart';
 import 'package:lophornis/pages/home/home_page.dart';
 
@@ -21,5 +22,6 @@ void main() => runApp(MaterialApp(
     Routes.Chat: (context) => ChatPage(),
     Routes.Profile: (context) => ProfilePage(),
     Routes.Settings: (context) => SettingsPage(),
+    Routes.NewFriends: (context) => NewFriendsPage(),
   },
 ));

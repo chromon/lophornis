@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
+import 'package:lophornis/constants/app.routes.dart';
 import 'package:lophornis/modal/contacts.dart' show Contact, ContactsPageData;
 import 'package:lophornis/widget/contact_item_widget.dart';
 
@@ -39,35 +40,38 @@ class _ContactsPageState extends State<ContactsPage> {
   // 存储索引项与索引项高度位置对应关系
   final Map _letterPosMap = {INDEX_BAR_WORDS[0] : 0.0};
 
-  void onpress() {
-    
+  List<ContactItem> functionItems({BuildContext context}) {
+      
+    // 上部功能列表（固定）
+    final List<ContactItem> _functionItems = [
+      ContactItem(
+        avatar: 'assets/images/ic_new_friend.png',
+        title: '新的朋友',
+        onPressed: () { 
+          print('新的朋友'); 
+          Navigator.pushNamed(context, Routes.NewFriends);
+        },
+      ),
+      ContactItem(
+        avatar: 'assets/images/ic_group_chat.png',
+        title: '群聊',
+        onPressed: () { print('群聊'); },
+      ),
+      ContactItem(
+        avatar: 'assets/images/ic_tag.png',
+        title: '标签',
+        onPressed: () { print('标签'); },
+      ),
+      ContactItem(
+        avatar: 'assets/images/ic_public_account.png',
+        title: '公众号',
+        onPressed: () { print('公众号'); },
+      ),
+    ];
+
+    return _functionItems;
   }
 
-  // 上部功能列表（固定）
-  final List<ContactItem> _functionItems = [
-    ContactItem(
-      avatar: 'assets/images/ic_new_friend.png',
-      title: '新的朋友',
-      onPressed: () { 
-        print('新朋友'); 
-      },
-    ),
-    ContactItem(
-      avatar: 'assets/images/ic_group_chat.png',
-      title: '群聊',
-      onPressed: () { print('群聊'); },
-    ),
-    ContactItem(
-      avatar: 'assets/images/ic_tag.png',
-      title: '标签',
-      onPressed: () { print('标签'); },
-    ),
-    ContactItem(
-      avatar: 'assets/images/ic_public_account.png',
-      title: '公众号',
-      onPressed: () { print('公众号'); },
-    ),
-  ];
 
   // 初始化
   @override
@@ -81,7 +85,7 @@ class _ContactsPageState extends State<ContactsPage> {
     _scrollController = new ScrollController();
     
     // 计算用于 Indexbar进行定位的关键通讯录列表项的位置
-    var _totalPos = _functionItems.length * ContactItem.itemHeight(false);
+    var _totalPos = functionItems().length * ContactItem.itemHeight(false);
     for (int i = 0; i < _contacts.length; i++) {
       bool _hasIndexItemTitle = true;
       // 前后两联系人列表项索引值相同则没有索引项
@@ -194,12 +198,12 @@ class _ContactsPageState extends State<ContactsPage> {
         controller: _scrollController,
         itemBuilder: (BuildContext context, int index) {
           // 索引值小于功能列表长度时返回的是功能列表
-          if (index < _functionItems.length) {
-            return _functionItems[index];
+          if (index < functionItems(context:context).length) {
+            return functionItems(context:context)[index];
           }
 
           // 联系人列表的索引值应该是 当前索引 - 上部功能按钮的数量
-          int _contactIndex = index - _functionItems.length;
+          int _contactIndex = index - functionItems(context:context).length;
           // 是否显示分组标签，默认第一条显示
           bool _hasIndexItemTitle = true;
           // 当前联系人信息
@@ -217,7 +221,7 @@ class _ContactsPageState extends State<ContactsPage> {
           return _contactItem;
         },
         // 列表长度为联系人数量 + 上部功能列表的数量
-        itemCount: _contacts.length + _functionItems.length,
+        itemCount: _contacts.length + functionItems(context:context).length,
       ),
       // stack 第二项检索控件
       Positioned(

@@ -9,7 +9,7 @@ class _NewFriendsPageState extends State<NewFriendsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      color: Colors.lightBlue,
     );
   }
 }
