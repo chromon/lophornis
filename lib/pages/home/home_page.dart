@@ -60,7 +60,9 @@ class _HomePageState extends State<HomePage> {
           size: AppConstants.ActionIconSize,
           color: const Color(AppColors.ActionIconColor),
         ),
-        onPressed: () { print('点击了搜索按钮'); },
+        onPressed: () { 
+          print('点击了搜索按钮'); 
+        },
       ),
       SizedBox(width: 16.0,),
 
