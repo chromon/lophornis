@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
+import 'package:lophornis/constants/app_routes.dart';
 
 // 联系人项
 class ContactItem extends StatelessWidget {
@@ -30,8 +31,6 @@ class ContactItem extends StatelessWidget {
     this.indexItemTitle,
     this.onPressed
   });
-
-
 
   // 判断头像是否是从网络获取
   bool get _isAvatarFromNet {
@@ -78,7 +77,9 @@ class ContactItem extends StatelessWidget {
     Widget _item = InkWell(
       onTap: () {
          print('联系人：$title');
+         Navigator.pushNamed(context, Routes.NewFriends);
       },
+      // onTap: onPressed,
       child: Container(
         margin: const EdgeInsets.only(left: MARGIN_HORIZENTAL),
         child: Row(

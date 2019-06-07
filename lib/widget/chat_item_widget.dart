@@ -4,7 +4,7 @@ import 'package:lophornis/modal/chats.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import 'package:lophornis/constants/app.routes.dart';
+import 'package:lophornis/constants/app_routes.dart';
 
 // 会话项
 class ChatItem extends StatelessWidget {

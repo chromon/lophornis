@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import 'package:lophornis/constants/app.routes.dart';
+import 'package:lophornis/constants/app_routes.dart';
 import 'package:lophornis/modal/me.dart';
 import 'package:lophornis/widget/function_item_widget.dart';
 

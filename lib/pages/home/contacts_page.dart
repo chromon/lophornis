@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import 'package:lophornis/constants/app.routes.dart';
 import 'package:lophornis/modal/contacts.dart' show Contact, ContactsPageData;
 import 'package:lophornis/widget/contact_item_widget.dart';
 
@@ -45,25 +44,25 @@ class _ContactsPageState extends State<ContactsPage> {
     ContactItem(
       avatar: 'assets/images/ic_new_friend.png',
       title: '新的朋友',
-      onPressed: () { 
-        print('新的朋友'); 
-        // Navigator.pushNamed(context, Routes.NewFriends);
-      },
+      // onPressed: () { 
+      //   print('新的朋友'); 
+      //   // Navigator.pushNamed(super.context, Routes.NewFriends);
+      // },
     ),
     ContactItem(
       avatar: 'assets/images/ic_group_chat.png',
       title: '群聊',
-      onPressed: () { print('群聊'); },
+      // onPressed: () { print('群聊'); },
     ),
     ContactItem(
       avatar: 'assets/images/ic_tag.png',
       title: '标签',
-      onPressed: () { print('标签'); },
+      // onPressed: () { print('标签'); },
     ),
     ContactItem(
       avatar: 'assets/images/ic_public_account.png',
       title: '公众号',
-      onPressed: () { print('公众号'); },
+      // onPressed: () { print('公众号'); },
     ),
   ];
 
@@ -211,9 +210,6 @@ class _ContactsPageState extends State<ContactsPage> {
             avatar: _contact.avatar, 
             title: _contact.name, 
             indexItemTitle: _hasIndexItemTitle ? _contact.nameIndex : null,
-            onPressed: () {
-              print(_contact.name);
-            },
           );
           
           return _contactItem;

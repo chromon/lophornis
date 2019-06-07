@@ -56,4 +56,7 @@ class AppConstants {
   static const String MENU_PIN_PA_TO_TOP_VALUE = '置顶公众号';
   static const String MENU_UNSUBSCRIBE = 'MENU_UNSUBSCRIBE';
   static const String MENU_UNSUBSCRIBE_VALUE = '取消关注';
+
+  // 新建手机联系人间距
+  static const NewPhoneContact_PADDING = 8.0;
 }

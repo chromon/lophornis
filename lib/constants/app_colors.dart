@@ -71,4 +71,10 @@ class AppColors {
   //  ---------------------- 聊天页 ----------------------
   // 聊天界面底部背景颜色
   static const ChatBoxBg = 0xfff7f7f7;
+
+  // 新的朋友页
+  // 添加手机联系人图标按钮颜色
+  static const NewPhoneContact = 0xff46c11b;
+  // 联系人添加按钮颜色
+  static const AddContact = 0xff46c11b;
 }

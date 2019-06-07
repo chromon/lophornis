@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:lophornis/pages/chats/chat_page.dart';
-import 'package:lophornis/pages/contact/new_friends.dart';
+import 'package:lophornis/pages/contact/new_friends_page.dart';
 import 'package:lophornis/pages/me/profile.dart';
 import 'package:lophornis/pages/home/home_page.dart';
 
 import 'package:lophornis/constants/app_colors.dart';
-import 'package:lophornis/constants/app.routes.dart';
+import 'package:lophornis/constants/app_routes.dart';
 import 'package:lophornis/pages/me/settings.dart';
 
 void main() => runApp(MaterialApp(
