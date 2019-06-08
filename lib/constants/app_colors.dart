@@ -76,5 +76,7 @@ class AppColors {
   // 添加手机联系人图标按钮颜色
   static const NewPhoneContact = 0xff46c11b;
   // 联系人添加按钮颜色
-  static const AddContact = 0xff46c11b;
+  static const AddContactBorderColor = 0xff46c11b;
+  // 新的朋友已添加文字颜色
+  static const NewFriendAddedText = 0xff9e9e9e;
 }

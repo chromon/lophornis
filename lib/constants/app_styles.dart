@@ -67,4 +67,9 @@ class AppStyles {
     color: Colors.white,
     fontWeight: FontWeight.bold
   );
+
+  // 新的朋友已添加文字描述
+  static const NewFriendAddedTextStyle = TextStyle(
+    color: Color(AppColors.NewFriendAddedText),
+  );
 }
