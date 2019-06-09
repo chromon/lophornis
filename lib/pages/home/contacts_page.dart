@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
+import 'package:lophornis/constants/app_routes.dart';
 import 'package:lophornis/modal/contacts.dart' show Contact, ContactsPageData;
 import 'package:lophornis/widget/contact_item_widget.dart';
 
@@ -39,44 +40,55 @@ class _ContactsPageState extends State<ContactsPage> {
   // 存储索引项与索引项高度位置对应关系
   final Map _letterPosMap = {INDEX_BAR_WORDS[0] : 0.0};
 
-  // 上部功能列表（固定）
-  final List<ContactItem> _functionItems = [
-    ContactItem(
-      avatar: 'assets/images/ic_new_friend.png',
-      title: '新的朋友',
-      // onPressed: () { 
-      //   print('新的朋友'); 
-      //   // Navigator.pushNamed(super.context, Routes.NewFriends);
-      // },
-    ),
-    ContactItem(
-      avatar: 'assets/images/ic_group_chat.png',
-      title: '群聊',
-      // onPressed: () { print('群聊'); },
-    ),
-    ContactItem(
-      avatar: 'assets/images/ic_tag.png',
-      title: '标签',
-      // onPressed: () { print('标签'); },
-    ),
-    ContactItem(
-      avatar: 'assets/images/ic_public_account.png',
-      title: '公众号',
-      // onPressed: () { print('公众号'); },
-    ),
-  ];
+  _initFunctionItems(BuildContext context) {
+    List<ContactItem> _item = [
+      ContactItem(
+        avatar: 'assets/images/ic_new_friend.png',
+        title: '新的朋友',
+        onTap: () { 
+          print('新的朋友'); 
+          Navigator.pushNamed(context, Routes.NewFriends);
+        },
+      ),
+      ContactItem(
+        avatar: 'assets/images/ic_group_chat.png',
+        title: '群聊',
+        onTap: () { 
+          print('群聊');
+          Navigator.pushNamed(context, Routes.NewFriends); 
+        },
+      ),
+      ContactItem(
+        avatar: 'assets/images/ic_tag.png',
+        title: '标签',
+        onTap: () { print('标签'); },
+      ),
+      ContactItem(
+        avatar: 'assets/images/ic_public_account.png',
+        title: '公众号',
+        onTap: () { print('公众号'); },
+      ),
+    ];
 
+    return _item;
+  }
+
+  // 上部功能列表（固定）
+  List<ContactItem> _functionItems = [];
 
   // 初始化
   @override
   void initState() {
     super.initState();
+
     // 使用 .. 操作符可以实现链式编程
     _contacts..addAll(data.contacts)..addAll(data.contacts);
     // 按索引字母排序
     _contacts.sort((Contact a, Contact b) => a.nameIndex.compareTo(b.nameIndex));
     // 初始化列表滚动控制
     _scrollController = new ScrollController();
+
+    _functionItems = _initFunctionItems(context);
     
     // 计算用于 Indexbar进行定位的关键通讯录列表项的位置
     var _totalPos = _functionItems.length * ContactItem.itemHeight(false);

@@ -15,7 +15,7 @@ class ContactItem extends StatelessWidget {
   // 索引项标题
   final String indexItemTitle;
   // 一个空的回调方法，用来接收列表项的点击事件
-  final VoidCallback onPressed;
+  final GestureTapCallback onTap;
 
   // 列表项垂直边距
   static const double MARGIN_VERTICAL = 10.0;
@@ -29,7 +29,7 @@ class ContactItem extends StatelessWidget {
     @required this.avatar,
     @required this.title,
     this.indexItemTitle,
-    this.onPressed
+    this.onTap
   });
 
   // 判断头像是否是从网络获取
@@ -74,34 +74,38 @@ class ContactItem extends StatelessWidget {
     }
 
     // 联系人列表项主体部分（不包括索引项）
-    Widget _item = InkWell(
-      onTap: () {
-         print('联系人：$title');
-         Navigator.pushNamed(context, Routes.NewFriends);
-      },
-      // onTap: onPressed,
-      child: Container(
-        margin: const EdgeInsets.only(left: MARGIN_HORIZENTAL),
-        child: Row(
-          children: <Widget>[
-            // 联系人头像
-            _avatarIcon,
-            SizedBox(width: 16.0,),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(right: MARGIN_HORIZENTAL),
-                height: ContactItem.itemHeight(false),
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: AppConstants.DividerWidth, color: const Color(AppColors.DividerColor))
+    Widget _item = Material(
+      child: Ink(
+        child: InkWell(
+          // onTap: () {
+          //    print('联系人：$title');
+          //   //  Navigator.pushNamed(context, Routes.NewFriends);
+          // },
+          onTap: onTap,
+          child: Container(
+            margin: const EdgeInsets.only(left: MARGIN_HORIZENTAL),
+            child: Row(
+              children: <Widget>[
+                // 联系人头像
+                _avatarIcon,
+                SizedBox(width: 16.0,),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.only(right: MARGIN_HORIZENTAL),
+                    height: ContactItem.itemHeight(false),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: AppConstants.DividerWidth, color: const Color(AppColors.DividerColor))
+                      ),
+                    ),
+                    // 联系人名字
+                    child: Text(title, style: AppStyles.TitleStyle, maxLines: 1,),
                   ),
                 ),
-                // 联系人名字
-                child: Text(title, style: AppStyles.TitleStyle, maxLines: 1,),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

@@ -13,6 +13,7 @@ class ChatItem extends StatelessWidget {
   // 弹出菜单点击的位置
   var tapPos;
 
+  // key主要是用来在 widget tree 上标识同类控件的不同对象，
   ChatItem({Key key, this.chat, this.tapPos})
     : assert(chat != null),
     super(key: key);
