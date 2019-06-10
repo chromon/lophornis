@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // ---------------------- 首页 ----------------------
+  // 颜色
+  static const MainColor = 0xff09B83E;
   // 主题颜色
   static const PrimaryColor = 0xffebebeb;
   // 背景颜色
@@ -16,7 +18,7 @@ class AppColors {
   // 卡片背景颜色
   static const CardBgColor = 0xffffffff;
   // 底部 tab 高亮状态颜色
-  static const TabIconActive = 0xff46c11b;
+  static const TabIconActive = 0xff09B83E;
   // 底部 tab 正常状态颜色
   static const TabIconNormal = 0xff999999;
   // 顶部 appbar 弹出菜单背景颜色 

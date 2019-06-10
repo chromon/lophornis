@@ -72,4 +72,15 @@ class AppStyles {
   static const NewFriendAddedTextStyle = TextStyle(
     color: Color(AppColors.NewFriendAddedText),
   );
+
+  // 欢迎页语言选择图标
+  static const LanguageStyle = TextStyle(
+    fontSize: 16.0,
+    color: Colors.white,
+  );
+
+  // 欢迎页按钮文字样式
+  static const WelcomeStyle = TextStyle(
+    fontSize: 18.0,
+  );
 }
