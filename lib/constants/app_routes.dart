@@ -1,9 +1,11 @@
 
 class Routes {
-  // 主页
-  static const Home = '/';
   // 欢迎页
-  static const Welcome = '/welcome';
+  static const Welcome = '/';
+  // 主页
+  static const Home = '/home';
+  // 登录页
+  static const Login = '/login';
   // 聊天页
   static const Chat = '/chat';
   // 个人信息页

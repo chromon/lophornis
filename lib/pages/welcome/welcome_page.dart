@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_routes.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -64,7 +65,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       child: Text('登录', style: AppStyles.WelcomeStyle,),
                       textColor: Colors.white,
                       color: Color(AppColors.MainColor),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.Login);
+                      },
                     ),
                     FlatButton(
                       padding: EdgeInsets.only(
