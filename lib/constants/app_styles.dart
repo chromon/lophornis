@@ -83,4 +83,8 @@ class AppStyles {
   static const WelcomeStyle = TextStyle(
     fontSize: 18.0,
   );
+  // 登录页标题样式
+  static const LoginTitleStyle = TextStyle(
+    fontSize: 24.0,
+  );
 }

@@ -81,4 +81,7 @@ class AppColors {
   static const AddContactBorderColor = 0xff46c11b;
   // 新的朋友已添加文字颜色
   static const NewFriendAddedText = 0xff9e9e9e;
+
+  // 登录页链接颜色
+  static const LoginLinkTextColor = 0xff576B95;
 }
