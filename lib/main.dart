@@ -6,6 +6,7 @@ import 'package:lophornis/pages/welcome/login_page.dart';
 import 'package:lophornis/pages/welcome/welcome_page.dart';
 import 'package:lophornis/pages/me/profile.dart';
 import 'package:lophornis/pages/home/home_page.dart';
+import 'package:lophornis/pages/welcome/splash_page.dart';
 
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_routes.dart';
@@ -18,8 +19,8 @@ void main() => runApp(MaterialApp(
     cardColor: Color(AppColors.CardBgColor),
     backgroundColor: Color(AppColors.BackgroundColor)
   ),
-  initialRoute: Routes.Welcome,
-  // home: WelcomePage(),
+  // initialRoute: Routes.Welcome,
+  home: SplashPage(),
   routes: {
     Routes.Welcome: (context) => WelcomePage(),
     Routes.Login: (context) => LoginPage(),

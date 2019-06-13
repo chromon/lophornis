@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:lophornis/constants/app_routes.dart';
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
@@ -47,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
           Expanded(
             child: SingleChildScrollView(
               child: Theme(
+                // 输入框先划线颜色，激活时颜色和未激活时颜色
                 data: ThemeData(primaryColor: Color(AppColors.MainColor), hintColor: Colors.black12),
                 child: Container(
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
@@ -123,7 +125,9 @@ class _LoginPageState extends State<LoginPage> {
                               color: Color(AppColors.MainColor),
                               height: 48.0,
                               child: Text('下一步', style: TextStyle(fontSize: 22.0, color: Colors.white),),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamedAndRemoveUntil(context, Routes.Home, (Route<dynamic> route) => false);
+                              },
                             ),
                           ),
                         ],
