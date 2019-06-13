@@ -45,92 +45,95 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Theme(
-              data: ThemeData(primaryColor: Color(AppColors.MainColor), hintColor: Colors.black12),
-              child: Container(
-                padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(
-                        top: 40.0,
-                        bottom: 40.0,
+            child: SingleChildScrollView(
+              child: Theme(
+                data: ThemeData(primaryColor: Color(AppColors.MainColor), hintColor: Colors.black12),
+                child: Container(
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(
+                          top: 40.0,
+                          bottom: 40.0,
+                        ),
+                        child: Text('手机号登录', style: AppStyles.LoginTitleStyle,),
                       ),
-                      child: Text('手机号登录', style: AppStyles.LoginTitleStyle,),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text('国家/地区', style: TextStyle(fontSize: 20.0),),
-                        FlatButton(
-                          child: Text('中国（+86）', style: TextStyle(fontSize: 20.0, color: Color(AppColors.MainColor)),),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10.0),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text('手机号 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
-                        Expanded(
-                          child: 
-                            TextField(
-                              controller: phoneController,
-                              keyboardType: TextInputType.number,
-                              // maxLength: 11,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(5.0),
-                                prefixText: '+86 ',
-                                prefixStyle: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor)),
-                                // fillColor: Colors.lightBlue,
-                                // filled: true,
-                                // border: 
-                              ),
-                              cursorColor: Color(AppColors.MainColor),
-                            ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text('用', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
-                        InkWell(
-                          child: Text('微信号', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
-                          onTap: () {},
-                        ),
-                        Text('/', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
-                        InkWell(
-                          child: Text('QQ号', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
-                          onTap: () {},
-                        ),
-                        Text('/', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
-                        InkWell(
-                          child: Text('邮箱', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
-                          onTap: () {},
-                        ),
-                        Text('登录', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
-                      ],
-                    ),
-                    SizedBox(height: 64.0),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: MaterialButton(
-                            color: Color(AppColors.MainColor),
-                            height: 48.0,
-                            child: Text('下一步', style: TextStyle(fontSize: 22.0, color: Colors.white),),
+                      Row(
+                        children: <Widget>[
+                          Text('国家/地区', style: TextStyle(fontSize: 20.0),),
+                          FlatButton(
+                            child: Text('中国（+86）', style: TextStyle(fontSize: 20.0, color: Color(AppColors.MainColor)),),
                             onPressed: () {},
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      SizedBox(height: 10.0),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text('手机号 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
+                          Expanded(
+                            child: 
+                              TextField(
+                                controller: phoneController,
+                                keyboardType: TextInputType.number,
+                                // maxLength: 11,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5.0),
+                                  prefixText: '+86 ',
+                                  prefixStyle: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor)),
+                                  // fillColor: Colors.lightBlue,
+                                  // filled: true,
+                                  // border: 
+                                ),
+                                cursorColor: Color(AppColors.MainColor),
+                              ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text('用', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                          InkWell(
+                            child: Text('微信号', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                            onTap: () {},
+                          ),
+                          Text('/', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                          InkWell(
+                            child: Text('QQ号', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                            onTap: () {},
+                          ),
+                          Text('/', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                          InkWell(
+                            child: Text('邮箱', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                            onTap: () {},
+                          ),
+                          Text('登录', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                        ],
+                      ),
+                      SizedBox(height: 64.0),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: MaterialButton(
+                              color: Color(AppColors.MainColor),
+                              height: 48.0,
+                              child: Text('下一步', style: TextStyle(fontSize: 22.0, color: Colors.white),),
+                              onPressed: () {},
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
+
+            ) 
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
