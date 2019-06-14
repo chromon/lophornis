@@ -87,7 +87,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       child: Text('注册', style: AppStyles.WelcomeStyle),
                       textColor: Color(AppColors.MainColor),
                       color: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.Signup);
+                      },
                     )
                   ],
                 ),

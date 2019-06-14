@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
       statusBarColor: Colors.transparent,
     ));
 
-    //手机号的控制器
+    // 手机号的控制器
     TextEditingController phoneController = TextEditingController();
 
     return Scaffold(
