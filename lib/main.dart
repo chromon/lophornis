@@ -4,6 +4,7 @@ import 'package:lophornis/pages/chats/chat_page.dart';
 import 'package:lophornis/pages/contact/new_friends_page.dart';
 import 'package:lophornis/pages/welcome/login_page.dart';
 import 'package:lophornis/pages/welcome/sign_up.dart';
+import 'package:lophornis/pages/welcome/other_login_page.dart';
 import 'package:lophornis/pages/welcome/welcome_page.dart';
 import 'package:lophornis/pages/me/profile.dart';
 import 'package:lophornis/pages/home/home_page.dart';
@@ -25,6 +26,7 @@ void main() => runApp(MaterialApp(
   routes: {
     Routes.Welcome: (context) => WelcomePage(),
     Routes.Login: (context) => LoginPage(),
+    Routes.OtherLogin: (context) => OtherLoginPage(),
     Routes.Signup: (context) => SignUpPage(),
     Routes.Home: (context) => HomePage(),
     Routes.Chat: (context) => ChatPage(),

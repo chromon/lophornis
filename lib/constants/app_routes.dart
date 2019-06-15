@@ -6,6 +6,8 @@ class Routes {
   static const Home = '/home';
   // 登录页
   static const Login = '/login';
+  // 其他登录方式
+  static const OtherLogin = '/otherlogin';
   // 注册页
   static const Signup = '/signup';
   // 聊天页

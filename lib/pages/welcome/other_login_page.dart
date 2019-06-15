@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'package:lophornis/constants/app_routes.dart';
-import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_routes.dart';
 
-class LoginPage extends StatefulWidget {
+class OtherLoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _OtherLoginPageState createState() => _OtherLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _OtherLoginPageState extends State<OtherLoginPage> {
+
+  TextEditingController accountController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-
-    // 设置顶部状态栏透明
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.transparent,
-    ));
-
-    // 手机号的控制器
-    TextEditingController phoneController = TextEditingController();
-
     return Scaffold(
       backgroundColor: const Color(AppColors.PrimaryColor),
       appBar: AppBar(
@@ -60,36 +54,40 @@ class _LoginPageState extends State<LoginPage> {
                           top: 40.0,
                           bottom: 40.0,
                         ),
-                        child: Text('手机号登录', style: AppStyles.LoginTitleStyle,),
+                        child: Text('微信号/QQ/邮箱登录', style: AppStyles.LoginTitleStyle,),
                       ),
-                      Row(
-                        children: <Widget>[
-                          Text('国家/地区', style: TextStyle(fontSize: 20.0),),
-                          FlatButton(
-                            child: Text('中国（+86）', style: TextStyle(fontSize: 20.0, color: Color(AppColors.MainColor)),),
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Text('手机号 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
+                          Text('账号 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
                           SizedBox(width: 10.0,),
                           Expanded(
                             child: 
                               TextField(
-                                controller: phoneController,
-                                keyboardType: TextInputType.number,
-                                // maxLength: 11,
+                                controller: accountController,
+                                keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.all(5.0),
-                                  prefixText: '+86 ',
-                                  prefixStyle: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor)),
-                                  // fillColor: Colors.lightBlue,
-                                  // filled: true,
-                                  // border: 
+                                ),
+                                cursorColor: Color(AppColors.MainColor),
+                              ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20.0,),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text('密码 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
+                          SizedBox(width: 10.0,),
+                          Expanded(
+                            child: 
+                              TextField(
+                                obscureText: true,
+                                controller: passController,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5.0),
                                 ),
                                 cursorColor: Color(AppColors.MainColor),
                               ),
@@ -101,20 +99,21 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           InkWell(
-                            child: Text('用微信号/QQ号/邮箱登录', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
+                            child: Text('用手机号登录', style: TextStyle(fontSize: 20.0, color: Color(AppColors.LoginLinkTextColor),)),
                             onTap: () {
-                              Navigator.pushNamed(context, Routes.OtherLogin);
+                              // Navigator.pushNamed(context, Routes.OtherLogin);
                             },
-                          ),],
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 64.0),
+                      SizedBox(height: 40.0,),
                       Row(
                         children: <Widget>[
                           Expanded(
                             child: MaterialButton(
                               color: Color(AppColors.MainColor),
                               height: 48.0,
-                              child: Text('下一步', style: TextStyle(fontSize: 22.0, color: Colors.white),),
+                              child: Text('登录', style: TextStyle(fontSize: 22.0, color: Colors.white),),
                               onPressed: () {
                                 Navigator.pushNamedAndRemoveUntil(context, Routes.Home, (Route<dynamic> route) => false);
                               },
@@ -126,8 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
-            ) 
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -150,8 +148,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(height: 20.0,),
         ],
-      ),
-      
+      )
     );
   }
 }

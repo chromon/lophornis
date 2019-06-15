@@ -66,6 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text('昵称 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
+                    SizedBox(width: 10.0,),
                     Expanded(
                       child: 
                         TextField(
@@ -94,6 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text('手机号 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
+                    SizedBox(width: 10.0,),
                     Expanded(
                       child: 
                         TextField(
@@ -112,6 +114,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text('密码 ', style: TextStyle(fontSize: 20.0, color: Color(AppColors.ActionIconColor),)),
+                    SizedBox(width: 10.0,),
                     Expanded(
                       child: 
                         TextField(
