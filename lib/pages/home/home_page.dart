@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import 'package:lophornis/constants/app_routes.dart';
 import 'package:lophornis/pages/home/contacts_page.dart';
 import 'package:lophornis/pages/home/chats_page.dart';
 import 'package:lophornis/pages/home/discover_page.dart';
 import 'package:lophornis/pages/home/me_page.dart';
 import 'package:lophornis/widget/home_navigation_widget.dart';
 import 'package:lophornis/widget/home_popupmenu_widget.dart';
+import 'package:lophornis/pages/search/search_delegate.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
         ),
         onPressed: () { 
           print('点击了搜索按钮'); 
-          Navigator.pushNamed(context, Routes.NewFriends);
+          showSearch(context: context, delegate: GlobalSearchDelegate());
         },
       ),
       SizedBox(width: 16.0,),
