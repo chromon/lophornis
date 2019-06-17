@@ -174,7 +174,11 @@ class ChatItem extends StatelessWidget {
         onTap: () {
           // 跳转到聊天页面
           print('打开，${chat.title}');
-          Navigator.pushNamed(context, Routes.Chat);
+          if (chat.title == '订阅号') {
+            Navigator.pushNamed(context, Routes.Subscriptions);
+          } else {
+            Navigator.pushNamed(context, Routes.Chat);
+          }
         },
         onTapDown: (TapDownDetails details) {
           // 点击位置

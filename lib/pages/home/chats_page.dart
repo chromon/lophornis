@@ -29,7 +29,7 @@ class _ChatsPageState extends State<ChatsPage> {
         itemBuilder: (BuildContext  context, int index) {
           if (data.device != null) {
             // 需要显示其他设备登录
-            if(index == 0 ) {
+            if(index == 0) {
               return DeviceInfoItem(device: data.device,);
             }
             return ChatItem(chat: mockChats[index - 1]);

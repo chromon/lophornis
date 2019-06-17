@@ -102,6 +102,7 @@ flutter:
     - assets/images/ic_splash.png
     - assets/images/ic_phone.png
     - assets/images/ic_close.png
+    - assets/images/ic_subscription.png
     
   fonts:
     - family: appIconFont

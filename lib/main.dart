@@ -9,6 +9,7 @@ import 'package:lophornis/pages/welcome/welcome_page.dart';
 import 'package:lophornis/pages/me/profile.dart';
 import 'package:lophornis/pages/home/home_page.dart';
 import 'package:lophornis/pages/welcome/splash_page.dart';
+import 'package:lophornis/pages/subscriptions/subscriptioin_accounts_page.dart';
 
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_routes.dart';
@@ -33,5 +34,6 @@ void main() => runApp(MaterialApp(
     Routes.Profile: (context) => ProfilePage(),
     Routes.Settings: (context) => SettingsPage(),
     Routes.NewFriends: (context) => NewFriendsPage(),
+    Routes.Subscriptions: (context) => SubscriptionAccountsPage(),
   },
 ));

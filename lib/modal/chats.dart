@@ -69,20 +69,20 @@ class ChatPageData {
   // 会话列表详细信息
   static List<Chat> mockChats = [
     const Chat(
+      avatar: 'assets/images/ic_subscription.png',
+      title: '订阅号',
+      desc: '今天一起出去玩吗？',
+      updateAt: '13:38',
+      isMute: true,
+      unreadMsgCount: 0
+    ),
+    const Chat(
       avatar: 'assets/images/ic_tx_news.png',
       title: '腾讯新闻',
       desc: '豪车与出租车刮擦 俩车主划拳定责',
       updateAt: '13:38',
       isMute: false,
       unreadMsgCount: 10
-    ),
-    const Chat(
-      avatar: 'assets/images/default_nor_avatar.png',
-      title: 'John',
-      desc: '今天一起出去玩吗？',
-      updateAt: '13:38',
-      isMute: true,
-      unreadMsgCount: 0
     ),
     const Chat(
       avatar: 'assets/images/ic_wx_games.png',
