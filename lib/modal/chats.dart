@@ -24,6 +24,8 @@ class Chat {
   final int unreadMsgCount;
   // 是否以圆点形式显示未读消息
   final bool displayDot;
+  // 是否是公众号
+  final bool isSubscription;
 
   // 构造方法初始化数据
   const Chat({
@@ -34,7 +36,8 @@ class Chat {
     @required this.updateAt,
     this.isMute: false,
     this.unreadMsgCount: 0,
-    this.displayDot: false
+    this.displayDot: false,
+    this.isSubscription: false,
   }) : assert(avatar != null),
        assert(title != null),
        assert(updateAt != null);
@@ -74,7 +77,8 @@ class ChatPageData {
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
       isMute: true,
-      unreadMsgCount: 0
+      unreadMsgCount: 0,
+      isSubscription: true,
     ),
     const Chat(
       avatar: 'assets/images/ic_tx_news.png',

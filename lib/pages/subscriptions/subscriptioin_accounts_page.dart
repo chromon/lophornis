@@ -4,7 +4,7 @@ import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app_colors.dart';
 
-import 'package:lophornis/modal/chats.dart';
+import 'package:lophornis/modal/subscriptions.dart';
 import 'package:lophornis/widget/chat_item_widget.dart';
 
 class SubscriptionAccountsPage extends StatefulWidget {
@@ -14,12 +14,12 @@ class SubscriptionAccountsPage extends StatefulWidget {
 
 class _SubscriptionAccountsPageState extends State<SubscriptionAccountsPage> {
 
-  final ChatPageData data = ChatPageData.mock();
+  final SubscriptionPageData data = SubscriptionPageData.mock();
 
   @override
   Widget build(BuildContext context) {
 
-    var mockChats = data.chats;
+    var mockSubscriptions = data.subscriptions;
 
     return Scaffold(
       appBar: AppBar(
@@ -61,9 +61,9 @@ class _SubscriptionAccountsPageState extends State<SubscriptionAccountsPage> {
         child: ListView.builder(
           // 索引值为列表项的位置
           itemBuilder: (BuildContext  context, int index) {
-            return ChatItem(chat: mockChats[index]);
+            return ChatItem(chat: mockSubscriptions[index]);
           },
-          itemCount: mockChats.length,
+          itemCount: mockSubscriptions.length,
         ),
       ),
     );
