@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:lophornis/pages/chats/chat_page.dart';
 import 'package:lophornis/pages/contact/new_friends_page.dart';
+import 'package:lophornis/pages/contact/add_friends_page.dart';
 import 'package:lophornis/pages/welcome/login_page.dart';
 import 'package:lophornis/pages/welcome/sign_up.dart';
 import 'package:lophornis/pages/welcome/other_login_page.dart';
@@ -34,6 +35,7 @@ void main() => runApp(MaterialApp(
     Routes.Profile: (context) => ProfilePage(),
     Routes.Settings: (context) => SettingsPage(),
     Routes.NewFriends: (context) => NewFriendsPage(),
+    Routes.AddFriends: (context) => AddFriendsPage(),
     Routes.Subscriptions: (context) => SubscriptionAccountsPage(),
   },
 ));

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_routes.dart';
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/modal/new_friends.dart';
 import 'package:lophornis/widget/new_friend_item_widget.dart';
@@ -26,7 +27,7 @@ class _NewFriendsPageState extends State<NewFriendsPage> {
 
     var mockNewFriends = data.newFriends;
 
-    return new Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text('新的朋友', style: AppStyles.TitleStyle,),
         // 返回图标
@@ -50,7 +51,9 @@ class _NewFriendsPageState extends State<NewFriendsPage> {
           // 添加朋友按钮
           FlatButton(
             child: Text('添加朋友', style: AppStyles.TitleStyle,),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.AddFriends);
+            },
           ),
         ],
       ),

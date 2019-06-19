@@ -18,6 +18,8 @@ class Routes {
   static const Settings = '/settings';
   // 新的朋友页
   static const NewFriends = '/new_friends';
+  // 添加朋友页
+  static const AddFriends = '/add_friends';
   // 订阅号
   static const Subscriptions = '/subscriptions';
 }
