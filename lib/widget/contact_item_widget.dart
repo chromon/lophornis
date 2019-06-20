@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
-import 'package:lophornis/constants/app_routes.dart';
 
 // 联系人项
 class ContactItem extends StatefulWidget {
