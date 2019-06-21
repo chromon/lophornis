@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lophornis/constants/app_routes.dart';
 
 import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/constants/app_colors.dart';
@@ -77,6 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 onPressed: () {
                   print('点击了昵称');
+                  Navigator.pushNamed(context, Routes.SetNickname);
                 },
               ),
               FunctionItemWidget(

@@ -22,4 +22,6 @@ class Routes {
   static const AddFriends = '/add_friends';
   // 订阅号
   static const Subscriptions = '/subscriptions';
+  // 修改昵称页
+  static const SetNickname = '/set_nickname';
 }
