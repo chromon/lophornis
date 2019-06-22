@@ -98,8 +98,8 @@ class ChatPageData {
       displayDot: true,
     ),
     const Chat(
-      avatar: 'assets/images/default_nor_avatar.png',
-      title: 'John',
+      avatar: 'assets/images/ic_service_info.png',
+      title: '服务信息',
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
       isMute: false,
@@ -114,8 +114,8 @@ class ChatPageData {
       unreadMsgCount: 0
     ),
     const Chat(
-      avatar: 'assets/images/default_nor_avatar.png',
-      title: 'John',
+      avatar: 'assets/images/ic_file_transfer.png',
+      title: '文件传输',
       desc: '今天一起出去玩吗？',
       updateAt: '13:38',
       isMute: false,

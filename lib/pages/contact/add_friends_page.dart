@@ -79,7 +79,7 @@ class _AddFriendsPageState extends State<AddFriendsPage> {
               ),
               SizedBox(height: 20.0,),
               FriendItem(
-                iconPath: 'assets/images/ic_subscription.png',
+                iconPath: 'assets/images/ic_radar.png',
                 title: '雷达加朋友',
                 desc: '添加身边的朋友',
                 showArrow: true,
@@ -97,7 +97,7 @@ class _AddFriendsPageState extends State<AddFriendsPage> {
                 },
               ),
               FriendItem(
-                iconPath: 'assets/images/ic_quick_scan.png',
+                iconPath: 'assets/images/ic_quick_scan_bg.png',
                 title: '扫一扫',
                 desc: '扫描二维码名片',
                 showArrow: true,
@@ -124,7 +124,7 @@ class _AddFriendsPageState extends State<AddFriendsPage> {
                 },
               ),
               FriendItem(
-                iconPath: 'assets/images/ic_subscription.png',
+                iconPath: 'assets/images/ic_enterprise.png',
                 title: '企业微信联系人',
                 desc: '通过手机号搜索企业微信用户',
                 showArrow: true,

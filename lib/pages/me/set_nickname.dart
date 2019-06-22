@@ -52,17 +52,25 @@ class _SetNicknamePageState extends State<SetNicknamePage> {
       ),
       body: Container(
         color: Color(AppColors.PrimaryColor),
-        child: TextField(
-          controller: _controller,
-          decoration: new InputDecoration(
-            hintText: '昵称',
-            // 输入框背景颜色
-            fillColor: Colors.white,
-            filled: true,
-            // 输入框边框
-            border: InputBorder.none,
-          ),
-          cursorColor: Colors.grey,
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: TextField(
+                controller: _controller,
+                decoration: new InputDecoration(
+                  hintText: '昵称',
+                  helperText: '好名字可以让你的朋友更容易记住你。',
+                  helperStyle: AppStyles.DescStyle,
+                  // 输入框背景颜色
+                  fillColor: Colors.white,
+                  filled: true,
+                  // 输入框边框
+                  border: InputBorder.none,
+                ),
+                cursorColor: Colors.grey,
+              ),
+            ),
+          ],
         ),
       ),
     );

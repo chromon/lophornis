@@ -86,6 +86,7 @@ flutter:
     - assets/images/ic_mini_program.png
     - assets/images/ic_people_nearby.png
     - assets/images/ic_quick_scan.png
+    - assets/images/ic_quick_scan_bg.png
     - assets/images/ic_quick_search.png
     - assets/images/ic_shake_phone.png
     - assets/images/ic_shopping.png
@@ -104,6 +105,9 @@ flutter:
     - assets/images/ic_close.png
     - assets/images/ic_subscription.png
     - assets/images/ic_qrcode.png
+    - assets/images/ic_radar.png
+    - assets/images/ic_enterprise.png
+    - assets/images/ic_service_info.png
     
   fonts:
     - family: appIconFont
