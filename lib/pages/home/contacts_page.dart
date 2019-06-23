@@ -222,6 +222,9 @@ class _ContactsPageState extends State<ContactsPage> {
             avatar: _contact.avatar, 
             title: _contact.name, 
             indexItemTitle: _hasIndexItemTitle ? _contact.nameIndex : null,
+            onTap: () {
+              Navigator.pushNamed(context, Routes.FriendInfo);
+            },
           );
           
           return _contactItem;

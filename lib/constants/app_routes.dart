@@ -24,4 +24,6 @@ class Routes {
   static const Subscriptions = '/subscriptions';
   // 修改昵称页
   static const SetNickname = '/set_nickname';
+  // 好友信息页
+  static const FriendInfo = '/friend_info';
 }
