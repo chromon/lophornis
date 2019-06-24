@@ -96,11 +96,13 @@ class _NewFriendsPageState extends State<NewFriendsPage> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset(
-                        'assets/images/ic_phone.png',
+                      Icon(
+                        IconData(
+                          0xe600,
+                          fontFamily: AppConstants.IconFontFamilyExtra,
+                        ),
+                        size: AppConstants.ActionIconSize,
                         color: const Color(AppColors.NewPhoneContact),
-                        width: AppConstants.FullWidthIconButtonIconSize,
-                        height: AppConstants.FullWidthIconButtonIconSize,
                       ),
                       Expanded(
                         child: Container(

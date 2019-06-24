@@ -87,4 +87,10 @@ class AppStyles {
   static const LoginTitleStyle = TextStyle(
     fontSize: 24.0,
   );
+  
+  // 好友信息样式
+  static const FriendInfoStyle = TextStyle(
+    fontSize: 16.0,
+    color: Colors.lightBlue
+  );
 }

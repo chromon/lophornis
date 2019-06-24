@@ -101,8 +101,6 @@ flutter:
     - assets/images/default_nor_avatar.png
     - assets/images/ad_game_notify.png
     - assets/images/ic_splash.png
-    - assets/images/ic_phone.png
-    - assets/images/ic_close.png
     - assets/images/ic_subscription.png
     - assets/images/ic_qrcode.png
     - assets/images/ic_radar.png
@@ -114,3 +112,6 @@ flutter:
     - family: appIconFont
       fonts:
         - asset: assets/fonts/iconfont.ttf
+    - family: appIconFontExtra
+      fonts:
+        - asset: assets/fonts/iconfont_extra.ttf

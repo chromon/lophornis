@@ -4,8 +4,6 @@ import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_styles.dart';
 
-import 'package:lophornis/widget/function_item_widget.dart';
-
 class FriendInfo extends StatefulWidget {
   @override
   _FriendInfoState createState() => _FriendInfoState();
@@ -43,7 +41,14 @@ class _FriendInfoState extends State<FriendInfo> {
         backgroundColor: AppColors.HeaderCardBg,
         actions: <Widget>[
           FlatButton(
-            child: Text('···', style: AppStyles.TitleStyle,),
+            child: Icon(
+              IconData(
+                0xe634,
+                fontFamily: AppConstants.IconFontFamilyExtra,
+              ),
+              size: 16.0,
+              color: const Color(AppColors.ButtonDescText)
+            ),
             onPressed: () {
             },
           ),
@@ -159,12 +164,6 @@ class _FriendInfoState extends State<FriendInfo> {
             padding: EdgeInsets.only(left: 16.0, right: 20.0),
             decoration: BoxDecoration(
               color: Colors.white,
-              border: Border(
-                top: BorderSide(
-                  color: const Color(AppColors.DividerColor),
-                  width: AppConstants.DividerWidth
-                ),
-              ),
             ),
             child: FlatButton(
               onPressed: () {},
@@ -257,7 +256,83 @@ class _FriendInfoState extends State<FriendInfo> {
               ),
             ),
           ),
-          
+          SizedBox(height: SEPARATOR_SIZE,),
+          // 发消息
+          Container(
+            padding: EdgeInsets.only(left: 16.0, right: 20.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: FlatButton(
+              onPressed: () {},
+              padding: EdgeInsets.only(
+                left: AppConstants.HORIZONTAL_PADDING,
+              ),
+              color: Colors.white,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height: HEIGHT,
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Icon(
+                      IconData(
+                        0xe6d7,
+                        fontFamily: AppConstants.IconFontFamilyExtra,
+                      ),
+                      size: 16.0,
+                      color: Colors.lightBlue,
+                    )
+                  ),
+                  SizedBox(width: 10.0,),
+                  Text('发消息', style: AppStyles.FriendInfoStyle,),
+                ],
+              ),
+            ),
+          ),
+          // 音视频通话
+          Container(
+            padding: EdgeInsets.only(left: 16.0, right: 20.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                top: BorderSide(
+                  color: const Color(AppColors.DividerColor),
+                  width: AppConstants.DividerWidth
+                ),
+              ),
+            ),
+            child: FlatButton(
+              onPressed: () {},
+              padding: EdgeInsets.only(
+                left: AppConstants.HORIZONTAL_PADDING,
+              ),
+              color: Colors.white,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height: HEIGHT,
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Icon(
+                      IconData(
+                        0xe644,
+                        fontFamily: AppConstants.IconFontFamilyExtra,
+                      ),
+                      size: 16.0,
+                      color: Colors.lightBlue
+                    )
+                  ),
+                  SizedBox(width: 20.0,),
+                  Text('音视频通话', style: AppStyles.FriendInfoStyle,),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

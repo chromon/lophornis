@@ -23,11 +23,13 @@ class _OtherLoginPageState extends State<OtherLoginPage> {
         title: Text(''),
         // 返回图标
         leading: IconButton(
-          icon: Image.asset(
-            'assets/images/ic_close.png',
-            height: AppConstants.ActionIconSize + 4.0,
-            width: AppConstants.ActionIconSize + 4.0,
-            color: const Color(AppColors.ActionIconColor),
+          icon: Icon(
+            IconData(
+              0xe660,
+              fontFamily: AppConstants.IconFontFamilyExtra,
+            ),
+            size: AppConstants.ActionIconSize - 4.0,
+            color: Colors.black,
           ),
           onPressed: () {
             Navigator.pop(context);

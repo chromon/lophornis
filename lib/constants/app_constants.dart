@@ -3,6 +3,7 @@
 class AppConstants {
   // 字体常量
   static const IconFontFamily = "appIconFont";
+  static const IconFontFamilyExtra = "appIconFontExtra";
   // tab 状态栏图标大小
   static const ActionIconSize = 20.0;
   // 头像圆角大小
