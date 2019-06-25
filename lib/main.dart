@@ -5,6 +5,7 @@ import 'package:lophornis/pages/contact/friend_info.dart';
 import 'package:lophornis/pages/contact/new_friends_page.dart';
 import 'package:lophornis/pages/contact/add_friends_page.dart';
 import 'package:lophornis/pages/me/set_nickname.dart';
+import 'package:lophornis/pages/moments/moments_page.dart';
 import 'package:lophornis/pages/welcome/login_page.dart';
 import 'package:lophornis/pages/welcome/sign_up.dart';
 import 'package:lophornis/pages/welcome/other_login_page.dart';
@@ -41,5 +42,6 @@ void main() => runApp(MaterialApp(
     Routes.Subscriptions: (context) => SubscriptionAccountsPage(),
     Routes.SetNickname: (context) => SetNicknamePage(),
     Routes.FriendInfo: (context) => FriendInfo(),
+    Routes.Moments: (context) => MomentsPage(),
   },
 ));

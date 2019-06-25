@@ -26,4 +26,6 @@ class Routes {
   static const SetNickname = '/set_nickname';
   // 好友信息页
   static const FriendInfo = '/friend_info';
+  // 朋友圈
+  static const Moments = '/moments';
 }

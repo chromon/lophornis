@@ -107,6 +107,7 @@ flutter:
     - assets/images/ic_enterprise.png
     - assets/images/ic_service_info.png
     - assets/images/ic_social_circle_img.png
+    - assets/images/moments_bg.png
     
   fonts:
     - family: appIconFont

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lophornis/constants/app_colors.dart';
+import 'package:lophornis/constants/app_routes.dart';
 import "package:lophornis/widget/function_item_widget.dart";
 
 class DiscoverPage extends StatefulWidget {
@@ -34,7 +35,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   SizedBox(width: 12.0,),
                 ],
               ),
-              onPressed: () {print('点击了朋友圈');},
+              onPressed: () {
+                print('点击了朋友圈');
+                Navigator.pushNamed(context, Routes.Moments);
+              },
             ),
             SizedBox(height: SEPARATE_SIZE),
             FunctionItemWidget(
