@@ -101,6 +101,7 @@ flutter:
     - assets/images/default_nor_avatar.png
     - assets/images/ad_game_notify.png
     - assets/images/ic_splash.png
+    - assets/images/ic_splash_origin.png
     - assets/images/ic_subscription.png
     - assets/images/ic_qrcode.png
     - assets/images/ic_radar.png

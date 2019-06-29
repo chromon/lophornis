@@ -4,6 +4,7 @@ import 'dart:ui' as ui show window;
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/widget/function_item_widget.dart';
+import 'package:lophornis/widget/moment_item_widget.dart';
 
 class MomentsPage extends StatefulWidget {
   @override
@@ -108,28 +109,9 @@ class _MomentsPageState extends State<MomentsPage> {
                     ),
                   ],
                 ),
-                    
-                FunctionItemWidget(
-                  iconPath: 'assets/images/ic_wallet.png',
-                  title: '支付',
-                  onPressed: () {
-                    print('点击的是钱包按钮。');
-                  },
-                ),
-                FunctionItemWidget(
-                  iconPath: 'assets/images/ic_wallet.png',
-                  title: '支付2',
-                  onPressed: () {
-                    print('点击的是钱包按钮。');
-                  },
-                ),
-                FunctionItemWidget(
-                  iconPath: 'assets/images/ic_wallet.png',
-                  title: '支付3',
-                  onPressed: () {
-                    print('点击的是钱包按钮。');
-                  },
-                ),
+                
+                MomentItemWidget(),  
+                MomentItemWidget(),  
                 SizedBox(height: 1000.0,),
               ],
             ),
