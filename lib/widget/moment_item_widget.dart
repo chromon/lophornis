@@ -3,8 +3,14 @@ import 'dart:ui' as ui show window;
 
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/modal/moment.dart';
 
 class MomentItemWidget extends StatefulWidget {
+
+  Moment moment;
+
+  MomentItemWidget({this.moment});
+
   @override
   _MomentItemWidgetState createState() => _MomentItemWidgetState();
 }

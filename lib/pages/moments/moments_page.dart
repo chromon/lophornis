@@ -3,7 +3,6 @@ import 'dart:ui' as ui show window;
 
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
-import 'package:lophornis/widget/function_item_widget.dart';
 import 'package:lophornis/widget/moment_item_widget.dart';
 
 class MomentsPage extends StatefulWidget {
@@ -54,6 +53,12 @@ class _MomentsPageState extends State<MomentsPage> {
         setState(() => navAlpha = 1);
       }
     });
+  }
+  
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override
