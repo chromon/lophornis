@@ -3,6 +3,7 @@ import 'dart:ui' as ui show window;
 
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/modal/moment.dart';
 import 'package:lophornis/widget/moment_item_widget.dart';
 
 class MomentsPage extends StatefulWidget {
@@ -25,6 +26,8 @@ class _MomentsPageState extends State<MomentsPage> {
   String appBarTitle = '';
   // appbar 背景颜色
   Color appBarColor = Colors.transparent;
+
+  final MomentData data = MomentData.mock();
 
   @override
   void initState() {
@@ -63,6 +66,7 @@ class _MomentsPageState extends State<MomentsPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -114,9 +118,17 @@ class _MomentsPageState extends State<MomentsPage> {
                     ),
                   ],
                 ),
-                
-                MomentItemWidget(),  
-                MomentItemWidget(),  
+                ListView.builder(
+                  itemBuilder: (BuildContext  context, int index) {
+                    return MomentItemWidget(moment: data.moments[index],);
+                  },
+                  itemCount: data.moments.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  primary: false
+                ),
+                // MomentItemWidget(),  
+                // MomentItemWidget(),  
                 SizedBox(height: 1000.0,),
               ],
             ),
