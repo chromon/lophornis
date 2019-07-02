@@ -55,7 +55,7 @@ class MomentData {
     return MomentData(moments: momentList);
   }
 
-  static List<Moment> momentList= [
+  static List<Moment> momentList = [
     const Moment(
       avatar: 'assets/images/default_nor_avatar.png',
       nickname: 'Ellery',
@@ -64,6 +64,7 @@ class MomentData {
       time: '12:38',
       isSelf: true,
       images: [
+        'assets/images/ic_splash.png',
         'assets/images/ic_splash.png',
         'assets/images/ic_splash.png',
         'assets/images/ic_splash.png',
@@ -78,24 +79,30 @@ class MomentData {
       address: '北京',
       time: '12:38',
       isSelf: true,
-      images: [],
+      images: [
+        // 'assets/images/ic_splash.png',
+        // 'assets/images/ic_splash.png',
+        // 'assets/images/ic_splash.png',
+        // 'assets/images/ic_splash.png',
+        // 'assets/images/ic_splash.png'
+      ],
       video: VideoModal('assets/images/ic_splash.png', 'assets/images/ic_splash.png'),
     ),
-    const Moment(
-      avatar: 'assets/images/default_nor_avatar.png',
-      nickname: 'Ellery',
-      content: '测试内容',
-      address: '北京',
-      time: '12:38',
-      isSelf: true,
-      images: [
-        'assets/images/ic_splash.png',
-        'assets/images/ic_splash.png',
-        'assets/images/ic_splash.png',
-        'assets/images/ic_splash.png',
-        'assets/images/ic_splash.png',
-      ],
-      video: null,
-    ),
+    // const Moment(
+    //   avatar: 'assets/images/default_nor_avatar.png',
+    //   nickname: 'Ellery',
+    //   content: '测试内容',
+    //   address: '北京',
+    //   time: '12:38',
+    //   isSelf: true,
+    //   images: [
+    //     'assets/images/ic_splash.png',
+    //     'assets/images/ic_splash.png',
+    //     'assets/images/ic_splash.png',
+    //     'assets/images/ic_splash.png',
+    //     'assets/images/ic_splash.png',
+    //   ],
+    //   video: null,
+    // ),
   ];
 }

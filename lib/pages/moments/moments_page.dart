@@ -119,9 +119,7 @@ class _MomentsPageState extends State<MomentsPage> {
                   ],
                 ),
                 ListView.builder(
-                  itemBuilder: (BuildContext  context, int index) {
-                    return MomentItemWidget(moment: data.moments[index],);
-                  },
+                  itemBuilder: (BuildContext  context, int index) => MomentItemWidget(data.moments[index],),
                   itemCount: data.moments.length,
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,

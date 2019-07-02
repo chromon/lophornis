@@ -9,13 +9,13 @@ class MomentItemWidget extends StatelessWidget {
 
   final Moment moment;
 
-  MomentItemWidget({this.moment});
+  MomentItemWidget(this.moment, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
     // 图片数量
-    int imageSize = moment.images.length;
+    int imageSize = this.moment.images.length;
 
     double divisor = 0;
     if (imageSize == 1) {
@@ -31,8 +31,56 @@ class MomentItemWidget extends StatelessWidget {
     // 视频宽度
     double videoWidth = (MediaQueryData.fromWindow(ui.window).size.width - 20 - 50 - 10) / 2.2;
 
-    print(moment.images);
+    // print(moment.images);
     print(moment.video);
+    print(moment.video?.videoImage);
+    print(imageSize);
+    if (moment.images.isNotEmpty) {
+      print('--' + moment.images[0]);
+    }
+
+    Widget _imagesGrid = imageSize > 0 ? 
+      GridView.builder(
+        padding: EdgeInsets.only(top: 8.0),
+        itemCount: imageSize,
+        shrinkWrap: true,
+        primary: false,
+        gridDelegate:
+            SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: imageWidth,
+                crossAxisSpacing: 2.0,
+                mainAxisSpacing: 2.0,
+                childAspectRatio: 1),
+        itemBuilder: (context, index) => Image.asset(
+          '${this.moment.images[index]}',
+          fit: BoxFit.cover,
+        )
+      ) : Container();
+
+      Widget _videoWidget = moment.video != null ?
+        Container(
+          padding: EdgeInsets.only(top: 8.0),
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              Image.asset(
+                '${this.moment.video.videoImage}',
+                // 'assets/images/ic_splash.png',
+                width: videoWidth,
+                fit: BoxFit.cover,
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.play_arrow,
+                  color: Colors.white,
+                ),
+                onPressed: () {}
+              )
+            ],
+          ),
+          width: videoWidth
+        ) : Container();
+
 
     return Container(
       padding: EdgeInsets.all(10.0),
@@ -81,63 +129,10 @@ class MomentItemWidget extends StatelessWidget {
                   ),
                   
                   // 图片
-                  Offstage(
-                    offstage: imageSize == 0,
-                    child: imageSize > 1 
-                      ? GridView.builder(
-                          padding: EdgeInsets.only(top: 8.0),
-                          itemCount: imageSize,
-                          shrinkWrap: true,
-                          primary: false,
-                          gridDelegate:  SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: imageWidth,
-                            crossAxisSpacing: 2.0,
-                            mainAxisSpacing: 2.0,
-                            childAspectRatio: 1
-                          ),
-                          itemBuilder: (BuildContext  context, int index) {
-                            Image.asset(
-                              '${moment.images.isNotEmpty ? moment.images[index] : ''}',
-                              fit: BoxFit.cover,
-                            );
-                          },
-                        )
-                      : Container(
-                          padding: EdgeInsets.only(top: 8.0),
-                          child: Image.asset(
-                            '${moment.images.length == 1 ? moment.images[0] : ''}',
-                            width: imageWidth,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                  ),
-
+                  _imagesGrid,
                   // 视频
-                  Offstage(
-                    offstage: moment.video == null,
-                    child: Container(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: <Widget>[
-                          Image.asset(
-                            '${moment.video?.videoImage}',
-                            width: videoWidth,
-                            fit: BoxFit.cover,
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.play_arrow,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {}
-                          )
-                        ],
-                      ),
-                      width: videoWidth
-                    ),
-                  ),
-
+                  _videoWidget,
+                  
                   // 定位地址
                   Container(
                     padding: EdgeInsets.only(top: 8.0),
