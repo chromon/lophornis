@@ -31,14 +31,7 @@ class MomentItemWidget extends StatelessWidget {
     // 视频宽度
     double videoWidth = (MediaQueryData.fromWindow(ui.window).size.width - 20 - 50 - 10) / 2.2;
 
-    // print(moment.images);
-    print(moment.video);
-    print(moment.video?.videoImage);
-    print(imageSize);
-    if (moment.images.isNotEmpty) {
-      print('--' + moment.images[0]);
-    }
-
+    // 图片
     Widget _imagesGrid = imageSize > 0 ? 
       GridView.builder(
         padding: EdgeInsets.only(top: 8.0),
@@ -57,30 +50,38 @@ class MomentItemWidget extends StatelessWidget {
         )
       ) : Container();
 
-      Widget _videoWidget = moment.video != null ?
-        Container(
-          padding: EdgeInsets.only(top: 8.0),
-          child: Stack(
-            alignment: Alignment.center,
-            children: <Widget>[
-              Image.asset(
-                '${this.moment.video.videoImage}',
-                // 'assets/images/ic_splash.png',
-                width: videoWidth,
-                fit: BoxFit.cover,
+    // 视频
+    Widget _videoWidget = moment.video != null ?
+      Container(
+        padding: EdgeInsets.only(top: 8.0),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Image.asset(
+              '${this.moment.video.videoImage}',
+              // 'assets/images/ic_splash.png',
+              width: videoWidth,
+              fit: BoxFit.cover,
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.play_arrow,
+                color: Colors.white,
               ),
-              IconButton(
-                icon: Icon(
-                  Icons.play_arrow,
-                  color: Colors.white,
-                ),
-                onPressed: () {}
-              )
-            ],
-          ),
-          width: videoWidth
-        ) : Container();
+              onPressed: () {}
+            )
+          ],
+        ),
+        width: videoWidth
+      ) : Container();
 
+    // 来源
+    Widget _fromWidget = moment.from != null ?
+      Container(
+        padding: EdgeInsets.only(left: 10.0),
+        child: Text('${moment.from}', style: TextStyle(color: Colors.grey[500], fontSize: 13),),
+      ) : Container();
+                          
 
     return Container(
       padding: EdgeInsets.all(10.0),
@@ -132,12 +133,13 @@ class MomentItemWidget extends StatelessWidget {
                   _imagesGrid,
                   // 视频
                   _videoWidget,
-                  
+
                   // 定位地址
                   Container(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Text('${moment.address}', style: TextStyle(color: Colors.grey[500], fontSize: 13),),
                   ),
+
                   // 发布时间
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,10 +147,14 @@ class MomentItemWidget extends StatelessWidget {
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
+                          // 时间
                           Text('${moment.time}', style: TextStyle(color: Colors.grey[500], fontSize: 13),),
+                          // 来源
+                          _fromWidget,
+                          // 删除
                           Container(
                             padding: EdgeInsets.only(left: 10.0),
-                            child: Text('删除', style: TextStyle(color: Colors.blueAccent),),
+                            child: Text('删除', style: TextStyle(color: Color(0xff576b95)),),
                           )
                         ]
                       ),
