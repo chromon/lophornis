@@ -98,7 +98,7 @@ class MomentItemWidget extends StatelessWidget {
             ),
             SizedBox(width: 10.0,),
             Expanded(
-              child: Text('测试链接，测试中。。。', maxLines: 1, style: TextStyle(fontSize: 16.0,),),
+              child: Text('测试链接，测试中...', maxLines: 1, style: TextStyle(fontSize: 16.0,),),
             ),
           ],
         ),
