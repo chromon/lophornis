@@ -82,6 +82,27 @@ class MomentItemWidget extends StatelessWidget {
         child: Text('${moment.from}', style: TextStyle(color: Colors.grey[500], fontSize: 13),),
       ) : Container();
                           
+    // 链接
+    Widget _linkWidget = moment.linkModal != null ?
+      Container(
+        color: Color(AppColors.BackgroundColor),
+        padding: EdgeInsets.all(5.0),
+        margin: EdgeInsets.only(top: 10.0, right: 10.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              'assets/images/moments_bg.png',
+              width: 50.0,
+              height: 50.0,
+            ),
+            SizedBox(width: 10.0,),
+            Expanded(
+              child: Text('测试链接，测试中。。。', maxLines: 1, style: TextStyle(fontSize: 16.0,),),
+            ),
+          ],
+        ),
+      ) : Container();
 
     return Container(
       padding: EdgeInsets.all(10.0),
@@ -115,7 +136,7 @@ class MomentItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   // 昵称
-                  Text('${moment.nickname}', style: TextStyle(color: Color(0xff576b95), fontSize: 16.0, fontWeight: FontWeight.bold),),
+                  Text('${moment.nickname}', style: TextStyle(color: Color(0xff576b95), fontSize: 20.0, fontWeight: FontWeight.bold),),
                   
                   // 文字部分
                   Offstage(
@@ -133,6 +154,8 @@ class MomentItemWidget extends StatelessWidget {
                   _imagesGrid,
                   // 视频
                   _videoWidget,
+                  // 链接
+                  _linkWidget,
 
                   // 定位地址
                   Container(
