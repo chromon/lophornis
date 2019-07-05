@@ -3,6 +3,7 @@ import 'dart:ui' as ui show window;
 
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
+import 'package:lophornis/constants/app_styles.dart';
 import 'package:lophornis/modal/moment.dart';
 import 'package:lophornis/widget/moment_item_widget.dart';
 
@@ -155,16 +156,71 @@ class _MomentsPageState extends State<MomentsPage> {
               brightness: Brightness.light,
               backgroundColor: appBarColor,
               actions: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    IconData(
-                      0xe60a,
-                      fontFamily: AppConstants.IconFontFamily,
+                Container(
+                  child: GestureDetector(
+                    onLongPress: () {
+                      print('hehe');
+                    },
+                    child: InkWell(
+                      child: IconButton(
+                        icon: Icon(
+                          IconData(
+                            0xe60a,
+                            fontFamily: AppConstants.IconFontFamily,
+                          ),
+                          size: AppConstants.ActionIconSize + 4.0,
+                          color: iconColor,
+                        ),
+                        onPressed: () { 
+                          showDialog(
+                            context: context,
+                            builder: (_) => SimpleDialog(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.only(bottom: 10.0),
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Color(AppColors.DividerColor),
+                                        width: AppConstants.DividerWidth
+                                      ),
+                                    ),
+                                  ),
+                                  child: FlatButton(
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text('拍摄', style: AppStyles.TitleStyle,),
+                                        Expanded(
+                                          child: Container(
+                                            alignment: Alignment.centerRight,
+                                            child: Text('照片或视频', style: AppStyles.DescStyle,),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(top: 10.0),
+                                  child: FlatButton(
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text('从相册选择', style: AppStyles.TitleStyle,),
+                                      ],
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                    size: AppConstants.ActionIconSize + 4.0,
-                    color: iconColor,
                   ),
-                  onPressed: () { print('打开相机拍短视频');},
                 ),
               ],
             ),
