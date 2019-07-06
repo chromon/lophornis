@@ -28,4 +28,6 @@ class Routes {
   static const FriendInfo = '/friend_info';
   // 朋友圈
   static const Moments = '/moments';
+  // 发布朋友圈消息
+  static const MomentsPublish = '/moments_publish';
 }

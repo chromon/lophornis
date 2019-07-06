@@ -4,6 +4,7 @@ import 'dart:ui' as ui show window;
 import 'package:lophornis/constants/app_colors.dart';
 import 'package:lophornis/constants/app_constants.dart';
 import 'package:lophornis/constants/app_styles.dart';
+import 'package:lophornis/constants/app_routes.dart';
 import 'package:lophornis/modal/moment.dart';
 import 'package:lophornis/widget/moment_item_widget.dart';
 
@@ -159,7 +160,7 @@ class _MomentsPageState extends State<MomentsPage> {
                 Container(
                   child: GestureDetector(
                     onLongPress: () {
-                      print('hehe');
+                      Navigator.pushNamed(context, Routes.MomentsPublish);
                     },
                     child: InkWell(
                       child: IconButton(
