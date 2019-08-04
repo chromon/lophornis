@@ -60,4 +60,6 @@ class AppConstants {
 
   // 新建手机联系人间距
   static const NewPhoneContact_PADDING = 8.0;
+
+  static const ContentTextSize = 20.0;
 }

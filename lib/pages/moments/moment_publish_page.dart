@@ -164,7 +164,7 @@ class _MomentPublishPageState extends State<MomentPublishPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 20.0),
+              margin: EdgeInsets.only(left: 20.0, top: 20.0),
               alignment: Alignment.centerLeft,
               child: Icon(
                 IconData(

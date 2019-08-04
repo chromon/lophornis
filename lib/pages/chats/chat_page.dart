@@ -11,6 +11,9 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
 
+  // 与 textfield 互动
+  final _txController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +73,7 @@ class _ChatPageState extends State<ChatPage> {
               ),
             ),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 IconButton(
                   icon: Icon(
@@ -83,14 +86,44 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   onPressed: () { print('语音文字切换按钮');},
                 ),
+                // 聊天输入框
                 Expanded(
                   child: Container(
                     margin: const EdgeInsets.only(left: 4.0, right: 4.0),
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(4.0),
                     ),
-                    height: AppConstants.ChatBoxHeight,
+                    // height: AppConstants.ChatBoxHeight,
+                    child: LayoutBuilder(
+                      builder: (context, size) {
+
+                        TextSpan _text = TextSpan(
+                          text: _txController.text,
+                          style: AppStyles.ChatBoxTextStyle,
+                        );
+
+                        TextPainter _tp = TextPainter(
+                          text: _text,
+                          textDirection: TextDirection.ltr,
+                          textAlign: TextAlign.left
+                        );
+                        _tp.layout(maxWidth: size.maxWidth);
+
+                        final _lines = (_tp.size.height / _tp.preferredLineHeight).ceil();
+
+                        return TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(10.0),
+                          ),
+                          controller: _txController,
+                          cursorColor: Color(AppColors.MainColor),
+                          maxLines: _lines < 4 ? null: 4,
+                          style: AppStyles.ChatBoxTextStyle,
+                        );
+                      },
+                    ),
                   ),
                 ),
                 IconButton(

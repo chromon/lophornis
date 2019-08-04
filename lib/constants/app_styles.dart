@@ -93,4 +93,9 @@ class AppStyles {
     fontSize: 16.0,
     color: Colors.lightBlue
   );
+
+  static const ChatBoxTextStyle = TextStyle(
+    fontSize: AppConstants.ContentTextSize,
+    color: const Color(AppColors.ChatsTitleColor),
+  );
 }
